@@ -1,463 +1,317 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Kushal - Accountant Photography & Student Portfolio</title>
-  <meta name="description" content="Kushal's personal portfolio - Accountant from Okhaldhunga">
-  
-  <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-  
-  <style>
-    :root {
-      --primary: #6c5ce7;
-      --primary-dark: #5649c0;
-      --text: #2d3436;
-      --light: #f5f6fa;
-      --gray: #636e72;
-      --white: #ffffff;
-    }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kushal - Accountant, Photography & Student Portfolio</title>
+<meta name="description" content="Kushal's professional portfolio">
 
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
-    body {
-      font-family: 'Poppins', sans-serif;
-      background: var(--light);
-      color: var(--text);
-      line-height: 1.6;
-    }
+<!-- Font Awesome for icons -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-pV0B5O0GfP6hE9Y4Z+L6oC1aQXUw5V+4sGZDWK5F+0N5MZ5eSkG6k4e4kzDp/Ec2k8a/6gQ5p6D3X7mU5N5k5Q==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
-    /* Navbar */
-    nav {
-      position: fixed;
-      width: 100%;
-      top: 0;
-      z-index: 1000;
-      background: rgba(255,255,255,0.95);
-      backdrop-filter: blur(10px);
-      box-shadow: 0 2px 15px rgba(0,0,0,0.1);
-      transition: all 0.3s;
-    }
+<style>
+:root {
+  --primary: #6c5ce7;
+  --accent: #00b894;
+  --primary-dark: #5649c0;
+  --text: #2d3436;
+  --light: #f8f9fa;
+  --white: #ffffff;
+  --gray: #636e72;
+}
 
-    .nav-container {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 1rem 2rem;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
+* { margin:0; padding:0; box-sizing:border-box; }
+body { font-family:'Poppins', sans-serif; background:var(--light); color:var(--text); line-height:1.6; scroll-behavior:smooth; }
 
-    .logo {
-      font-size: 1.5rem;
-      font-weight: 700;
-      color: var(--primary);
-    }
+/* Navbar */
+nav {
+  position: fixed;
+  width: 100%;
+  top: 0;
+  z-index: 1000;
+  background: rgba(255,255,255,0.95);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 2px 15px rgba(0,0,0,0.1);
+  transition: all 0.3s;
+}
+.nav-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 1rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.logo { font-size:1.6rem; font-weight:700; color:var(--primary); }
+.nav-links { display:flex; gap:2rem; list-style:none; }
+.nav-links a { text-decoration:none; color:var(--text); font-weight:500; transition:color 0.3s; }
+.nav-links a:hover { color:var(--primary); }
 
-    .nav-links {
-      display: flex;
-      gap: 2.5rem;
-      list-style: none;
-    }
+/* Hero Section */
+#home {
+  height: 100vh;
+  min-height: 600px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color:white;
+  text-align:center;
+  padding:0 2rem;
+}
+.hero-content img {
+  width:160px;
+  height:160px;
+  border-radius:50%;
+  border:5px solid white;
+  margin-bottom:1.5rem;
+  box-shadow:0 10px 20px rgba(0,0,0,0.3);
+  animation: fadeInScale 1.5s ease forwards;
+}
+@keyframes fadeInScale {
+  0% { opacity:0; transform: scale(0.5); }
+  100% { opacity:1; transform: scale(1); }
+}
+.hero-content h1 {
+  font-size:3rem;
+  margin-bottom:0.5rem;
+  opacity:0; transform: translateY(-20px);
+  animation: slideUp 1.2s forwards 0.5s;
+}
+.hero-content h2 {
+  font-size:1.5rem;
+  font-weight:400;
+  margin-bottom:2rem;
+  opacity:0; transform: translateY(-20px);
+  animation: slideUp 1.2s forwards 0.7s;
+}
+@keyframes slideUp {
+  to { opacity:1; transform: translateY(0); }
+}
+.btn {
+  display:inline-block;
+  padding:0.9rem 2.2rem;
+  background: var(--white);
+  color: var(--primary);
+  font-weight:600;
+  border-radius:50px;
+  text-decoration:none;
+  transition: all 0.3s;
+}
+.btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+  background: linear-gradient(45deg, var(--primary), var(--accent));
+  color:white;
+}
 
-    .nav-links a {
-      text-decoration: none;
-      color: var(--text);
-      font-weight: 500;
-      transition: color 0.3s;
-    }
+/* Sections */
+section { padding:8rem 2rem; max-width:1200px; margin:0 auto; }
+h2.section-title {
+  text-align:center;
+  font-size:2.5rem;
+  margin-bottom:3rem;
+  position:relative;
+  opacity:0;
+  transform: translateY(20px);
+  animation: slideUp 1s forwards;
+}
+h2.section-title::after {
+  content:'';
+  width:80px;
+  height:4px;
+  background: var(--primary);
+  position:absolute;
+  bottom:-15px;
+  left:50%;
+  transform:translateX(-50%);
+}
 
-    .nav-links a:hover {
-      color: var(--primary);
-    }
+/* About */
+.about-grid { display:grid; grid-template-columns:1fr 1fr; gap:4rem; align-items:center; }
+.about-img {
+  width:100%;
+  border-radius:20px;
+  box-shadow:0 15px 30px rgba(0,0,0,0.15);
+  transition: transform 0.5s;
+}
+.about-img:hover { transform: scale(1.05); }
 
-    <section id="home">
-  <div class="hero-content">
+/* Skills */
+.skills-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(250px,1fr)); gap:2rem; }
+.skill-card {
+  background:white;
+  padding:2rem;
+  border-radius:15px;
+  text-align:center;
+  box-shadow:0 5px 15px rgba(0,0,0,0.08);
+  transition: transform 0.3s, box-shadow 0.3s;
+  opacity:0;
+}
+.skill-card:hover { transform: translateY(-10px); box-shadow:0 15px 25px rgba(0,0,0,0.15); }
+.skill-icon { font-size:3rem; color:var(--primary); margin-bottom:1rem; }
 
-    <img 
-      src="./images/profile.png" 
-      alt="Kushal"
-      style="
-        width:150px;
-        height:150px;
-        border-radius:50%;
-        border:5px solid white;
-        margin-bottom:1.5rem;
-        box-shadow:0 5px 15px rgba(0,0,0,0.3);
-      "
-    >
+/* Projects */
+.projects-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(320px,1fr)); gap:2.5rem; }
+.project-card {
+  background:white;
+  border-radius:15px;
+  overflow:hidden;
+  box-shadow:0 10px 20px rgba(0,0,0,0.1);
+  transition: transform 0.3s, box-shadow 0.3s;
+  opacity:0;
+}
+.project-card:hover { transform:translateY(-10px); box-shadow:0 20px 40px rgba(0,0,0,0.15); }
+.project-img { width:100%; height:220px; object-fit:cover; }
+.project-info { padding:1.8rem; }
+.project-links a { margin-right:1rem; color:var(--primary); text-decoration:none; font-weight:500; }
+.project-links a:hover { color:var(--accent); }
 
-    <h1>Hello, I'm Kushal</h1>
-    <h2>Accountant | Photography | Student | From Nepal</h2>
-    <a href="#projects" class="btn">View My Work</a>
+/* Contact */
+.contact-form { max-width:600px; margin:0 auto; background:white; padding:3rem; border-radius:20px; box-shadow:0 10px 30px rgba(0,0,0,0.1); }
+form input, form textarea { width:100%; padding:1rem; margin-bottom:1.5rem; border:1px solid #ddd; border-radius:8px; font-family:inherit; }
+form button { width:100%; padding:1rem; background:var(--primary); color:white; border:none; border-radius:8px; font-size:1.1rem; cursor:pointer; transition:all 0.3s; }
+form button:hover { background:linear-gradient(45deg, var(--primary), var(--accent)); }
 
-  </div>
-</section>
+/* Footer */
+footer { background:var(--text); color:white; text-align:center; padding:3rem 2rem; }
+.social-links a { color:white; font-size:1.8rem; margin:0 1rem; text-decoration:none; }
 
-    #home {
-      height: 100vh;
-      min-height: 600px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-      color: white;
-      text-align: center;
-      padding: 0 2rem;
-    }
-
-    .hero-content h1 {
-      font-size: 3.5rem;
-      margin-bottom: 1rem;
-    }
-
-    .hero-content h2 {
-      font-size: 1.8rem;
-      font-weight: 400;
-      margin-bottom: 2rem;
-    }
-
-    .btn {
-      display: inline-block;
-      padding: 0.9rem 2.2rem;
-      background: white;
-      color: var(--primary);
-      text-decoration: none;
-      border-radius: 50px;
-      font-weight: 600;
-      transition: all 0.3s;
-    }
-
-    .btn:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 10px 20px rgba(0,0,0,0.15);
-    }
-
-    /* Sections */
-    section {
-      padding: 8rem 2rem;
-      max-width: 1200px;
-      margin: 0 auto;
-    }
-
-    h2.section-title {
-      text-align: center;
-      font-size: 2.5rem;
-      margin-bottom: 3rem;
-      position: relative;
-    }
-
-    h2.section-title::after {
-      content: '';
-      width: 80px;
-      height: 4px;
-      background: var(--primary);
-      position: absolute;
-      bottom: -15px;
-      left: 50%;
-      transform: translateX(-50%);
-    }
-
-    /* About */
-    .about-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 4rem;
-      align-items: center;
-    }
-
-    .about-img {
-      width: 100%;
-      border-radius: 20px;
-      box-shadow: 0 15px 30px rgba(0,0,0,0.15);
-    }
-
-    /* Skills */
-    .skills-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 2rem;
-    }
-
-    .skill-card {
-      background: white;
-      padding: 2rem;
-      border-radius: 15px;
-      text-align: center;
-      box-shadow: 0 5px 15px rgba(0,0,0,0.08);
-      transition: transform 0.3s;
-    }
-
-    .skill-card:hover {
-      transform: translateY(-10px);
-    }
-
-    .skill-icon {
-      font-size: 3rem;
-      color: var(--primary);
-      margin-bottom: 1rem;
-    }
-
-    /* Projects */
-    .projects-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-      gap: 2.5rem;
-    }
-
-    .project-card {
-      background: white;
-      border-radius: 15px;
-      overflow: hidden;
-      box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-      transition: all 0.3s;
-    }
-
-    .project-card:hover {
-      transform: translateY(-10px);
-      box-shadow: 0 20px 40px rgba(0,0,0,0.15);
-    }
-
-    .project-img {
-      width: 100%;
-      height: 220px;
-      object-fit: cover;
-    }
-
-    .project-info {
-      padding: 1.8rem;
-    }
-
-    .project-links a {
-      margin-right: 1rem;
-      color: var(--primary);
-      text-decoration: none;
-      font-weight: 500;
-    }
-
-    /* Contact */
-    .contact-form {
-      max-width: 600px;
-      margin: 0 auto;
-      background: white;
-      padding: 3rem;
-      border-radius: 20px;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-    }
-
-    form input, form textarea {
-      width: 100%;
-      padding: 1rem;
-      margin-bottom: 1.5rem;
-      border: 1px solid #ddd;
-      border-radius: 8px;
-      font-family: inherit;
-    }
-
-    form button {
-      width: 100%;
-      padding: 1rem;
-      background: var(--primary);
-      color: white;
-      border: none;
-      border-radius: 8px;
-      font-size: 1.1rem;
-      cursor: pointer;
-      transition: background 0.3s;
-    }
-
-    form button:hover {
-      background: var(--primary-dark);
-    }
-
-    /* Footer */
-    footer {
-      background: var(--text);
-      color: white;
-      text-align: center;
-      padding: 3rem 2rem;
-    }
-
-    .social-links a {
-      color: white;
-      font-size: 1.8rem;
-      margin: 0 1rem;
-      text-decoration: none;
-    }
-
-    @media (max-width: 768px) {
-      .about-grid {
-        grid-template-columns: 1fr;
-      }
-      
-      .hero-content h1 {
-        font-size: 2.8rem;
-      }
-      
-      .nav-links {
-        gap: 1.5rem;
-      }
-    }
-  </style>
+/* Animations on scroll */
+@media (max-width:768px){
+  .about-grid { grid-template-columns:1fr; }
+  .hero-content h1 { font-size:2.5rem; }
+  .nav-links { gap:1.5rem; }
+}
+</style>
 </head>
 <body>
 
-  <!-- Navigation -->
-  <nav>
-    <div class="nav-container">
-      <div class="logo">Kushal</div>
-      <ul class="nav-links">
-        <li><a href="#home">Home</a></li>
-        <li><a href="#about">About</a></li>
-        <li><a href="#skills">Skills</a></li>
-        <li><a href="#projects">Projects</a></li>
-        <li><a href="#contact">Contact</a></li>
-      </ul>
-    </div>
-  </nav>
+<!-- Navbar -->
+<nav>
+<div class="nav-container">
+<div class="logo">Kushal</div>
+<ul class="nav-links">
+<li><a href="#home">Home</a></li>
+<li><a href="#about">About</a></li>
+<li><a href="#skills">Skills</a></li>
+<li><a href="#projects">Projects</a></li>
+<li><a href="#contact">Contact</a></li>
+</ul>
+</div>
+</nav>
 
-  <!-- Hero Section -->
-  <section id="home">
-    <div class="hero-content">
-      <h1>Hello, I'm Kushal</h1>
-      <h2>Web Developer | Student | From Kathmandu</h2>
-      <a href="#projects" class="btn">View My Work</a>
-    </div>
-  </section>
-
-  <!-- About Section -->
-  <section id="about">
-    <h2 class="section-title">About Me</h2>
-    <div class="about-grid">
-      <div>
-        <img src="https://via.placeholder.com/500x600?text=Your+Photo" alt="Kushal" class="about-img">
-      </div>
-      <div>
-        <h3>Hi, I'm Kushal from Kathmandu!</h3>
-        <p>I am a passionate web developer and student who loves creating beautiful and functional websites. Currently learning HTML, CSS, JavaScript and excited about building real-world projects.</p>
-        <p>I enjoy turning ideas into reality using code. My goal is to create user-friendly experiences that make an impact.</p>
-        <p><strong>Location:</strong> Kathmandu, Nepal<br>
-           <strong>Interests:</strong> Web Dev, UI/UX, Open Source</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- Skills Section -->
-  <section id="skills" style="background:#f8f9fa;">
-    <h2 class="section-title">My Skills</h2>
-    <div class="skills-grid">
-      <div class="skill-card">
-        <div class="skill-icon">HTML5</div>
-        <h3>HTML5</h3>
-        <p>Semantic markup, Accessibility</p>
-      </div>
-      <div class="skill-card">
-        <div class="skill-icon">CSS3</div>
-        <h3>CSS3</h3>
-        <p>Responsive Design, Flexbox, Grid, Animations</p>
-      </div>
-      <div class="skill-card">
-        <div class="skill-icon">JavaScript</div>
-        <h3>JavaScript</h3>
-        <p>ES6+, DOM Manipulation, Async</p>
-      </div>
-      <div class="skill-card">
-        <div class="skill-icon">Git</div>
-        <h3>Git & GitHub</h3>
-        <p>Version Control, Collaboration</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- Projects Section -->
-  <section id="projects">
-    <h2 class="section-title">My Projects</h2>
-    <div class="projects-grid">
-      <div class="project-card">
-        <img src="https://via.placeholder.com/400x300?text=EMI+Calculator" alt="EMI Calculator" class="project-img">
-        <div class="project-info">
-          <h3>EMI Calculator</h3>
-          <p>Simple responsive EMI calculator using HTML, CSS & JavaScript.</p>
-          <div class="project-links">
-            <a href="https://github.com/YOUR-USERNAME/emi-calculator" target="_blank">GitHub</a>
-            <a href="https://YOUR-USERNAME.github.io/emi-calculator" target="_blank">Live Demo</a>
-          </div>
-        </div>
-      </div>
-
-      <div class="project-card">
-        <img src="https://via.placeholder.com/400x300?text=ToDo+App" alt="ToDo App" class="project-img">
-        <div class="project-info">
-          <h3>ToDo List App</h3>
-          <p>Interactive task manager with local storage.</p>
-          <div class="project-links">
-            <a href="#" target="_blank">GitHub</a>
-            <a href="#" target="_blank">Live Demo</a>
-          </div>
-        </div>
-      </div>
-
-      <div class="project-card">
-        <img src="https://via.placeholder.com/400x300?text=Weather+App" alt="Weather App" class="project-img">
-        <div class="project-info">
-          <h3>Weather App</h3>
-          <p>Real-time weather using API (coming soon).</p>
-          <div class="project-links">
-            <a href="#" target="_blank">GitHub</a>
-            <a href="#" target="_blank">Live Demo</a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-
-
-  <!-- Contact Section -->
-<section id="contact" style="background:#f8f9fa;">
-  <h2 class="section-title">Get In Touch</h2>
-  <div class="contact-form">
-    
-    <form action="https://formspree.io/f/xrekpekg" method="POST">
-
-  <input type="text" name="name" placeholder="Your Name" required>
-
-  <input type="email" name="_replyto" placeholder="Your Email" required>
-
-  <input type="text" name="subject" placeholder="Subject" required>
-
-  <textarea name="message" rows="6" placeholder="Your Message" required></textarea>
-
-  <!-- Formspree extras -->
-  <input type="hidden" name="_subject" value="New Message from Kushal Portfolio">
-  <input type="hidden" name="_next" value="thanks.html">
-  <input type="text" name="_gotcha" style="display:none">
-
-  <button type="submit">Send Message</button>
-</form>
-
-  </div>
+<!-- Hero -->
+<section id="home">
+<div class="hero-content">
+<img src="./images/profile.png" alt="Kushal">
+<h1>Hello, I'm Kushal</h1>
+<h2>Accountant | Photography | Student | From Nepal</h2>
+<a href="#projects" class="btn">View My Work</a>
+</div>
 </section>
 
+<!-- About -->
+<section id="about">
+<h2 class="section-title">About Me</h2>
+<div class="about-grid">
+<div>
+<img src="https://via.placeholder.com/500x600?text=Your+Photo" alt="Kushal" class="about-img">
+</div>
+<div>
+<h3>Hi, I'm Kushal!</h3>
+<p>Passionate web developer and student creating functional, beautiful websites.</p>
+<p><strong>Location:</strong> Kathmandu, Nepal<br><strong>Interests:</strong> Web Dev, UI/UX, Open Source</p>
+</div>
+</div>
+</section>
 
-  <!-- Footer -->
-  <footer>
-    <p>&copy; 2026 Kushal. All rights reserved.</p>
-    <div class="social-links">
-      <a href="https://github.com/YOUR-USERNAME" target="_blank">GitHub</a>
-      <a href="https://linkedin.com/in/YOUR-LINK" target="_blank">LinkedIn</a>
-      <a href="https://twitter.com/YOUR-HANDLE" target="_blank">Twitter/X</a>
-    </div>
-  </footer>
+<!-- Skills -->
+<section id="skills" style="background:#f8f9fa;">
+<h2 class="section-title">My Skills</h2>
+<div class="skills-grid">
+<div class="skill-card" style="animation:fadeIn 0.6s forwards 0.2s;">
+<div class="skill-icon"><i class="fab fa-html5"></i></div>
+<h3>HTML5</h3><p>Semantic markup, Accessibility</p>
+</div>
+<div class="skill-card" style="animation:fadeIn 0.6s forwards 0.4s;">
+<div class="skill-icon"><i class="fab fa-css3-alt"></i></div>
+<h3>CSS3</h3><p>Responsive Design, Flexbox, Grid</p>
+</div>
+<div class="skill-card" style="animation:fadeIn 0.6s forwards 0.6s;">
+<div class="skill-icon"><i class="fab fa-js-square"></i></div>
+<h3>JavaScript</h3><p>ES6+, DOM, Async</p>
+</div>
+<div class="skill-card" style="animation:fadeIn 0.6s forwards 0.8s;">
+<div class="skill-icon"><i class="fab fa-git-alt"></i></div>
+<h3>Git & GitHub</h3><p>Version Control & Collaboration</p>
+</div>
+</div>
+</section>
+
+<!-- Projects -->
+<section id="projects">
+<h2 class="section-title">My Projects</h2>
+<div class="projects-grid">
+<div class="project-card" style="animation:fadeIn 0.6s forwards 0.2s;">
+<img src="https://via.placeholder.com/400x300?text=EMI+Calculator" class="project-img" alt="EMI Calculator">
+<div class="project-info">
+<h3>EMI Calculator</h3><p>Responsive EMI Calculator using HTML/CSS/JS</p>
+<div class="project-links">
+<a href="#" target="_blank">GitHub</a>
+<a href="#" target="_blank">Live Demo</a>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- Contact -->
+<section id="contact" style="background:#f8f9fa;">
+<h2 class="section-title">Get In Touch</h2>
+<div class="contact-form">
+<form action="https://formspree.io/f/xrekpekg" method="POST">
+<input type="text" name="name" placeholder="Your Name" required>
+<input type="email" name="_replyto" placeholder="Your Email" required>
+<input type="text" name="subject" placeholder="Subject" required>
+<textarea name="message" rows="6" placeholder="Your Message" required></textarea>
+<input type="hidden" name="_subject" value="New Message from Kushal Portfolio">
+<input type="hidden" name="_next" value="thanks.html">
+<input type="text" name="_gotcha" style="display:none">
+<button type="submit">Send Message</button>
+</form>
+</div>
+</section>
+
+<!-- Footer -->
+<footer>
+<p>&copy; 2026 Kushal. All rights reserved.</p>
+<div class="social-links">
+<a href="https://github.com/YOUR-USERNAME" target="_blank"><i class="fab fa-github"></i></a>
+<a href="https://linkedin.com/in/YOUR-LINK" target="_blank"><i class="fab fa-linkedin"></i></a>
+<a href="https://twitter.com/YOUR-HANDLE" target="_blank"><i class="fab fa-twitter"></i></a>
+</div>
+</footer>
+
+<!-- Scroll animation -->
+<script>
+const faders = document.querySelectorAll('.skill-card, .project-card, .section-title');
+const appearOptions = { threshold:0.1, rootMargin:"0px 0px -50px 0px" };
+const appearOnScroll = new IntersectionObserver(function(entries, appearOnScroll){
+  entries.forEach(entry=>{
+    if(!entry.isIntersecting) return;
+    entry.target.style.opacity=1;
+    entry.target.style.transform='translateY(0)';
+    appearOnScroll.unobserve(entry.target);
+  });
+}, appearOptions);
+
+faders.forEach(fader=>{ appearOnScroll.observe(fader); });
+</script>
 
 </body>
-
 </html>
-
-
-
