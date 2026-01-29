@@ -3,14 +3,12 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Kushal - Accountant, Photography & Student Portfolio</title>
-<meta name="description" content="Kushal's professional portfolio">
+<title>Kushal - Accountant, Photographer & Content Creator</title>
+<meta name="description" content="Kushal's professional portfolio - Accountant, Photographer and Content Creator from Nepal">
 
-<!-- Google Fonts -->
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
-<!-- Font Awesome for icons -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-pV0B5O0GfP6hE9Y4Z+L6oC1aQXUw5V+4sGZDWK5F+0N5MZ5eSkG6k4e4kzDp/Ec2k8a/6gQ5p6D3X7mU5N5k5Q==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
 <style>
 :root {
@@ -21,305 +19,239 @@
   --light: #f8f9fa;
   --white: #ffffff;
   --gray: #636e72;
+  --facebook: #1877F2;
+  --tiktok: #000000;
+  --whatsapp: #25D366;
 }
 
 * { margin:0; padding:0; box-sizing:border-box; }
 body { font-family:'Poppins', sans-serif; background:var(--light); color:var(--text); line-height:1.6; scroll-behavior:smooth; }
 
-/* Navbar */
+/* Navbar Improvements */
 nav {
-  position: fixed;
-  width: 100%;
-  top: 0;
-  z-index: 1000;
-  background: rgba(255,255,255,0.95);
-  backdrop-filter: blur(10px);
-  box-shadow: 0 2px 15px rgba(0,0,0,0.1);
-  transition: all 0.3s;
+  position: fixed; width: 100%; top: 0; z-index: 1000;
+  background: rgba(255,255,255,0.9); backdrop-filter: blur(12px);
+  box-shadow: 0 2px 15px rgba(0,0,0,0.05);
 }
 .nav-container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 1rem 2rem;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+  max-width: 1200px; margin: 0 auto; padding: 0.8rem 2rem;
+  display: flex; justify-content: space-between; align-items: center;
 }
-.logo { font-size:1.6rem; font-weight:700; color:var(--primary); }
+.logo { font-size:1.8rem; font-weight:800; color:var(--primary); letter-spacing: -1px; }
 .nav-links { display:flex; gap:2rem; list-style:none; }
-.nav-links a { text-decoration:none; color:var(--text); font-weight:500; transition:color 0.3s; }
+.nav-links a { text-decoration:none; color:var(--text); font-weight:500; transition:0.3s; font-size: 0.95rem; }
 .nav-links a:hover { color:var(--primary); }
 
 /* Hero Section */
 #home {
-  height: 100vh;
-  min-height: 600px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  color:white;
-  text-align:center;
-  padding:0 2rem;
+  height: 100vh; min-height: 700px; display: flex; align-items: center; justify-content: center;
+  background: linear-gradient(135deg, #6c5ce7 0%, #a29bfe 100%); color:white; text-align:center; padding:0 2rem;
 }
 .hero-content img {
-  width:160px;
-  height:160px;
-  border-radius:50%;
-  border:5px solid white;
-  margin-bottom:1.5rem;
-  box-shadow:0 10px 20px rgba(0,0,0,0.3);
-  animation: fadeInScale 1.5s ease forwards;
+  width:180px; height:180px; border-radius:50%; border:6px solid rgba(255,255,255,0.2);
+  margin-bottom:1.5rem; object-fit: cover; box-shadow:0 15px 35px rgba(0,0,0,0.2);
+  animation: fadeInScale 1.2s ease;
 }
-@keyframes fadeInScale {
-  0% { opacity:0; transform: scale(0.5); }
-  100% { opacity:1; transform: scale(1); }
-}
-.hero-content h1 {
-  font-size:3rem;
-  margin-bottom:0.5rem;
-  opacity:0; transform: translateY(-20px);
-  animation: slideUp 1.2s forwards 0.5s;
-}
-.hero-content h2 {
-  font-size:1.5rem;
-  font-weight:400;
-  margin-bottom:2rem;
-  opacity:0; transform: translateY(-20px);
-  animation: slideUp 1.2s forwards 0.7s;
-}
-@keyframes slideUp {
-  to { opacity:1; transform: translateY(0); }
-}
-.btn {
-  display:inline-block;
-  padding:0.9rem 2.2rem;
-  background: var(--white);
-  color: var(--primary);
-  font-weight:600;
-  border-radius:50px;
-  text-decoration:none;
-  transition: all 0.3s;
-}
-.btn:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 10px 20px rgba(0,0,0,0.2);
-  background: linear-gradient(45deg, var(--primary), var(--accent));
-  color:white;
-}
+@keyframes fadeInScale { 0% { opacity:0; transform: scale(0.8); } 100% { opacity:1; transform: scale(1); } }
 
-/* Sections */
-section { padding:8rem 2rem; max-width:1200px; margin:0 auto; }
-h2.section-title {
-  text-align:center;
-  font-size:2.5rem;
-  margin-bottom:3rem;
-  position:relative;
-  opacity:0;
-  transform: translateY(20px);
-  animation: slideUp 1s forwards;
-}
-h2.section-title::after {
-  content:'';
-  width:80px;
-  height:4px;
-  background: var(--primary);
-  position:absolute;
-  bottom:-15px;
-  left:50%;
-  transform:translateX(-50%);
-}
+.hero-content h1 { font-size:3.5rem; font-weight:700; margin-bottom:0.5rem; }
+.hero-content h2 { font-size:1.4rem; font-weight:300; margin-bottom:2.5rem; opacity:0.9; letter-spacing: 1px; }
 
-/* About */
-.about-grid { display:grid; grid-template-columns:1fr 1fr; gap:4rem; align-items:center; }
-.about-img {
-  width:100%;
-  border-radius:20px;
-  box-shadow:0 15px 30px rgba(0,0,0,0.15);
-  transition: transform 0.5s;
-}
-.about-img:hover { transform: scale(1.05); }
+/* Skills Section - Refined Grid */
+.skills-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; }
+.skill-group { background: var(--white); padding: 2.5rem; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); }
+.skill-group h3 { color: var(--primary); margin-bottom: 1.5rem; display: flex; align-items: center; gap: 10px; border-bottom: 2px solid var(--light); padding-bottom: 10px; }
+.skill-item { margin-bottom: 1rem; }
+.skill-item strong { display: block; color: var(--text); font-size: 1rem; }
+.skill-item span { color: var(--gray); font-size: 0.9rem; }
 
-/* Skills */
-.skills-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(250px,1fr)); gap:2rem; }
-.skill-card {
-  background:white;
-  padding:2rem;
-  border-radius:15px;
-  text-align:center;
-  box-shadow:0 5px 15px rgba(0,0,0,0.08);
-  transition: transform 0.3s, box-shadow 0.3s;
-  opacity:0;
-}
-.skill-card:hover { transform: translateY(-10px); box-shadow:0 15px 25px rgba(0,0,0,0.15); }
-.skill-icon { font-size:3rem; color:var(--primary); margin-bottom:1rem; }
+/* Contact Info Cards */
+.contact-wrapper { display: grid; grid-template-columns: 1fr 1.5fr; gap: 3rem; }
+.contact-info-box { display: flex; flex-direction: column; gap: 1.5rem; }
+.info-item { background: white; padding: 1.5rem; border-radius: 12px; display: flex; align-items: center; gap: 1rem; box-shadow: 0 5px 15px rgba(0,0,0,0.05); text-decoration: none; color: inherit; transition: 0.3s; }
+.info-item:hover { transform: translateX(10px); color: var(--primary); }
+.info-item i { font-size: 1.5rem; color: var(--primary); width: 40px; }
 
 /* Projects */
-.projects-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(320px,1fr)); gap:2.5rem; }
-.project-card {
-  background:white;
-  border-radius:15px;
-  overflow:hidden;
-  box-shadow:0 10px 20px rgba(0,0,0,0.1);
-  transition: transform 0.3s, box-shadow 0.3s;
-  opacity:0;
-}
-.project-card:hover { transform:translateY(-10px); box-shadow:0 20px 40px rgba(0,0,0,0.15); }
+.project-card { background:white; border-radius:15px; overflow:hidden; box-shadow:0 10px 20px rgba(0,0,0,0.05); opacity:0; transform: translateY(30px); transition: 0.5s; }
 .project-img { width:100%; height:220px; object-fit:cover; }
-.project-info { padding:1.8rem; }
-.project-links a { margin-right:1rem; color:var(--primary); text-decoration:none; font-weight:500; }
-.project-links a:hover { color:var(--accent); }
-
-/* Contact */
-.contact-form { max-width:600px; margin:0 auto; background:white; padding:3rem; border-radius:20px; box-shadow:0 10px 30px rgba(0,0,0,0.1); }
-form input, form textarea { width:100%; padding:1rem; margin-bottom:1.5rem; border:1px solid #ddd; border-radius:8px; font-family:inherit; }
-form button { width:100%; padding:1rem; background:var(--primary); color:white; border:none; border-radius:8px; font-size:1.1rem; cursor:pointer; transition:all 0.3s; }
-form button:hover { background:linear-gradient(45deg, var(--primary), var(--accent)); }
+.project-info { padding:1.5rem; }
 
 /* Footer */
-footer { background:var(--text); color:white; text-align:center; padding:3rem 2rem; }
-.social-links a { color:white; font-size:1.8rem; margin:0 1rem; text-decoration:none; }
+footer { background:#1e272e; color:white; text-align:center; padding:4rem 2rem; }
+.footer-socials { margin: 2rem 0; display: flex; justify-content: center; gap: 1.5rem; flex-wrap: wrap; }
+.footer-socials a { 
+  width: 50px; height: 50px; border-radius: 50%; background: rgba(255,255,255,0.1); 
+  display: flex; align-items: center; justify-content: center; color: white; 
+  text-decoration: none; font-size: 1.4rem; transition: 0.3s; 
+}
+.footer-socials a:hover { background: var(--primary); transform: translateY(-5px); }
 
-/* Animations on scroll */
-@media (max-width:768px){
-  .about-grid { grid-template-columns:1fr; }
-  .hero-content h1 { font-size:2.5rem; }
-  .nav-links { gap:1.5rem; }
+/* Mobile Optimization */
+@media (max-width: 768px) {
+  .nav-links { display: none; } /* Simplified for demo, you can add a burger menu later */
+  .hero-content h1 { font-size: 2.5rem; }
+  .contact-wrapper { grid-template-columns: 1fr; }
+  .about-grid { grid-template-columns: 1fr; }
+  section { padding: 4rem 1.5rem; }
 }
 </style>
 </head>
 <body>
 
-<!-- Navbar -->
 <nav>
-<div class="nav-container">
-<div class="logo">Kushal</div>
-<ul class="nav-links">
-<li><a href="#home">Home</a></li>
-<li><a href="#about">About</a></li>
-<li><a href="#skills">Skills</a></li>
-<li><a href="#projects">Projects</a></li>
-<li><a href="#contact">Contact</a></li>
-</ul>
-</div>
+  <div class="nav-container">
+    <div class="logo">KUSHAL.</div>
+    <ul class="nav-links">
+      <li><a href="#home">Home</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#projects">Work</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </div>
 </nav>
 
-<!-- Hero -->
 <section id="home">
-<div class="hero-content">
-<img src="./images/profile.png" alt="Kushal">
-<h1>Hello, I'm Kushal</h1>
-<h2>Accountant | Photography | Student | From Nepal</h2>
-<a href="#projects" class="btn">View My Work</a>
-</div>
-</section>
-
-<!-- About -->
-<section id="about">
-<h2 class="section-title">About Me</h2>
-<div class="about-grid">
-<div>
-<img src="https://via.placeholder.com/500x600?text=Your+Photo" alt="Kushal" class="about-img">
-</div>
-<div>
-<h3>Hi, I'm Kushal!</h3>
-<p>As an Accountant, I thrive on organization and precision. As a Photographer and Content Creator, I live for visual storytelling and creativity. 
-  I’m a student dedicated to mastering the balance between financial clarity and creative expression. Let’s connect and create!.</p>
-<p><strong>Location:</strong> Okhaldhunga, Nepal<br><strong>Interests:</strong> Photography, Reading, content create</p>
-</div>
-</div>
-</section>
-
-<!-- Skills -->
-<section id="skills" style="background:#f8f9fa;">
-<h2 class="section-title">My Skills</h2>
-<div class="skills-grid">
-<div class="skill-card" style="animation:fadeIn 0.6s forwards 0.2s;">
-<div class="skill-icon"><i class="fab fa-html5"></i></div>
-<h3>Visual Storytelling</h3><p>Composition, Color Grading, Lighting Theory</p>
-</div>
-<div class="skill-card" style="animation:fadeIn 0.6s forwards 0.4s;">
-<div class="skill-icon"><i class="fab fa-css3-alt"></i></div>
-<h3>Digital Post-Production</h3><p>Adobe Suite (Lightroom/Photoshop), Video Editing (CapCut/Premiere)</p>
-</div>
-<div class="skill-card" style="animation:fadeIn 0.6s forwards 0.6s;">
-<div class="skill-icon"><i class="fab fa-js-square"></i></div>
-<h3>Social Architecture</h3><p>Algorithm Analysis, SEO Optimization, Trend Forecasting</p>
-</div>
-<div class="skill-card" style="animation:fadeIn 0.6s forwards 0.8s;">
-<div class="skill-icon"><i class="fab fa-git-alt"></i></div>
-<h3>Git & GitHub</h3><p>Version Control & Collaboration</p>
-</div>
-</div>
-</section>
-
-<!-- Projects -->
-<section id="projects">
-<h2 class="section-title">My Projects</h2>
-<div class="projects-grid">
-<div class="project-card" style="animation:fadeIn 0.6s forwards 0.2s;">
-<img src="images/emi-calculator.png" class="project-img" alt="EMI Calculator">
-
-<div class="project-info">
-  <h3>EMI Calculator</h3>
-  <p>Responsive EMI Calculator built with HTML, CSS, and JavaScript.</p>
-
-  <div class="project-links">
-    <a href="https://github.com/kushalphuyal/emi-calculator" target="_blank">
-      GitHub
-    </a>
-    <a href="https://kushalphuyal.github.io/emi-calculator/" target="_blank">
-      Live Demo
-    </a>
+  <div class="hero-content">
+    <img src="./images/profile.png" alt="Kushal Phuyal" onerror="this.src='https://via.placeholder.com/180'">
+    <h1>I'm Kushal Phuyal</h1>
+    <h2>Accountant • Photographer • Content Creator</h2>
+    <a href="#contact" class="btn" style="background:white; color:var(--primary); padding: 1rem 2.5rem; border-radius: 50px; text-decoration: none; font-weight: 600;">Let's Work Together</a>
   </div>
-
 </section>
 
-<!-- Contact -->
-<section id="contact" style="background:#f8f9fa;">
-<h2 class="section-title">Get In Touch</h2>
-<div class="contact-form">
-<form action="https://formspree.io/f/xrekpekg" method="POST">
-<input type="text" name="name" placeholder="Your Name" required>
-<input type="email" name="_replyto" placeholder="Your Email" required>
-<input type="text" name="subject" placeholder="Subject" required>
-<textarea name="message" rows="6" placeholder="Your Message" required></textarea>
-<input type="hidden" name="_subject" value="New Message from Kushal Portfolio">
-<input type="hidden" name="_next" value="thanks.html">
-<input type="text" name="_gotcha" style="display:none">
-<button type="submit">Send Message</button>
-</form>
-</div>
+<section id="about">
+  <h2 class="section-title">Professional Profile</h2>
+  <div class="about-grid">
+    <div>
+      <img src="https://via.placeholder.com/500x600?text=Kushal+Photography" alt="Kushal" class="about-img">
+    </div>
+    <div>
+      <h3>Precision meets Creativity</h3>
+      <p>Based in <strong>Okhaldhunga, Nepal</strong>, I bridge the gap between financial integrity and visual excellence. My background as an Accountant ensures that every project is managed with meticulous detail, while my passion for Photography and Content Creation brings stories to life.</p>
+      <p style="margin-top:1rem;">Whether it's balancing complex sheets or capturing the perfect shot, I bring a dedicated "student" mindset to everything I do—always learning, always improving.</p>
+      
+      <div style="margin-top: 2rem; display: flex; gap: 1rem; flex-wrap: wrap;">
+        <span style="background:#eee; padding: 5px 15px; border-radius: 20px; font-size: 0.85rem;">#Accounting</span>
+        <span style="background:#eee; padding: 5px 15px; border-radius: 20px; font-size: 0.85rem;">#VisualArts</span>
+        <span style="background:#eee; padding: 5px 15px; border-radius: 20px; font-size: 0.85rem;">#WebTech</span>
+      </div>
+    </div>
+  </div>
 </section>
 
-<!-- Footer -->
+<section id="skills" style="background:#f1f2f6;">
+  <h2 class="section-title">My Technical Stack</h2>
+  <div class="skills-container">
+    <div class="skill-group">
+      <h3><i class="fas fa-calculator"></i> Accounting</h3>
+      <div class="skill-item"><strong>Financial Architecture</strong><span>Bookkeeping, Reporting, Tax Compliance</span></div>
+      <div class="skill-item"><strong>Data Integrity</strong><span>Auditing, Reconciliation, Fraud Detection</span></div>
+      <div class="skill-item"><strong>Analytical Tools</strong><span>Advanced Excel, Tally, QuickBooks</span></div>
+    </div>
+
+    <div class="skill-group">
+      <h3><i class="fas fa-camera-retro"></i> Creative</h3>
+      <div class="skill-item"><strong>Visual Storytelling</strong><span>Composition, Lighting, Color Grading</span></div>
+      <div class="skill-item"><strong>Digital Post-Production</strong><span>Lightroom, Photoshop, CapCut</span></div>
+      <div class="skill-item"><strong>Social Architecture</strong><span>SEO, Algorithm Analysis, Engagement</span></div>
+    </div>
+
+    <div class="skill-group">
+      <h3><i class="fas fa-code"></i> Development</h3>
+      <div class="skill-item"><strong>Modern UI</strong><span>HTML5, CSS3 (Flexbox/Grid), Responsive</span></div>
+      <div class="skill-item"><strong>Interaction</strong><span>JavaScript (ES6+, DOM, Async)</span></div>
+      <div class="skill-item"><strong>Collaboration</strong><span>Git, GitHub, Version Control</span></div>
+    </div>
+  </div>
+</section>
+
+<section id="projects">
+  <h2 class="section-title">Featured Projects</h2>
+  <div class="projects-grid">
+    <div class="project-card">
+      <img src="images/emi-calculator.png" class="project-img" alt="EMI Calculator" onerror="this.src='https://via.placeholder.com/400x250?text=Financial+Project'">
+      <div class="project-info">
+        <h3>EMI Calculator</h3>
+        <p>A finance-focused tool for calculating loan installments, blending accounting logic with web tech.</p>
+        <div class="project-links" style="margin-top: 1rem;">
+          <a href="https://kushalphuyal.github.io/emi-calculator/" target="_blank">Live Demo <i class="fas fa-external-link-alt"></i></a>
+        </div>
+      </div>
+    </div>
+    </div>
+</section>
+
+<section id="contact">
+  <h2 class="section-title">Get In Touch</h2>
+  <div class="contact-wrapper">
+    <div class="contact-info-box">
+      <a href="mailto:phuyalkushal598@gmail.com" class="info-item">
+        <i class="fas fa-envelope"></i>
+        <div>
+          <strong>Email</strong><br><span>phuyalkushal598@gmail.com</span>
+        </div>
+      </a>
+      <a href="https://wa.me/9779863970493" class="info-item">
+        <i class="fab fa-whatsapp"></i>
+        <div>
+          <strong>WhatsApp / Call</strong><br><span>+977 9863970493</span>
+        </div>
+      </a>
+      <div class="info-item">
+        <i class="fas fa-map-marker-alt"></i>
+        <div>
+          <strong>Location</strong><br><span>Okhaldhunga, Nepal</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="contact-form">
+      <form action="https://formspree.io/f/xrekpekg" method="POST">
+        <input type="text" name="name" placeholder="Name" required>
+        <input type="email" name="email" placeholder="Email" required>
+        <textarea name="message" rows="5" placeholder="Tell me about your project..." required></textarea>
+        <button type="submit">Send Message</button>
+      </form>
+    </div>
+  </div>
+</section>
+
 <footer>
-<p>&copy; 2026 Kushal. All rights reserved.</p>
-<div class="social-links">
-<a href="https://github.com/YOUR-USERNAME" target="_blank"><i class="fab fa-github"></i></a>
-<a href="https://linkedin.com/in/YOUR-LINK" target="_blank"><i class="fab fa-linkedin"></i></a>
-<a href="https://twitter.com/YOUR-HANDLE" target="_blank"><i class="fab fa-twitter"></i></a>
-</div>
+  <div class="logo" style="color:white">KUSHAL</div>
+  <p style="opacity: 0.7; margin-top: 10px;">Accountant | Photographer | Student</p>
+  
+  <div class="footer-socials">
+    <a href="https://facebook.com/kushalphuyal123" target="_blank" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+    <a href="https://tiktok.com/@kushalphuyal01" target="_blank" title="TikTok"><i class="fab fa-tiktok"></i></a>
+    <a href="https://x.com/kushalphuyal3?s=21" target="_blank" title="Twitter/X"><i class="fab fa-x-twitter"></i></a>
+    <a href="https://github.com/kushalphuyal" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
+    <a href="https://wa.me/9779863970493" target="_blank" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+  </div>
+  
+  <p style="font-size: 0.8rem; opacity: 0.5;">&copy; 2026 Kushal Phuyal. All rights reserved.</p>
 </footer>
 
-<!-- Scroll animation -->
 <script>
-const faders = document.querySelectorAll('.skill-card, .project-card, .section-title');
-const appearOptions = { threshold:0.1, rootMargin:"0px 0px -50px 0px" };
-const appearOnScroll = new IntersectionObserver(function(entries, appearOnScroll){
-  entries.forEach(entry=>{
-    if(!entry.isIntersecting) return;
-    entry.target.style.opacity=1;
-    entry.target.style.transform='translateY(0)';
-    appearOnScroll.unobserve(entry.target);
-  });
-}, appearOptions);
+  // Simple scroll animation trigger
+  const observerOptions = { threshold: 0.1 };
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.style.opacity = "1";
+        entry.target.style.transform = "translateY(0)";
+      }
+    });
+  }, observerOptions);
 
-faders.forEach(fader=>{ appearOnScroll.observe(fader); });
+  document.querySelectorAll('.skill-group, .project-card, .section-title, .info-item').forEach(el => {
+    el.style.opacity = "0";
+    el.style.transform = "translateY(20px)";
+    el.style.transition = "0.6s ease-out";
+    observer.observe(el);
+  });
 </script>
 
 </body>
 </html>
-
-
