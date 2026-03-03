@@ -551,4 +551,4 @@ document.addEventListener('DOMContentLoaded', () => {
   // BlogEngine.init() लाई तपाईंले HTML मा data पास गरेर कल गर्नुपर्छ
   // उदाहरण:
   // BlogEngine.init(window.blogPosts || [], 'filter-row');
-});
+}); // <-- यो क्लोज गर्न नबिर्सनुहोस्
