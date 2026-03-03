@@ -1,0 +1,8 @@
+User-agent: *
+Allow: /
+
+# Disallow thank you page from indexing
+Disallow: /thanks.html
+
+# Sitemap location
+Sitemap: https://kushalphuyal.com.np/sitemap.xml
