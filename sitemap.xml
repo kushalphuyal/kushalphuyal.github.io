@@ -1,33 +1,58 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+
   <!-- मुख्य page -->
   <url>
     <loc>https://kushalphuyal.com.np/</loc>
-    <lastmod>2026-02-27</lastmod>
+    <lastmod>2026-03-03</lastmod>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
   </url>
 
-  <!-- Gallery -->
+  <!-- Services -->
   <url>
-    <loc>https://kushalphuyal.com.np/photocolllection.html</loc>
-    <lastmod>2026-02-27</lastmod>
+    <loc>https://kushalphuyal.com.np/services.html</loc>
+    <lastmod>2026-03-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- Products -->
+  <url>
+    <loc>https://kushalphuyal.com.np/products.html</loc>
+    <lastmod>2026-03-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- Blog -->
+  <url>
+    <loc>https://kushalphuyal.com.np/blog.html</loc>
+    <lastmod>2026-03-03</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- Contact -->
+  <url>
+    <loc>https://kushalphuyal.com.np/contact.html</loc>
+    <lastmod>2026-03-03</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Photo Collection -->
+  <url>
+    <loc>https://kushalphuyal.com.np/photocollection.html</loc>
+    <lastmod>2026-03-03</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
 
-  <!-- Blog (list page) -->
-  <url>
-    <loc>https://kushalphuyal.com.np/blog.html</loc>
-    <lastmod>2026-02-27</lastmod>
-    <changefreq>weekly</changefreq>   <!-- blog नियमित update हुन्छ भने weekly राम्रो -->
-    <priority>0.9</priority>
-  </url>
-
-  <!-- AI Accounting Engine -->
+  <!-- AI Accounting -->
   <url>
     <loc>https://kushalphuyal.com.np/ai.html</loc>
-    <lastmod>2026-02-27</lastmod>
+    <lastmod>2026-03-03</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -35,10 +60,25 @@
   <!-- EMI Calculator -->
   <url>
     <loc>https://kushalphuyal.com.np/emi-code.html</loc>
-    <lastmod>2026-02-27</lastmod>
+    <lastmod>2026-03-03</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
 
-  <!-- थप pages छन् भने यस्तै थप्नु (जस्तै thanks.html, आदि) -->
+  <!-- Thanks page -->
+  <url>
+    <loc>https://kushalphuyal.com.np/thanks.html</loc>
+    <lastmod>2026-03-03</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <!-- 404 page (optional to include) -->
+  <url>
+    <loc>https://kushalphuyal.com.np/404.html</loc>
+    <lastmod>2026-03-03</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.5</priority>
+  </url>
+
 </urlset>
