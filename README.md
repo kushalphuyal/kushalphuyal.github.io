@@ -8,7 +8,7 @@
 
 I'm **Kushal Phuyal**, an AI Accountant from **Okhaldhunga, Nepal** — bridging traditional accounting with modern Artificial Intelligence to build smart finance tools for individuals and businesses.
 
-- 📍 **Location:** Okhaldhunga, Bagmati Province, Nepal
+- 📍 **Location:** Okhaldhunga, Koshi Province, Nepal
 - 🎓 **Education:** BBS 3rd Year — Tribhuvan University | +2 Accountancy | 6-Month Computer Course
 - 💼 **Working At:** Chhimek Laghubitta Bittiya Sanstha Ltd
 - 🧾 **Experience:** 3+ years freelance accounting — 40+ clients served
