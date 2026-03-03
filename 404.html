@@ -3,34 +3,107 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Page Not Found | Kushal Phuyal</title>
+  <link rel="canonical" href="https://kushalphuyal.com.np/404.html" />
+  <title>404 - Page Not Found | Kushal Phuyal</title>
   <meta name="description" content="Sorry, the page you are looking for does not exist." />
   <meta name="robots" content="noindex, nofollow" />
   <link rel="icon" href="images/profile.webp" type="image/webp" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
   <link rel="stylesheet" href="style.css" />
   <style>
-    body { display:flex; align-items:center; justify-content:center; min-height:100vh; text-align:center; padding:20px; }
-    .err-card { background:var(--card); border:1px solid rgba(201,168,76,.2); border-radius:24px; padding:56px 48px; max-width:520px; width:100%; position:relative; z-index:2; }
-    .err-num { font-family:var(--ff-head); font-size:6rem; font-weight:700; line-height:1; background:linear-gradient(110deg,var(--gold),var(--gold3)); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; margin-bottom:8px; }
-    .err-card h1 { font-family:var(--ff-head); font-size:1.6rem; color:var(--white); margin-bottom:10px; }
-    .err-card p  { color:var(--muted); margin-bottom:30px; line-height:1.75; }
-    .err-links { display:flex; gap:12px; justify-content:center; flex-wrap:wrap; }
+    body {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      text-align: center;
+      padding: 20px;
+      background: var(--bg, #0f0f1a);
+      color: var(--text, #e0e0e0);
+      margin: 0;
+    }
+    .err-card {
+      background: var(--card, rgba(20,20,40,0.9));
+      border: 1px solid rgba(201,168,76,0.2);
+      border-radius: 24px;
+      padding: 56px 32px;
+      max-width: 520px;
+      width: 100%;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.6);
+      position: relative;
+      z-index: 2;
+      backdrop-filter: blur(10px);
+    }
+    .err-num {
+      font-family: var(--ff-head, system-ui);
+      font-size: 8rem;
+      font-weight: 900;
+      line-height: 1;
+      background: linear-gradient(110deg, var(--gold,#c9a84c), var(--gold3,#e8c46a));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin: 0 0 16px;
+    }
+    .err-card h1 {
+      font-family: var(--ff-head, system-ui);
+      font-size: 2.2rem;
+      color: var(--white);
+      margin: 0 0 16px;
+    }
+    .err-card p {
+      color: var(--muted, #a0a0c0);
+      margin: 0 0 32px;
+      line-height: 1.6;
+      font-size: 1.1rem;
+    }
+    .err-links {
+      display: flex;
+      gap: 16px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    .btn {
+      padding: 12px 28px;
+      border-radius: 50px;
+      font-weight: 600;
+      transition: all 0.3s;
+      text-decoration: none;
+    }
+    .btn-gold {
+      background: var(--gold, #c9a84c);
+      color: #000;
+    }
+    .btn-gold:hover { transform: translateY(-3px); box-shadow: 0 10px 30px rgba(201,168,76,0.4); }
+    .btn-outline {
+      border: 1px solid var(--gold);
+      color: var(--gold);
+      background: transparent;
+    }
+    .btn-outline:hover { background: rgba(201,168,76,0.1); }
+    @media (max-width: 500px) {
+      .err-num { font-size: 5rem; }
+      .err-card { padding: 40px 24px; }
+    }
   </style>
 </head>
 <body>
 <div class="orb orb-1"></div>
 <div class="orb orb-2"></div>
+
 <div class="err-card">
   <div class="err-num">404</div>
   <h1>Page Not Found</h1>
-  <p>Sorry, the page you are looking for does not exist or has been moved. Let's get you back on track.</p>
+  <p>क्षमा गर्नुहोस्, तपाईं खोज्नुभएको पेज भेटिएन वा सरेको छ।<br>फेरि प्रयास गर्नुहोस् वा घर फर्किनुहोस्।</p>
   <div class="err-links">
-    <a href="index.html"   class="btn btn-gold"><i class="fas fa-home"></i> Go Home</a>
-    <a href="ai.html"      class="btn btn-outline"><i class="fas fa-calculator"></i> Tools</a>
-    <a href="contact.html" class="btn btn-dark"><i class="fas fa-envelope"></i> Contact</a>
+    <a href="index.html" class="btn btn-gold"><i class="fas fa-home"></i> Go Home</a>
+    <a href="ai.html" class="btn btn-outline"><i class="fas fa-calculator"></i> Tools</a>
+    <a href="contact.html" class="btn btn-outline"><i class="fas fa-envelope"></i> Contact Me</a>
   </div>
 </div>
-<script src="script.js"></script>
+
+<script>
+// Optional: Year update if you have footer elsewhere
+// document.getElementById('yr') && (document.getElementById('yr').textContent = new Date().getFullYear());
+</script>
 </body>
 </html>
