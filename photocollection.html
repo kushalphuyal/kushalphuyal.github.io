@@ -1,465 +1,237 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  
-  
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <title>Photography in Okhaldhunga Nepal | Kushal Phuyal Photo Collection</title>
-  <meta name="description" content="Explore photography from Okhaldhunga, Nepal by Kushal Phuyal. Nature, travel, portrait and urban photography capturing real moments of Nepal.">
-
-  <link rel="canonical" href="https://kushalphuyal.com.np/photocollection.html">
-  <meta name="robots" content="index, follow">
-
-  <!-- Open Graph -->
-  <meta property="og:title" content="Kushal Photography Gallery">
-  <meta property="og:description" content="Capturing moments from Nepal – Nature, Portrait, Urban & Travel photography by Kushal Phuyal.">
-  <meta property="og:image" content="https://kushalphuyal.com.np/images/kushal1.jpeg">
-  <meta property="og:url" content="https://kushalphuyal.com.np/photocollection.html">
-
-  
-  
-  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+  <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="canonical" href="https://kushalphuyal.com.np/photocollection.html" />
+  <title>Gallery & Achievements | Kushal Phuyal</title>
+  <meta name="description" content="Gallery of Kushal Phuyal — Certificates, Achievements, Work life, and moments from Okhaldhunga, Nepal." />
+  <link rel="icon" href="images/profile.webp" type="image/webp" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
+    <meta property="og:type"        content="website" />
+  <meta property="og:title"       content="Gallery | Kushal Phuyal" />
+  <meta property="og:description" content="Certificates, achievements and photos from Okhaldhunga, Nepal." />
+  <meta property="og:image"       content="https://kushalphuyal.com.np/images/kushal1.jpeg" />
+  <meta property="og:url"         content="https://kushalphuyal.com.np/photocollection.html" />
+  <meta name="twitter:card"       content="summary_large_image" />
+  <link rel="stylesheet" href="style.css" />
   <style>
-    :root{
-      --ink:#070810;--card:#0e1020;--line:rgba(255,255,255,0.07);
-      --teal:#00e5cc;--violet:#7c5cfc;--rose:#ff6584;
-      --text:#d4d8f0;--muted:#5a6080;
-    }
-    *{margin:0;padding:0;box-sizing:border-box;}
-    html{scroll-behavior:smooth;}
-    body{background:var(--ink);color:var(--text);font-family:'DM Sans',sans-serif;overflow-x:hidden;min-height:100vh;}
-
-    body::before{content:'';position:fixed;inset:0;z-index:0;pointer-events:none;opacity:.03;
-      background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)'/%3E%3C/svg%3E");}
-
-    /* NAV */
-    nav{position:fixed;top:0;left:0;right:0;z-index:9999;height:66px;
-      display:flex;align-items:center;justify-content:space-between;padding:0 6%;
-      background:rgba(7,8,16,.85);backdrop-filter:blur(20px);border-bottom:1px solid var(--line);}
-    .nav-logo{font-family:'Syne',sans-serif;font-size:1.2rem;font-weight:800;letter-spacing:.1em;
-      color:white;text-decoration:none;}
-    .nav-logo em{color:var(--teal);font-style:normal;}
-    .nav-back{display:flex;align-items:center;gap:8px;color:var(--muted);text-decoration:none;
-      font-size:.875rem;font-weight:500;padding:8px 16px;border-radius:8px;transition:all .25s;
-      border:1px solid var(--line);}
-    .nav-back:hover{color:var(--teal);border-color:var(--teal);transform:translateX(-3px);}
-
-    /* HERO */
-    
-    .hero-header{padding:110px 6% 60px;position:relative;z-index:1;text-align:center;}
-    .eyebrow{font-size:.72rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;
-      color:var(--teal);display:inline-flex;align-items:center;gap:10px;margin-bottom:18px;}
-    .eyebrow::before,.eyebrow::after{content:'';width:28px;height:1px;background:var(--teal);}
-    .hero-header h1{font-family:'Syne',sans-serif;font-size:clamp(2.4rem,5vw,4rem);
-      font-weight:800;color:white;line-height:1.05;margin-bottom:16px;}
-    .hero-header h1 span{background:linear-gradient(100deg,var(--teal),var(--violet));
-      -webkit-background-clip:text;-webkit-text-fill-color:transparent;}
-    .hero-header p{color:var(--muted);font-size:1.05rem;max-width:460px;margin:0 auto 40px;}
-
-    .stats-row{display:flex;justify-content:center;gap:48px;flex-wrap:wrap;margin-bottom:8px;}
-    .stat-n{font-family:'Syne',sans-serif;font-size:1.9rem;font-weight:800;color:var(--teal);}
-    .stat-l{font-size:.75rem;color:var(--muted);text-transform:uppercase;letter-spacing:.08em;}
-
-    /* FILTER TABS */
-    .filter-bar{display:flex;justify-content:center;gap:8px;flex-wrap:wrap;
-      padding:0 6% 52px;position:relative;z-index:1;}
-    .filter-btn{padding:8px 22px;border-radius:50px;font-size:.82rem;font-weight:600;
-      cursor:pointer;border:1px solid var(--line);background:rgba(255,255,255,.04);
-      color:var(--muted);transition:all .25s;letter-spacing:.04em;font-family:'DM Sans',sans-serif;}
-    .filter-btn:hover{color:white;border-color:rgba(255,255,255,.25);}
-    .filter-btn.active{background:var(--violet);color:white;border-color:var(--violet);
-      box-shadow:0 4px 18px rgba(124,92,252,.35);}
-
-    /* FEATURED */
-    .featured-wrap{padding:0 6% 56px;position:relative;z-index:1;max-width:1200px;margin:0 auto;}
-    .featured-card{position:relative;border-radius:20px;overflow:hidden;cursor:pointer;
-      border:1px solid var(--line);aspect-ratio:16/6;}
-    .featured-card img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .6s ease;}
-    .featured-card:hover img{transform:scale(1.04);}
-    .featured-overlay{position:absolute;inset:0;
-      background:linear-gradient(to top,rgba(0,0,0,.75) 0%,transparent 55%);
-      display:flex;flex-direction:column;justify-content:flex-end;padding:36px;
-      opacity:0;transition:opacity .35s;}
-    .featured-card:hover .featured-overlay{opacity:1;}
-    .featured-overlay h2{font-family:'Syne',sans-serif;font-size:1.6rem;font-weight:800;color:white;margin-bottom:6px;}
-    .featured-overlay p{color:rgba(255,255,255,.7);font-size:.9rem;}
-    .featured-badge{position:absolute;top:20px;left:20px;
-      background:var(--teal);color:var(--ink);padding:5px 16px;border-radius:50px;
-      font-size:.72rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;}
-
-    /* MASONRY */
-    .gallery-wrap{padding:0 6% 60px;position:relative;z-index:1;max-width:1200px;margin:0 auto;}
-    .masonry{columns:4;column-gap:14px;}
-    .photo-item{break-inside:avoid;margin-bottom:14px;position:relative;
-      border-radius:14px;overflow:hidden;cursor:pointer;border:1px solid var(--line);
-      transition:transform .35s,box-shadow .35s;}
-    .photo-item:hover{transform:translateY(-6px);box-shadow:0 18px 50px rgba(0,0,0,.55);}
-    .photo-item img{width:100%;display:block;transition:transform .45s;}
-    .photo-item:hover img{transform:scale(1.06);}
-    .photo-info{position:absolute;inset:0;
-      background:linear-gradient(to top,rgba(0,0,0,.82) 0%,transparent 55%);
-      display:flex;flex-direction:column;justify-content:flex-end;padding:14px;
-      opacity:0;transition:opacity .3s;}
-    .photo-item:hover .photo-info{opacity:1;}
-    .photo-info span{color:white;font-size:.82rem;font-weight:500;}
-    .photo-info small{color:rgba(255,255,255,.55);font-size:.72rem;text-transform:capitalize;}
-    .photo-num{position:absolute;top:10px;right:10px;width:26px;height:26px;border-radius:50%;
-      background:rgba(0,0,0,.55);backdrop-filter:blur(6px);
-      display:flex;align-items:center;justify-content:center;
-      font-size:.68rem;color:rgba(255,255,255,.8);opacity:0;transition:opacity .3s;}
-    .photo-item:hover .photo-num{opacity:1;}
-
-    /* EMPTY STATE */
-    .empty-state{text-align:center;padding:60px 20px;color:var(--muted);display:none;}
-    .empty-state i{font-size:2.5rem;margin-bottom:14px;color:var(--line);}
-
-    /* LOAD MORE */
-    .load-more-wrap{text-align:center;padding:0 0 80px;position:relative;z-index:1;}
-    .btn-load{display:inline-flex;align-items:center;gap:10px;padding:14px 36px;
-      border-radius:12px;background:var(--card);border:1px solid var(--line);
-      color:var(--text);font-size:.9rem;font-weight:600;cursor:pointer;
-      transition:all .28s;font-family:'DM Sans',sans-serif;}
-    .btn-load:hover{border-color:var(--teal);color:var(--teal);transform:translateY(-3px);}
-
-    /* LIGHTBOX */
-    .lightbox{display:none;position:fixed;inset:0;z-index:10000;
-      background:rgba(0,0,0,.96);align-items:center;justify-content:center;}
-    .lightbox.open{display:flex;}
-    .lb-inner{position:relative;max-width:880px;width:90%;animation:lbIn .28s ease;}
-    @keyframes lbIn{from{opacity:0;transform:scale(.96)}to{opacity:1;transform:scale(1)}}
-    .lb-img-wrap{border-radius:16px;overflow:hidden;position:relative;background:#000;}
-    .lb-img-wrap img{width:100%;display:block;max-height:76vh;object-fit:contain;}
-    .lb-btn{position:absolute;top:50%;transform:translateY(-50%);
-      width:46px;height:46px;border-radius:50%;
-      background:rgba(255,255,255,.1);backdrop-filter:blur(8px);
-      border:1px solid rgba(255,255,255,.15);color:white;font-size:1rem;cursor:pointer;
-      display:flex;align-items:center;justify-content:center;transition:all .25s;z-index:2;}
-    .lb-btn:hover{background:var(--violet);border-color:var(--violet);}
-    .lb-prev{left:-62px;} .lb-next{right:-62px;}
-    .lb-close{position:fixed;top:22px;right:26px;width:42px;height:42px;border-radius:50%;
-      background:rgba(255,255,255,.1);backdrop-filter:blur(8px);
-      border:1px solid rgba(255,255,255,.15);color:white;font-size:.95rem;cursor:pointer;
-      display:flex;align-items:center;justify-content:center;transition:all .25s;}
-    .lb-close:hover{background:var(--rose);border-color:var(--rose);}
-
-    .lb-footer{display:flex;justify-content:space-between;align-items:center;padding:14px 2px 0;}
-    .lb-caption-text{color:var(--text);font-size:.88rem;}
-    .lb-count{color:var(--muted);font-size:.8rem;}
-    .lb-bar-wrap{height:2px;background:var(--line);border-radius:2px;margin-top:12px;overflow:hidden;}
-    .lb-bar{height:100%;background:var(--teal);transition:width .3s;}
-
-    /* thumb strip */
-    .lb-thumbs{display:flex;gap:6px;overflow-x:auto;padding:12px 0 0;scrollbar-width:none;}
-    .lb-thumbs::-webkit-scrollbar{display:none;}
-    .lb-thumb{width:52px;height:38px;border-radius:6px;overflow:hidden;cursor:pointer;
-      border:2px solid transparent;flex-shrink:0;opacity:.5;transition:all .25s;}
-    .lb-thumb.active{border-color:var(--teal);opacity:1;}
-    .lb-thumb img{width:100%;height:100%;object-fit:cover;display:block;}
-
-    /* FOOTER */
-    footer{text-align:center;padding:44px 20px;background:#030408;
-      border-top:1px solid var(--line);position:relative;z-index:1;}
-    .foot-logo{font-family:'Syne',sans-serif;font-size:1.3rem;font-weight:800;
-      background:linear-gradient(to right,white,var(--teal));
-      -webkit-background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:8px;}
-    footer p{color:#333;font-size:.82rem;}
-
-    /* RESPONSIVE */
-    @media(max-width:1100px){.masonry{columns:3;}}
-    @media(max-width:768px){
-      .masonry{columns:2;}
-      .lb-prev{left:-10px;}.lb-next{right:-10px;}
-      .stats-row{gap:28px;}
-      .lb-thumbs{display:none;}
-    }
-    @media(max-width:480px){
-      .masonry{columns:2;column-gap:10px;}
-      .photo-item{margin-bottom:10px;}
-      .hero-header{padding:90px 5% 44px;}
-    }
-    .seo-heading{
-  position:absolute;
-  left:-9999px;
-}
+    .cert-section { background:rgba(201,168,76,.04); border-radius:20px; padding:32px; border:1px solid rgba(201,168,76,.15); margin-bottom:40px; }
+    .cert-section-title { display:flex; align-items:center; gap:12px; margin-bottom:22px; }
+    .cert-section-title .icon { width:40px; height:40px; border-radius:10px; background:rgba(201,168,76,.15); color:var(--gold); display:flex; align-items:center; justify-content:center; }
+    .cert-section-title h2 { font-family:var(--ff-head); font-size:1.2rem; color:var(--white); }
+    .masonry { columns:4; column-gap:14px; }
+    .photo-item { break-inside:avoid; margin-bottom:14px; border-radius:12px; overflow:hidden; cursor:pointer; border:1px solid var(--border); transition:all .3s; position:relative; }
+    .photo-item:hover { transform:translateY(-4px); box-shadow:0 16px 42px rgba(0,0,0,.5); }
+    .photo-item img { width:100%; display:block; transition:transform .4s; }
+    .photo-item:hover img { transform:scale(1.05); }
+    .photo-overlay { position:absolute; inset:0; background:linear-gradient(to top,rgba(0,0,0,.75),transparent 55%); opacity:0; transition:.3s; display:flex; flex-direction:column; justify-content:flex-end; padding:12px; }
+    .photo-item:hover .photo-overlay { opacity:1; }
+    .photo-overlay .po-cat { font-size:.68rem; font-weight:700; text-transform:uppercase; letter-spacing:.06em; color:var(--gold); }
+    .photo-overlay .po-num { font-size:.7rem; color:rgba(255,255,255,.5); }
+    .stats-hero { display:flex; justify-content:center; gap:48px; flex-wrap:wrap; margin-bottom:12px; }
+    .sh-num { font-family:var(--ff-head); font-size:2rem; font-weight:700; color:var(--gold); }
+    .sh-lbl { font-size:.72rem; color:var(--muted); text-transform:uppercase; letter-spacing:.08em; }
+    @media(max-width:1000px){ .masonry{columns:3;} }
+    @media(max-width:700px){ .masonry{columns:2;} .grid-3{grid-template-columns:repeat(2,1fr);} }
+    @media(max-width:480px){ .masonry{columns:2;} }
   </style>
-  </head>
-
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"ImageGallery","name":"Kushal Phuyal Gallery — Certificates & Achievements","author":{"@type":"Person","name":"Kushal Phuyal"},"contentLocation":{"@type":"Place","name":"Okhaldhunga, Nepal"},"url":"https://kushalphuyal.com.np/photocollection.html"}</script>
+</head>
 <body>
-<section style="max-width:900px;margin:40px auto;color:#5a6080;font-size:15px;line-height:1.7;text-align:center;">
-
-<h2 class="seo-heading">Photography in Okhaldhunga Nepal</h2>
-
-<p>
-This gallery showcases original photography captured in Okhaldhunga and other regions of Nepal by Kushal Phuyal.
-These photographs represent nature, rural lifestyle, travel moments and portrait documentation from real locations.
-</p>
-
-<p>
-All photos are taken and owned by Kushal Phuyal as part of his personal visual documentation project.
-</p>
-</section>
-
-
-<!-- NAV -->
-<nav>
-  <a href="index.html" class="nav-logo">KUSHAL<em>.</em>P</a>
-  <a href="index.html" class="nav-back"><i class="fas fa-arrow-left"></i> Back to Portfolio</a>
+<div class="orb orb-1"></div><div class="orb orb-2"></div>
+<nav id="navbar">
+  <a href="index.html" class="nav-logo">Kushal<span class="dot">.</span>P</a>
+  <div class="nav-links">
+    <a href="index.html#about">About</a><a href="services.html">Services</a>
+    <a href="index.html#tools">Tools</a><a href="products.html">Products</a>
+    <a href="blog.html">Blog</a><a href="photocollection.html" class="active">Gallery</a>
+    <a href="contact.html" class="nav-cta">Hire Me</a>
+  </div>
+  <button class="hamburger" id="hamburger"><i class="fas fa-bars"></i></button>
 </nav>
+<div class="mob-menu" id="mob-menu">
+  <a href="index.html">Home</a><a href="services.html">Services</a>
+  <a href="products.html">Products</a><a href="blog.html">Blog</a>
+  <a href="photocollection.html">Gallery</a><a href="contact.html">Contact</a>
+</div>
 
-<!-- HERO -->
-<div class="hero-header">
+<div class="page-hero">
   <div class="eyebrow">Visual Stories</div>
-  <h1>Kushal <span>Photography</span></h1>
-  <p>Capturing moments, one frame at a time</p>
-  <div class="stats-row">
-    <div><div class="stat-n" id="totalCount">50</div><div class="stat-l">Photos</div></div>
-    <div><div class="stat-n">∞</div><div class="stat-l">Memories</div></div>
-    <div><div class="stat-n">1</div><div class="stat-l">Photographer</div></div>
+  <h1>Gallery & <em>Achievements</em></h1>
+  <p>Certificates, milestones, and moments from my journey</p>
+  <div class="stats-hero" style="margin-top:28px;">
+    <div><div class="sh-num" id="total-count">50</div><div class="sh-lbl">Photos</div></div>
+    <div><div class="sh-num">12</div><div class="sh-lbl">Certificates</div></div>
+    <div><div class="sh-num">3+</div><div class="sh-lbl">Years</div></div>
   </div>
 </div>
 
-<!-- FILTERS -->
-<div class="filter-bar">
-  <button class="filter-btn active" data-filter="all">All Photos</button>
-  <button class="filter-btn" data-filter="nature">Nature</button>
-  <button class="filter-btn" data-filter="certificate">Certificate</button>
-  <button class="filter-btn" data-filter="urban">Urban</button>
-  <button class="filter-btn" data-filter="travel">Travel</button>
+<!-- FILTER -->
+<div style="position:relative;z-index:2;padding:0 var(--section-x);">
+  <div class="filter-row" id="gallery-filter">
+    <button class="filter-btn active" data-gcat="all">All</button>
+    <button class="filter-btn" data-gcat="certificate">🏆 Certificates</button>
+    <button class="filter-btn" data-gcat="nature">Nature</button>
+    <button class="filter-btn" data-gcat="urban">Urban</button>
+    <button class="filter-btn" data-gcat="travel">Travel</button>
+  </div>
 </div>
 
-<!-- FEATURED -->
-<div class="featured-wrap">
-  <div class="featured-card" id="featuredCard">
-    <span class="featured-badge"><i class="fas fa-star"></i> Featured</span>
-    <img src="images/kushal1.jpeg" alt="Featured photography by Kushal Phuyal" id="featuredImg">
-    <div class="featured-overlay">
-      <h2>Featured Shot</h2>
-      <p>Click to open in gallery</p>
+<section>
+  <div class="inner">
+
+    <!-- CERTIFICATES — special highlighted grid -->
+    <div class="cert-section reveal" id="cert-section">
+      <div class="cert-section-title">
+        <div class="icon"><i class="fas fa-award"></i></div>
+        <div>
+          <h2>Certificates & Achievements</h2>
+          <p style="font-size:.82rem;color:var(--muted);">Academic and professional certificates earned throughout my journey</p>
+        </div>
+      </div>
+      <div class="grid-3" id="cert-grid"></div>
     </div>
-  </div>
-</div>
 
-<!-- GRID -->
-<div class="gallery-wrap">
-  <div class="masonry" id="masonryGrid"></div>
-  <div class="empty-state" id="emptyState">
-    <i class="fas fa-camera-slash"></i>
-    <p>No photos in this category yet.</p>
-  </div>
-</div>
+    <!-- ALL PHOTOS -->
+    <div class="eyebrow" style="margin-bottom:18px;" id="photo-section-label">All Photos</div>
+    <div class="masonry" id="masonry-grid"></div>
+    <div class="empty-state" id="gallery-empty"><i class="fas fa-camera-slash"></i><p>No photos in this category yet.</p></div>
+    <div style="text-align:center;margin-top:28px;">
+      <button class="btn btn-outline" id="load-more-btn"><i class="fas fa-images"></i> Load More Photos</button>
+    </div>
 
-<!-- LOAD MORE -->
-<div class="load-more-wrap">
-  <button class="btn-load" id="loadMoreBtn"><i class="fas fa-images"></i> Load More Photos</button>
-</div>
+  </div>
+</section>
 
 <!-- LIGHTBOX -->
 <div class="lightbox" id="lightbox">
-  <button class="lb-close" id="lbClose"><i class="fas fa-times"></i></button>
+  <button class="lb-close" id="lb-close"><i class="fas fa-times"></i></button>
   <div class="lb-inner">
     <div class="lb-img-wrap">
-      <button class="lb-btn lb-prev" id="lbPrev"><i class="fas fa-chevron-left"></i></button>
-      <img src="" alt="" id="lbImg">
-      <button class="lb-btn lb-next" id="lbNext"><i class="fas fa-chevron-right"></i></button>
+      <button class="lb-btn lb-prev" id="lb-prev"><i class="fas fa-chevron-left"></i></button>
+      <img src="" alt="" id="lb-img" />
+      <button class="lb-btn lb-next" id="lb-next"><i class="fas fa-chevron-right"></i></button>
     </div>
     <div class="lb-footer">
-      <span class="lb-caption-text" id="lbCaption"></span>
-      <span class="lb-count" id="lbCount"></span>
+      <span class="lb-cap" id="lb-cap"></span>
+      <span style="color:var(--muted);font-size:.8rem;" id="lb-cnt"></span>
     </div>
-    <div class="lb-bar-wrap"><div class="lb-bar" id="lbBar"></div></div>
-    <div class="lb-thumbs" id="lbThumbs"></div>
+    <div class="lb-bar-w"><div class="lb-bar" id="lb-bar"></div></div>
   </div>
 </div>
 
 <!-- FOOTER -->
-<footer>
-  <div class="foot-logo">KUSHAL PHOTOGRAPHY</div>
-  <p>© <script>document.write(new Date().getFullYear())</script> Kushal Phuyal. All Rights Reserved.</p>
+<footer id="footer">
+  <div class="inner">
+    <div class="footer-grid">
+      <div class="footer-brand"><div class="footer-logo">Kushal<span class="dot">.</span>P</div><p>AI Accountant from Okhaldhunga, Nepal 🇳🇵</p></div>
+      <div class="footer-col"><h4>Gallery</h4><a href="photocollection.html">Certificates</a><a href="photocollection.html">Nature</a><a href="photocollection.html">Travel</a></div>
+      <div class="footer-col"><h4>Pages</h4><a href="index.html">Home</a><a href="blog.html">Blog</a><a href="services.html">Services</a></div>
+      <div class="footer-col"><h4>Contact</h4><a href="/cdn-cgi/l/email-protection#bed7d0d8d1fed5cbcdd6dfd2ced6cbc7dfd290ddd1d390d0ce"><span class="__cf_email__" data-cfemail="d5bcbbb3ba95bea0a6bdb4b9a5bda0acb4b9fbb6bab8fbbba5">[email&#160;protected]</span></a><a href="https://wa.me/9779863970493">+977 9863970493</a></div>
+    </div>
+    <div class="footer-bottom"><span>© <span id="yr"></span> Kushal Phuyal.</span><span>Made with <span class="heart">♥</span> in Nepal 🇳🇵</span></div>
+  </div>
 </footer>
 
+<button id="chat-toggle" aria-label="Chat"><i class="fas fa-robot"></i></button>
+<div id="chatbox">
+  <div class="chat-head"><div class="chat-head-left"><div class="chat-av"><i class="fas fa-robot"></i></div><div><div class="chat-name">Kushal's AI</div><div class="chat-status-text"><span class="s-dot"></span> Online</div></div></div><button class="chat-close-x" id="chat-close-x"><i class="fas fa-times"></i></button></div>
+  <div class="chat-msgs" id="chat-msgs"><div class="cmsg bot">Namaste! 🙏 Welcome to my gallery!</div></div>
+  <div class="chat-inp-row"><input id="c-input" placeholder="Ask anything…" autocomplete="off" /><button id="c-send"><i class="fas fa-paper-plane"></i></button></div>
+</div>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="script.js"></script>
 <script>
-// PHOTO DATA (Manual Category Control)
-const allPhotos = [];
+/* ── GALLERY DATA ─────────────────────────────────── */
+const CERT_NUMS     = [9,21,7,36,43,37,25,17,46,20,6,18];
+const NATURE_NUMS   = [1,2,4,8,11,12,13,14,15,3,5,10];
+const URBAN_NUMS    = [16,19,22,23,24,26,27,28,29,30];
+const TRAVEL_NUMS   = [31,32,33,34,35,38,39,40,41,42,44,45,47,48,49,50];
+const CERT_NAMES    = {
+  9:'Academic Certificate', 21:'Computer Course Certificate', 7:'Finance Training',
+  36:'Achievement Award', 43:'Workshop Completion', 37:'Professional Development',
+  25:'Special Recognition', 17:'Merit Certificate', 46:'Skill Certificate',
+  20:'Academic Award', 6:'Professional Certificate', 18:'Training Completion'
+};
 
-// 👉 Certificate photos
-const certificatePhotos = [9,21,7,36,43,37,25,17,46,20,6,18];
-
-// 👉 Nature photos (edit if needed)
-const naturePhotos = [1,2,3,4,5,8,10,11,12,13,14,15];
-
-// 👉 Urban photos
-const urbanPhotos = [16,19,22,23,24,26,27,28,29,30];
-
-// 👉 Travel photos
-const travelPhotos = [31,32,33,34,35,38,39,40,41,42,44,45,47,48,49,50];
-
-for(let i = 1; i <= 50; i++){
-
-  let category = 'nature'; // default
-
-  if (certificatePhotos.includes(i)) category = 'certificate';
-  else if (urbanPhotos.includes(i)) category = 'urban';
-  else if (travelPhotos.includes(i)) category = 'travel';
-  else if (naturePhotos.includes(i)) category = 'nature';
-
-  allPhotos.push({
-    src:   `images/kushal${i}.jpeg`,
-    thumb: `images/kushal${i}.jpeg`,
-    caption: `Photography in Okhaldhunga Nepal - Image ${i} by Kushal Phuyal`,
-    category: category
+const ALL_PHOTOS = [];
+for (let i = 1; i <= 50; i++) {
+  let cat = 'travel';
+  if (CERT_NUMS.includes(i))   cat = 'certificate';
+  else if (NATURE_NUMS.includes(i)) cat = 'nature';
+  else if (URBAN_NUMS.includes(i))  cat = 'urban';
+  ALL_PHOTOS.push({
+    n: i, src: `images/kushal${i}.jpeg`,
+    caption: CERT_NAMES[i] || `Kushal Phuyal — ${cat} #${i}`,
+    category: cat
   });
 }
 
-// STATE
-let filtered = [...allPhotos];
-let shown    = 0;
-let current  = 0;
-const PER_PAGE = 16;
+let shown = 0, filtered = [...ALL_PHOTOS];
+const PER = 16;
+const mGrid   = document.getElementById('masonry-grid');
+const cGrid   = document.getElementById('cert-grid');
+const emptyEl = document.getElementById('gallery-empty');
+const loadBtn = document.getElementById('load-more-btn');
+const certSec = document.getElementById('cert-section');
 
-// DOM
-const grid      = document.getElementById('masonryGrid');
-const emptyEl   = document.getElementById('emptyState');
-const loadBtn   = document.getElementById('loadMoreBtn');
-const lb        = document.getElementById('lightbox');
-const lbImg     = document.getElementById('lbImg');
-const lbCapEl   = document.getElementById('lbCaption');
-const lbCountEl = document.getElementById('lbCount');
-const lbBarEl   = document.getElementById('lbBar');
-const lbThumbs  = document.getElementById('lbThumbs');
-const lbClose   = document.getElementById('lbClose');
-const lbPrev    = document.getElementById('lbPrev');
-const lbNext    = document.getElementById('lbNext');
+function renderCerts(certs) {
+  cGrid.innerHTML = certs.map(p => `
+    <div class="cert-card" onclick="Lightbox.open(ALL_PHOTOS.indexOf(p),ALL_PHOTOS)">
+      <img src="${p.src}" alt="${p.caption}" loading="lazy" onerror="this.src='images/kushal1.jpeg'" />
+      <div class="cert-info"><div class="ctitle">${p.caption}</div><div class="csub">Kushal Phuyal · Okhaldhunga, Nepal</div></div>
+    </div>`).join('');
 
-// RENDER BATCH
-function renderBatch(){
-  const batch = filtered.slice(shown, shown + PER_PAGE);
-  batch.forEach((p, i) => {
-    const idx = shown + i;
-    const el  = document.createElement('div');
-    el.className   = 'photo-item';
-    el.dataset.idx = idx;
-    el.innerHTML   = `
-      
-      <img src="${p.thumb}" alt="Okhaldhunga Nepal Photography by Kushal Phuyal ${idx+1}" loading="lazy">
-      
-      <div class="photo-info">
-        <span>${p.caption}</span>
-        <small>${p.category}</small>
-      </div>
-      <div class="photo-num">${idx+1}</div>`;
-    el.addEventListener('click', () => openLb(idx));
-    grid.appendChild(el);
+  // Fix onclick context
+  cGrid.querySelectorAll('.cert-card').forEach((el, i) => {
+    const p = certs[i];
+    el.onclick = () => Lightbox.open(ALL_PHOTOS.indexOf(p), ALL_PHOTOS);
+  });
+}
+
+function renderBatch(arr) {
+  const batch = arr.slice(shown, shown + PER);
+  batch.forEach(p => {
+    const el = document.createElement('div');
+    el.className = 'photo-item';
+    el.innerHTML = `
+      <img src="${p.src}" alt="Kushal Phuyal ${p.category} — Okhaldhunga Nepal" loading="lazy" onerror="this.src='images/kushal1.jpeg'" />
+      <div class="photo-overlay">
+        <div class="po-cat">${p.category}</div>
+        <div class="po-num">#${p.n}</div>
+      </div>`;
+    el.addEventListener('click', () => Lightbox.open(ALL_PHOTOS.indexOf(p), ALL_PHOTOS));
+    mGrid.appendChild(el);
   });
   shown += batch.length;
-  loadBtn.style.display = shown >= filtered.length ? 'none' : 'inline-flex';
+  loadBtn.style.display = shown >= arr.length ? 'none' : 'inline-flex';
 }
 
-function resetGrid(){
-  grid.innerHTML = '';
-  shown = 0;
-  emptyEl.style.display = 'none';
-  grid.style.display = 'block';
-  if(filtered.length === 0){
-    emptyEl.style.display = 'block';
-    grid.style.display = 'none';
-    loadBtn.style.display = 'none';
-    return;
+function resetGrid(cat) {
+  mGrid.innerHTML = ''; shown = 0;
+  filtered = cat === 'all' ? [...ALL_PHOTOS] : ALL_PHOTOS.filter(p => p.category === cat);
+
+  const certs = ALL_PHOTOS.filter(p => p.category === 'certificate');
+  if (cat === 'all' || cat === 'certificate') {
+    certSec.style.display = 'block';
+    renderCerts(cat === 'certificate' ? filtered : certs);
+  } else {
+    certSec.style.display = 'none';
   }
-  renderBatch();
-  document.getElementById('totalCount').textContent = filtered.length;
+
+  const nonCert = filtered.filter(p => p.category !== 'certificate');
+  const toRender = cat === 'all' ? nonCert : (cat === 'certificate' ? [] : filtered);
+  if (toRender.length === 0 && cat === 'certificate') {
+    document.getElementById('photo-section-label').style.display = 'none';
+  } else {
+    document.getElementById('photo-section-label').style.display = 'block';
+    renderBatch(toRender);
+  }
+  emptyEl.style.display = toRender.length === 0 && cat !== 'certificate' ? 'block' : 'none';
+  document.getElementById('total-count').textContent = filtered.length;
 }
 
-// FILTER
-document.querySelectorAll('.filter-btn').forEach(btn => {
+document.querySelectorAll('.filter-btn[data-gcat]').forEach(btn => {
   btn.addEventListener('click', () => {
-    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
-    btn.classList.add('active');
-    const f = btn.dataset.filter;
-    filtered = f === 'all' ? [...allPhotos] : allPhotos.filter(p => p.category === f);
-    resetGrid();
-  });
-});
-
-loadBtn.addEventListener('click', renderBatch);
-document.getElementById('featuredCard').addEventListener('click', () => openLb(0));
-
-// LIGHTBOX
-function buildThumbs(){
-  lbThumbs.innerHTML = '';
-  filtered.forEach((p, i) => {
-    const t = document.createElement('div');
-    t.className = 'lb-thumb' + (i===current?' active':'');
-    t.innerHTML = `<img src="${p.thumb}" alt="Okhaldhunga Nepal Photography by Kushal Phuyal ${i+1}" loading="lazy">`;
-    t.addEventListener('click', () => { current=i; updateLb(); });
-    lbThumbs.appendChild(t);
-  });
-}
-
-function updateLb(){
-  const p = filtered[current];
-  lbImg.src = p.src;
-  lbCapEl.textContent  = p.caption + ' · ' + p.category;
-  lbCountEl.textContent = `${current+1} / ${filtered.length}`;
-  lbBarEl.style.width   = ((current+1)/filtered.length*100) + '%';
-  lbThumbs.querySelectorAll('.lb-thumb').forEach((t,i)=>t.classList.toggle('active',i===current));
-  const active = lbThumbs.children[current];
-  if(active) active.scrollIntoView({behavior:'smooth',block:'nearest',inline:'center'});
-}
-
-function openLb(idx){
-  current = idx;
-  buildThumbs();
-  updateLb();
-  lb.classList.add('open');
-  document.body.style.overflow = 'hidden';
-}
-
-function closeLb(){
-  lb.classList.remove('open');
-  document.body.style.overflow = '';
-}
-
-lbClose.addEventListener('click', closeLb);
-lb.addEventListener('click', e => { if(e.target===lb) closeLb(); });
-lbPrev.addEventListener('click', () => { current=(current-1+filtered.length)%filtered.length; updateLb(); });
-lbNext.addEventListener('click', () => { current=(current+1)%filtered.length; updateLb(); });
-
-// Keyboard & Swipe
-document.addEventListener('keydown', e => {
-  if(!lb.classList.contains('open')) return;
-  if(e.key==='ArrowRight') { current=(current+1)%filtered.length; updateLb(); }
-  if(e.key==='ArrowLeft')  { current=(current-1+filtered.length)%filtered.length; updateLb(); }
-  if(e.key==='Escape') closeLb();
-});
-
-let tx=0;
-lb.addEventListener('touchstart', e=>{tx=e.touches[0].clientX;},{passive:true});
-lb.addEventListener('touchend', e=>{
-  const dx=e.changedTouches[0].clientX-tx;
-  if(Math.abs(dx)>50){ dx<0?lbNext.click():lbPrev.click(); }
-});
-
-// INIT
-resetGrid();
-</script>
-<script type="application/ld+json">
-{
- "@context": "https://schema.org",
- "@type": "ImageGallery",
- "name": "Okhaldhunga Nepal Photography Collection",
- "author": {
-   "@type": "Person",
-   "name": "Kushal Phuyal"
- },
- "contentLocation": {
-   "@type": "Place",
-   "name": "Okhaldhunga, Nepal"
- },
- "url": "https://kushalphuyal.com.np/photocollection.html"
-}
-</script>
-</body>
-</html>
+    document.querySelectorAll('.filter-btn[data-gcat]').forEach(b => b.classList.remove('active'));
+    btn.c
