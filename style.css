@@ -1752,23 +1752,23 @@ section {
   .grid-3 { grid-template-columns: repeat(2,1fr); }
 }
 
-@media (max-width: 850px) {
-  #sidebar-toggle { 
-    display: block; 
-    position: fixed; 
-    top: 80px; 
-    left: 10px;  /* left: 50% हटाएर */
-    z-index: 1001; 
-    background: var(--gold);
-    color: #000;
-    border: none;
-    border-radius: 50%;
-    width: 44px;
-    height: 44px;
-    font-size: 1.2rem;
-    cursor: pointer;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.4);
-  }
+@media (max-width: 640px) {
+  :root { --section-x: 4%; }
+  section { padding: 60px var(--section-x); }
+  .grid-3 { grid-template-columns: 1fr; }
+  .grid-2 { grid-template-columns: 1fr; }
+  .grid-4 { grid-template-columns: repeat(2,1fr); }
+  .grid-stats { grid-template-columns: repeat(2,1fr); }
+  .form-row { grid-template-columns: 1fr; }
+  .footer-grid { grid-template-columns: 1fr; }
+  .footer-bottom { flex-direction: column; text-align: center; }
+  #chatbox { width: calc(100vw - 16px); right: 8px; }
+  .lb-prev { left: -6px; }
+  .lb-next { right: -6px; }
+  .page-hero { padding: 100px var(--section-x) 44px; }
+}
+.page-hero + section {
+  padding-top: 60px;
 }
 
 /* ── PRINT STYLES ──────────────────────────────────────── */
@@ -1807,3 +1807,4 @@ section {
   z-index: -1;
   pointer-events: none;
   object-fit: cover;
+} 
