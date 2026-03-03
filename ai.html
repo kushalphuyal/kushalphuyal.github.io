@@ -213,6 +213,7 @@
 
     /* HAMBURGER for sidebar on mobile */
     #sidebar-toggle { display: none; }
+    
 
     @media (max-width: 850px) {
       #sidebar-toggle { display: block; position: fixed; top: 14px; left: 50%; z-index: 1001; }
@@ -231,6 +232,7 @@
 <body>
 
 <!-- ── NAV ── -->
+<button id="sidebar-toggle"><i class="fas fa-bars"></i></button>
 <nav id="navbar">
   <a href="index.html" class="nav-logo">Kushal<span class="dot">.</span>P</a>
   <div class="nav-links">
@@ -695,6 +697,12 @@ function buildDashboard(){
 }
 
 buildDashboard(); buildTDSRef(); buildITSlabs(); buildNPARef();
+</script>
+<script>
+  // Mobile sidebar toggle
+  document.getElementById('sidebar-toggle')?.addEventListener('click', function() {
+    document.getElementById('suite-sidebar').classList.toggle('open');
+  });
 </script>
 </body>
 </html>
