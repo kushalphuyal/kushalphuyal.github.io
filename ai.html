@@ -230,9 +230,13 @@
   </style>
 </head>
 <body>
+  <div id="sidebar-overlay"></div>
 
 <!-- ── NAV ── -->
-<button id="sidebar-toggle"><i class="fas fa-bars"></i></button>
+<button id="sidebar-toggle" aria-label="Open Tools Menu">
+  <i class="fas fa-calculator"></i>
+  <span class="sb-toggle-label">Tools</span>
+</button>
 <nav id="navbar">
   <a href="index.html" class="nav-logo">Kushal<span class="dot">.</span>P</a>
   <div class="nav-links">
@@ -700,9 +704,36 @@ buildDashboard(); buildTDSRef(); buildITSlabs(); buildNPARef();
 </script>
 <script>
   // Mobile sidebar toggle
-  document.getElementById('sidebar-toggle')?.addEventListener('click', function() {
-    document.getElementById('suite-sidebar').classList.toggle('open');
+  (function() {
+  const toggleBtn = document.getElementById('sidebar-toggle');
+  const sidebar = document.getElementById('suite-sidebar');
+  const overlay = document.getElementById('sidebar-overlay');
+
+  function openSidebar() {
+    sidebar.classList.add('open');
+    overlay.classList.add('show');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeSidebar() {
+    sidebar.classList.remove('open');
+    overlay.classList.remove('show');
+    document.body.style.overflow = '';
+  }
+
+  toggleBtn?.addEventListener('click', function() {
+    sidebar.classList.contains('open') ? closeSidebar() : openSidebar();
   });
+
+  overlay?.addEventListener('click', closeSidebar);
+
+  // Close sidebar when a tool is selected (mobile UX)
+  document.querySelectorAll('.sb-item').forEach(btn => {
+    btn.addEventListener('click', () => {
+      if (window.innerWidth <= 850) closeSidebar();
+    });
+  });
+})();
 </script>
 </body>
 </html>
