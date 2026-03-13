@@ -624,23 +624,93 @@
     </div>
 
     <!-- DATE CONVERTER -->
-    <div class="panel" id="panel-date-conv">
-      <div class="ph"><div class="ph-eye">Utility</div><h2>BS / AD Date Converter</h2><p>Bikram Sambat ↔ Anno Domini (approximate)</p></div>
-      <div class="row2">
-        <div class="calc-card" style="margin-bottom:0">
-          <div class="calc-card-title"><i class="fas fa-calendar"></i> AD → BS</div>
-          <div class="fg"><label>AD Date</label><input type="date" id="ad-in"></div>
-          <button class="btn btn-gold btn-sm" onclick="doADtoBS()"><i class="fas fa-exchange-alt"></i> Convert</button>
-          <div class="result-box" id="ad-res"><div class="result-box-title">BS Date</div><div class="res-grid"><div class="ri gold"><div class="rl">Bikram Sambat</div><div class="rv" id="ad-bs-out">—</div></div></div></div>
-        </div>
-        <div class="calc-card" style="margin-bottom:0">
-          <div class="calc-card-title"><i class="fas fa-calendar-alt"></i> BS → AD</div>
-          <div class="row3"><div class="fg"><label>BS Year</label><input type="number" id="bs-yr" placeholder="2082" min="2000" max="2200"></div><div class="fg"><label>BS Month</label><input type="number" id="bs-mo" placeholder="1" min="1" max="12"></div><div class="fg"><label>BS Day</label><input type="number" id="bs-dy" placeholder="1" min="1" max="32"></div></div>
-          <button class="btn btn-gold btn-sm" onclick="doBStoAD()"><i class="fas fa-exchange-alt"></i> Convert</button>
-          <div class="result-box" id="bs-res2"><div class="result-box-title">AD Date</div><div class="res-grid"><div class="ri gold"><div class="rl">Anno Domini</div><div class="rv" id="bs-ad-out">—</div></div></div></div>
-        </div>
+    <script src="https://unpkg.com/nepali-date-converter/dist/nepali-date-converter.umd.js"></script>
+
+<div class="panel" id="panel-date-conv">
+  <div class="ph">
+    <div class="ph-eye">Utility</div>
+    <h2>BS / AD Date Converter</h2>
+    <p>Precise Conversion for Accounting & Tax Records</p>
+  </div>
+  
+  <div style="text-align: center; margin-bottom: 20px;">
+    <button class="btn btn-gold btn-sm" onclick="setToday()">
+      <i class="fas fa-clock"></i> आजको मिति (Today)
+    </button>
+  </div>
+
+  <div class="row2">
+    <div class="calc-card">
+      <div class="calc-card-title"><i class="fas fa-calendar"></i> AD → BS</div>
+      <div class="fg"><label>AD Date</label><input type="date" id="ad-in"></div>
+      <button class="btn btn-gold btn-sm" onclick="doADtoBS()"><i class="fas fa-exchange-alt"></i> Convert</button>
+      <div class="result-box">
+        <div class="result-box-title">BS Date</div>
+        <div class="rv" id="ad-bs-out" style="color:#d4af37; font-weight:bold; padding:10px;">—</div>
       </div>
     </div>
+
+    <div class="calc-card">
+      <div class="calc-card-title"><i class="fas fa-calendar-alt"></i> BS → AD</div>
+      <div class="row3">
+        <div class="fg"><label>Year</label><input type="number" id="bs-yr" value="2082"></div>
+        <div class="fg"><label>Month</label><input type="number" id="bs-mo" value="1"></div>
+        <div class="fg"><label>Day</label><input type="number" id="bs-dy" value="1"></div>
+      </div>
+      <button class="btn btn-gold btn-sm" onclick="doBStoAD()"><i class="fas fa-exchange-alt"></i> Convert</button>
+      <div class="result-box">
+        <div class="result-box-title">AD Date</div>
+        <div class="rv" id="bs-ad-out" style="color:#d4af37; font-weight:bold; padding:10px;">—</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  // पेज लोड हुँदा वा 'Today' थिच्दा आजको मिति सेट गर्ने
+  function setToday() {
+    const now = new Date();
+    
+    // AD Input मा सेट गर्ने
+    const offset = now.getTimezoneOffset();
+    const localNow = new Date(now.getTime() - (offset * 60 * 1000));
+    document.getElementById('ad-in').value = localNow.toISOString().split('T')[0];
+    
+    // BS Inputs मा सेट गर्ने
+    const bsToday = new NepaliDate(now);
+    document.getElementById('bs-yr').value = bsToday.getYear();
+    document.getElementById('bs-mo').value = bsToday.getMonth() + 1;
+    document.getElementById('bs-dy').value = bsToday.getDate();
+    
+    // दुवै कन्भर्सन रन गर्ने
+    doADtoBS();
+    doBStoAD();
+  }
+
+  function doADtoBS() {
+    const adVal = document.getElementById('ad-in').value;
+    if (!adVal) return;
+    const bsDate = new NepaliDate(new Date(adVal));
+    document.getElementById('ad-bs-out').innerText = bsDate.format('YYYY MMMM DD');
+  }
+
+  function doBStoAD() {
+    const yr = parseInt(document.getElementById('bs-yr').value);
+    const mo = parseInt(document.getElementById('bs-mo').value) - 1;
+    const dy = parseInt(document.getElementById('bs-dy').value);
+    try {
+      const bsDate = new NepaliDate(yr, mo, dy);
+      const adDate = bsDate.getAdDate();
+      const options = { year: 'numeric', month: 'long', day: 'numeric' };
+      document.getElementById('bs-ad-out').innerText = adDate.toLocaleDateString('en-US', options);
+    } catch (e) {
+      document.getElementById('bs-ad-out').innerText = "Invalid Date";
+    }
+  }
+
+  // सुरुमै आजको मिति देखाउन
+  window.onload = setToday;
+</script>
 
     <!-- PAN -->
     <div class="panel" id="panel-pan">
