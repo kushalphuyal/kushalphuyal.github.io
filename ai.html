@@ -16,7 +16,7 @@
 
 /* Loan Comparison Table */
 .loan-compare-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:14px; margin-top:18px; }
-.loan-box { background:var(–card2); border:1px solid var(–border); border-radius:14px; padding:18px; transition:all .3s; }
+.loan-box { background:var(--card2); border:1px solid var(–border); border-radius:14px; padding:18px; transition:all .3s; }
 .loan-box:hover { border-color:rgba(201,168,76,.4); transform:translateY(-4px); }
 .loan-box.best { border-color:var(–gold); background:rgba(201,168,76,.06); }
 .loan-box .lb-bank { font-size:.72rem; color:var(–muted); text-transform:uppercase; letter-spacing:.08em; margin-bottom:6px; }
@@ -87,7 +87,7 @@
 .fx-rate-badge { text-align:center; font-size:.75rem; color:var(–muted); margin-top:8px; }
 .fx-rate-badge span { color:var(–gold); font-weight:600; }
 .fx-cards { display:grid; grid-template-columns:repeat(auto-fit,minmax(160px,1fr)); gap:12px; margin-top:14px; }
-.fx-card { background:var(–card2); border:1px solid var(–border); border-radius:12px; padding:14px; text-align:center; }
+.fx-card { background:var(--card2); border:1px solid var(–border); border-radius:12px; padding:14px; text-align:center; }
 .fx-card .fc-flag { font-size:1.5rem; margin-bottom:4px; }
 .fx-card .fc-name { font-size:.7rem; color:var(–muted); margin-bottom:4px; text-transform:uppercase; letter-spacing:.06em; }
 .fx-card .fc-val  { font-family:var(–ff-head); font-size:1.1rem; font-weight:700; color:var(–white); }
@@ -108,7 +108,7 @@
 .qb-pill:hover { background:rgba(201,168,76,.18); }
 
 /* Toast notification */
-.toast { position:fixed; bottom:90px; left:50%; transform:translateX(-50%) translateY(20px); background:var(–card2); border:1px solid var(–border2); border-radius:12px; padding:12px 20px; font-size:.85rem; color:var(–white); z-index:9999; opacity:0; transition:all .3s; pointer-events:none; display:flex; align-items:center; gap:8px; box-shadow:0 8px 32px rgba(0,0,0,.5); }
+.toast { position:fixed; bottom:90px; left:50%; transform:translateX(-50%) translateY(20px); background:var(--card2); border:1px solid var(–border2); border-radius:12px; padding:12px 20px; font-size:.85rem; color:var(–white); z-index:9999; opacity:0; transition:all .3s; pointer-events:none; display:flex; align-items:center; gap:8px; box-shadow:0 8px 32px rgba(0,0,0,.5); }
 .toast.show { opacity:1; transform:translateX(-50%) translateY(0); }
 .toast i { color:var(–green); }
 
@@ -658,7 +658,7 @@
   <div class="calc-card" id="jv-table-card">
     <div class="calc-card-title"><i class="fas fa-table"></i> Journal Entries</div>
     <div class="tbl-wrap"><table><thead><tr><th>#</th><th class="tl">Debit A/c</th><th class="tl">Credit A/c</th><th>Amount</th><th class="tl">Narration</th></tr></thead><tbody id="jv-tbody"></tbody></table></div>
-    <div style="text-align:right;margin-top:10px;font-size:.85rem;color:var(---muted)">Total: <span id="jv-total" style="color:var(---gold);font-family:var(---ff-head);font-weight:700">Rs 0.00</span></div>
+    <div style="text-align:right;margin-top:10px;font-size:.85rem;color:var(--muted)">Total: <span id="jv-total" style="color:var(---gold);font-family:var(---ff-head);font-weight:700">Rs 0.00</span></div>
   </div>
 </div>
 
@@ -769,7 +769,7 @@
         <div class="ri"><div class="rl">Exchange Rate</div><div class="rv" id="fx-rate">—</div></div>
       </div>
     </div>
-    <p style="font-size:.72rem;color:var(---muted);margin-top:10px;"><i class="fas fa-info-circle"></i> NRB reference rates approximation — exact rates: <a href="https://www.nrb.org.np" target="_blank" style="color:var(---gold)">nrb.org.np</a></p>
+    <p style="font-size:.72rem;color:var(--muted);margin-top:10px;"><i class="fas fa-info-circle"></i> NRB reference rates approximation — exact rates: <a href="https://www.nrb.org.np" target="_blank" style="color:var(---gold)">nrb.org.np</a></p>
   </div>
   <div class="calc-card" style="margin-top:0">
     <div class="calc-card-title"><i class="fas fa-list"></i> All NPR Rates (1 USD = ~135 NPR approx)</div>
