@@ -777,7 +777,11 @@
             <div class="ri"><div class="rl">Exchange Rate</div><div class="rv" id="fx-rate">—</div></div>
           </div>
         </div>
-        <p style="font-size:.72rem;color:var(--muted);margin-top:10px;"><i class="fas fa-info-circle"></i> NRB reference rates approximation — exact rates: <a href="https://www.nrb.org.np" target="_blank" style="color:var(--gold)">nrb.org.np</a></p>
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-top:10px;">
+  <p id="fx-live-status" style="font-size:.72rem;color:var(--muted);">⏳ Loading live rates...</p>
+  <button class="btn btn-dark btn-sm" onclick="fetchLiveRates()"><i class="fas fa-sync"></i> Refresh</button>
+</div>
+
       </div>
       <div class="calc-card" style="margin-top:0;">
         <div class="calc-card-title"><i class="fas fa-list"></i> All NPR Rates (1 USD = ~135 NPR approx)</div>
@@ -1300,10 +1304,32 @@ function copyWords() {
 }
 
 /* ══ CURRENCY CONVERTER ✨ ══ */
-// NRB approximate rates as of FY 2082/83 (1 NPR = ?)
-const FX_RATES = { NPR: 1, USD: 0.00752, INR: 0.625, EUR: 0.00685, GBP: 0.00589, AUD: 0.01152 };
-const FX_NAMES = { NPR: '🇳🇵 NPR', USD: '🇺🇸 USD', INR: '🇮🇳 INR', EUR: '🇪🇺 EUR', GBP: '🇬🇧 GBP', AUD: '🇦🇺 AUD' };
-const FX_FLAGS = { NPR: '🇳🇵', USD: '🇺🇸', INR: '🇮🇳', EUR: '🇪🇺', GBP: '🇬🇧', AUD: '🇦🇺' };
+/* ══ CURRENCY CONVERTER — LIVE RATES ══ */
+let FX_RATES = { NPR: 1, USD: 0.00752, INR: 0.625, EUR: 0.00685, GBP: 0.00589, AUD: 0.01152 };
+
+async function fetchLiveRates() {
+  const rateEl = document.getElementById('fx-live-status');
+  try {
+    if (rateEl) rateEl.textContent = '⏳ Updating rates...';
+    const res = await fetch('https://api.frankfurter.app/latest?from=USD&to=NPR,INR,EUR,GBP,AUD');
+    const data = await res.json();
+    if (data && data.rates) {
+      const usdToNPR = data.rates.NPR;
+      FX_RATES = {
+        NPR: 1,
+        USD: 1 / usdToNPR,
+        INR: data.rates.INR / usdToNPR,
+        EUR: data.rates.EUR / usdToNPR,
+        GBP: data.rates.GBP / usdToNPR,
+        AUD: data.rates.AUD / usdToNPR,
+      };
+      if (rateEl) { rateEl.textContent = `✓ Live rates — ${data.date}`; rateEl.style.color = 'var(--green)'; }
+      doFX();
+    }
+  } catch (e) {
+    if (rateEl) { rateEl.textContent = '⚠️ Approximate rates (offline)'; rateEl.style.color = 'var(--gold)'; }
+  }
+}
 
 function doFX() {
   const amt = v('fx-amount'), from = sv('fx-from'), to = sv('fx-to');
@@ -1319,6 +1345,7 @@ function swapFX() {
   f.value = t.value; t.value = tmp; doFX();
 }
 function buildFXCards(amt = 1000, from = 'NPR') {
+  const FX_FLAGS = { NPR: '🇳🇵', USD: '🇺🇸', INR: '🇮🇳', EUR: '🇪🇺', GBP: '🇬🇧', AUD: '🇦🇺' };
   const inNPR = amt / FX_RATES[from];
   const cards = Object.entries(FX_RATES).map(([cur, rate]) => `
     <div class="fx-card">
@@ -1328,6 +1355,7 @@ function buildFXCards(amt = 1000, from = 'NPR') {
     </div>`).join('');
   document.getElementById('fx-all-cards').innerHTML = cards;
 }
+
 
 /* ══ DATE CONVERTER ══ *//* ══ DATE CONVERTER - नयाँ interface अनुसार ══ */
 
@@ -1507,6 +1535,7 @@ function buildDashboard() {
 buildDashboard(); buildTDSRef(); buildITSlabs(); buildNPARef();
 doFX(); // init currency
 doLoanCompare(); // init loan compare with defaults
+fetchLiveRates();
 </script>
 <div id="debug-info" style="position:fixed;bottom:10px;right:10px;background:rgba(0,0,0,0.8);color:lime;padding:10px;font-size:12px;z-index:99999;border-radius:8px;">
   Checking...
