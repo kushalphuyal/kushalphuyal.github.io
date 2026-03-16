@@ -1,8 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  
-  <script src="js/nepali-date-converter.min.js"></script>
+  <!-- First try CDN -->
+<script src="https://cdn.jsdelivr.net/npm/nepali-date-converter@latest/dist/nepali-date-converter.umd.min.js"></script>
+<!-- If CDN fails, use local file -->
+<script>if (typeof NepaliDateConverter === 'undefined') document.write('<script src="nepali-date-converter.min.js"><\/script>');</script>
   
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -1339,7 +1341,7 @@ function setToday() {
     document.getElementById('ad-in').value = now.toISOString().split('T')[0];
 
     const converter = new NepaliDateConverter();
-    const bs = converter.adToBs(now.getFullYear(), now.getMonth() + 1, now.getDate());
+   const bs = converter.adToBs(now.getFullYear(), now.getMonth() + 1, now.getDate());
 
     document.getElementById('bs-yr').value = bs.year;
     document.getElementById('bs-mo').value = bs.month;
