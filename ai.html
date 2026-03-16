@@ -1,15 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
- <script src="https://cdn.jsdelivr.net/npm/nepali-date-converter@latest/dist/nepali-date-converter.umd.min.js"></script>
+  
+  
+<!-- CDN हटायो — local मात्र test -->
 <script>
-  if (typeof NepaliDate === 'undefined') {
-    var script = document.createElement('script');
-    script.src = 'nepali-date-converter.min.js'; // यदि root मा छ भने
-    // यदि js फोल्डरमा छ भने: script.src = 'js/nepali-date-converter.min.js';
-    document.head.appendChild(script);
-  }
+  var script = document.createElement('script');
+  script.src = 'nepali-date-converter.min.js';
+  script.onload = function() {
+    console.log('✓ Local file loaded!');
+  };
+  script.onerror = function() {
+    console.log('✗ Local file NOT found!');
+  };
+  document.head.appendChild(script);
 </script>
+
   
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -1508,6 +1514,8 @@ doLoanCompare(); // init loan compare with defaults
 <div id="debug-info" style="position:fixed;bottom:10px;right:10px;background:rgba(0,0,0,0.8);color:lime;padding:10px;font-size:12px;z-index:99999;border-radius:8px;">
   Checking...
 </div>
+
+
 <script>
   setTimeout(() => {
     document.getElementById('debug-info').textContent = 
