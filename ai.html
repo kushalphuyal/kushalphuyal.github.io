@@ -1413,7 +1413,7 @@ function doBStoAD() {
     const ad = converter.getAD();  // { year, month, date, day }
 
     // JS Date object बनाउँदा month 0‑based हुनुपर्छ
-    const date = new Date(ad.year, ad.month - 1, ad.date);
+    const date = new Date(ad.year, ad.month, ad.date);
     document.getElementById('bs-ad-out').textContent = 
       date.toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' });
   } catch (e) {
