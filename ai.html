@@ -1361,7 +1361,8 @@ function setToday() {
   }
 }
 
-function doADtoBS() {
+
+  function doADtoBS() {
   if (typeof NepaliDate === 'undefined') {
     ndErr('ad-bs-out');
     return;
@@ -1372,17 +1373,20 @@ function doADtoBS() {
 
   try {
     const [year, month, day] = adDateStr.split('-').map(Number);
-    // FIX: pass month as 0-based (month - 1)
-    const converter = new NepaliDate.default(year, month - 1, day);
-    const bs = converter.getBS();  // returns month 0-based
+    
+    // Direct JS Date object बनाउने अनि NepaliDate मा pass गर्ने
+    const jsDate = new Date(year, month - 1, day);
+    const converter = new NepaliDate.default(jsDate);
+    const bs = converter.getBS();
 
     const months = ['बैशाख', 'जेठ', 'असार', 'साउन', 'भदौ', 'असोज', 'कात्तिक', 'मंसिर', 'पुस', 'माघ', 'फाल्गुन', 'चैत'];
-    document.getElementById('ad-bs-out').textContent = 
+    document.getElementById('ad-bs-out').textContent =
       `${bs.year} ${months[bs.month]} ${bs.date}`;
   } catch (e) {
     document.getElementById('ad-bs-out').textContent = 'Invalid AD date';
   }
 }
+
 
 
 
