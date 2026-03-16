@@ -1,10 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <!-- First try CDN -->
-<script src="https://cdn.jsdelivr.net/npm/nepali-date-converter@latest/dist/nepali-date-converter.umd.min.js"></script>
-<!-- If CDN fails, use local file -->
-<script>if (typeof NepaliDateConverter === 'undefined') document.write('<script src="nepali-date-converter.min.js"><\/script>');</script>
+ <script src="https://cdn.jsdelivr.net/npm/nepali-date-converter@latest/dist/nepali-date-converter.umd.min.js"></script>
+<script>
+  if (typeof NepaliDateConverter === 'undefined') {
+    var script = document.createElement('script');
+    script.src = 'nepali-date-converter.min.js'; // यदि root मा छ भने
+    // यदि js फोल्डरमा छ भने: script.src = 'js/nepali-date-converter.min.js';
+    document.head.appendChild(script);
+  }
+</script>
   
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
