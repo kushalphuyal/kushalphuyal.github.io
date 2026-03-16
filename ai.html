@@ -1326,8 +1326,7 @@ function buildFXCards(amt = 1000, from = 'NPR') {
   document.getElementById('fx-all-cards').innerHTML = cards;
 }
 
-/* ══ DATE CONVERTER ══ */
-  /* ══ DATE CONVERTER - Using nepali-date-converter library ══ */
+/* ══ DATE CONVERTER ══ *//* ══ DATE CONVERTER - नयाँ interface अनुसार ══ */
 
 function ndErr(id, msg = '⚠️ Date converter लोड हुन सकेन। इन्टरनेट जाँच गर्नुहोस्।') {
   const el = document.getElementById(id);
@@ -1343,15 +1342,19 @@ function setToday() {
 
   try {
     const now = new Date();
+    // AD input मा आजको मिति राख्ने
     document.getElementById('ad-in').value = now.toISOString().split('T')[0];
 
+    // नयाँ instance बनाउने (यसले current AD लिन्छ)
     const converter = new NepaliDate.default();
-   const bs = converter.adToBs(now.getFullYear(), now.getMonth() + 1, now.getDate());
+    const bs = converter.getBS();  // { year, month, date, day }
 
+    // BS इनपुट fields मा राख्ने
     document.getElementById('bs-yr').value = bs.year;
     document.getElementById('bs-mo').value = bs.month;
-    document.getElementById('bs-dy').value = bs.day;
+    document.getElementById('bs-dy').value = bs.date;
 
+    // दुवै conversion display अपडेट गर्ने
     doADtoBS();
     doBStoAD();
   } catch (e) {
@@ -1366,18 +1369,19 @@ function doADtoBS() {
     return;
   }
 
-  const v = document.getElementById('ad-in').value;
-  if (!v) return;
+  const adDateStr = document.getElementById('ad-in').value;
+  if (!adDateStr) return;
 
   try {
-    const [year, month, day] = v.split('-').map(Number);
-    const converter = new NepaliDate.default();
-    const bs = converter.adToBs(year, month, day);
+    const [year, month, day] = adDateStr.split('-').map(Number);
+    // AD date दिएर instance बनाउने (library ले AD लिन्छ)
+    const converter = new NepaliDate.default(year, month, day);
+    const bs = converter.getBS();
 
-    // महिनाको नाम नेपालीमा देखाउन चाहनुहुन्छ भने यहाँ map गर्नुहोस्
+    // महिनाको नाम नेपालीमा देखाउन
     const months = ['बैशाख', 'जेठ', 'असार', 'साउन', 'भदौ', 'असोज', 'कात्तिक', 'मंसिर', 'पुस', 'माघ', 'फाल्गुन', 'चैत'];
     document.getElementById('ad-bs-out').textContent = 
-      `${bs.year} ${months[bs.month - 1]} ${bs.day}`;
+      `${bs.year} ${months[bs.month - 1]} ${bs.date}`;
   } catch (e) {
     document.getElementById('ad-bs-out').textContent = 'Invalid AD date';
   }
@@ -1393,44 +1397,29 @@ function doBStoAD() {
   const mo = parseInt(document.getElementById('bs-mo').value) || 0;
   const dy = parseInt(document.getElementById('bs-dy').value) || 0;
 
-  if (yr < 1970 || yr > 2100 || mo < 1 || mo > 12 || dy < 1 || dy > 32) {
+  // साधारण range check (library ले आफैं error दिन्छ)
+  if (yr < 2000 || yr > 2090 || mo < 1 || mo > 12 || dy < 1 || dy > 32) {
     document.getElementById('bs-ad-out').textContent = 'Invalid BS date';
     return;
   }
 
   try {
+    // पहिले एउटा instance बनाउने (यसले current AD लिन्छ)
     const converter = new NepaliDate.default();
-    const ad = converter.bsToAd(yr, mo, dy);
+    // BS मिति set गर्ने (library मा month 1‑based हो)
+    converter.setYear(yr);
+    converter.setMonth(mo);
+    converter.setDate(dy);
+    const ad = converter.getAD();  // { year, month, date, day }
 
-    const date = new Date(ad.year, ad.month - 1, ad.day);
+    // JS Date object बनाउँदा month 0‑based हुनुपर्छ
+    const date = new Date(ad.year, ad.month - 1, ad.date);
     document.getElementById('bs-ad-out').textContent = 
       date.toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' });
   } catch (e) {
     document.getElementById('bs-ad-out').textContent = 'Invalid BS date';
   }
 }
-
-// Page load मा आजको मिति देखाउने
-window.addEventListener('load', function() {
-  setTimeout(() => {
-    if (typeof NepaliDate !== 'undefined') {
-      setToday();
-    } else {
-      ndErr('ad-bs-out', 'Date converter लोड हुन सकेन। पेज refresh गर्नुहोस्।');
-    }
-  }, 800); // ०.८ सेकेन्ड पर्खेर प्रयास
-});
-
-  
-
-/* ══ PAN ══ */
-function doPAN() {
-  const pan = document.getElementById('pan-in').value.trim(), valid = pan.length === 9 && /^\d{9}$/.test(pan);
-  const st = document.getElementById('pan-status'); if (st) { st.textContent = valid ? '✓ Valid Format' : '✗ Invalid Format'; st.style.color = valid ? 'var(--green)' : 'var(--red)'; }
-  const f = parseInt(pan[0]); set('pan-type', valid ? (f <= 3 ? 'Individual' : f <= 6 ? 'Company/Firm' : 'Organization/NGO') : '—');
-  showRes('pan-res');
-}
-
 /* ══ AI CHAT ══ */
 const aiMsgs = document.getElementById('ai-msgs');
 function aiQuickAsk(q) { document.getElementById('ai-chat-input').value = q; aiSend(); }
