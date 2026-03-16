@@ -3,18 +3,15 @@
 <head>
   
   
-<!-- CDN हटायो — local मात्र test -->
-<script>
-  var script = document.createElement('script');
-  script.src = 'nepali-date-converter.min.js';
-  script.onload = function() {
-    console.log('✓ Local file loaded!');
-  };
-  script.onerror = function() {
-    console.log('✗ Local file NOT found!');
-  };
-  document.head.appendChild(script);
+<script src="https://cdn.jsdelivr.net/npm/nepali-date-converter@latest/dist/nepali-date-converter.umd.min.js"></script><script>
+  if (typeof NepaliDate === 'undefined') {
+    var script = document.createElement('script');
+    script.src = 'nepali-date-converter.min.js'; // यदि root मा छ भने
+    // यदि js फोल्डरमा छ भने: script.src = 'js/nepali-date-converter.min.js';
+    document.head.appendChild(script);
+  }
 </script>
+
 
   
   <meta charset="UTF-8" />
@@ -1518,11 +1515,11 @@ doLoanCompare(); // init loan compare with defaults
 
 <script>
   setTimeout(() => {
-    document.getElementById('debug-info').textContent = 
-      typeof NepaliDate !== 'undefined' ? 
-      '✓ CDN loaded' : '✗ Local file used';
+    document.getElementById('debug-info').innerHTML = 
+      typeof NepaliDate !== 'undefined' ? '✓ Local loaded' : '✗ Local FAILED';
   }, 2000);
 </script>
+
 
 
 </body>
