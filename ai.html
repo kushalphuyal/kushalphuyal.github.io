@@ -1372,15 +1372,18 @@ function doADtoBS() {
 
   try {
     const [year, month, day] = adDateStr.split('-').map(Number);
-    // month HTML बाट 1‑based आउँछ, library ले पनि 1‑based नै लिन्छ
-    const converter = new NepaliDate.default(year, month, day);
-    const bs = converter.getBS();  // month 0‑based फर्काउँछ
+    // FIX: pass month as 0-based (month - 1)
+    const converter = new NepaliDate.default(year, month - 1, day);
+    const bs = converter.getBS();  // returns month 0-based
 
     const months = ['बैशाख', 'जेठ', 'असार', 'साउन', 'भदौ', 'असोज', 'कात्तिक', 'मंसिर', 'पुस', 'माघ', 'फाल्गुन', 'चैत'];
     document.getElementById('ad-bs-out').textContent = 
-      `${bs.year} ${months[bs.month]} ${bs.date}`;  // bs.month 0‑based
+      `${bs.year} ${months[bs.month]} ${bs.date}`;
   } catch (e) {
     document.getElementById('ad-bs-out').textContent = 'Invalid AD date';
+  }
+}
+
   }
 }
 
