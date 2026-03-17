@@ -1,19 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  
-  
-<script src="https://cdn.jsdelivr.net/npm/nepali-date-converter@latest/dist/nepali-date-converter.umd.min.js"></script><script>
-  if (typeof NepaliDate === 'undefined') {
-    var script = document.createElement('script');
-    script.src = 'nepali-date-converter.min.js'; // यदि root मा छ भने
-    // यदि js फोल्डरमा छ भने: script.src = 'js/nepali-date-converter.min.js';
-    document.head.appendChild(script);
-  }
-</script>
-
-
-  
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="canonical" href="https://kushalphuyal.com.np/ai.html" />
@@ -778,9 +765,9 @@
           </div>
         </div>
         <div style="display:flex;align-items:center;justify-content:space-between;margin-top:10px;">
-  <p id="fx-live-status" style="font-size:.72rem;color:var(--muted);">⏳ Loading live rates...</p>
-  <button class="btn btn-dark btn-sm" onclick="fetchLiveRates()"><i class="fas fa-sync"></i> Refresh</button>
-</div>
+          <p id="fx-live-status" style="font-size:.72rem;color:var(--muted);">⏳ Loading live rates...</p>
+          <button class="btn btn-dark btn-sm" onclick="fetchLiveRates()"><i class="fas fa-sync"></i> Refresh</button>
+        </div>
 
       </div>
       <div class="calc-card" style="margin-top:0;">
@@ -790,46 +777,45 @@
     </div>
 
     <!-- DATE CONVERTER -->
-
     <div class="panel" id="panel-date-conv">
-  <div class="ph">
-    <div class="ph-eye">Utility</div>
-    <h2>BS / AD Date Converter</h2>
-  </div>
-  <div style="text-align:center;margin-bottom:20px;">
-    <button class="btn btn-gold btn-sm" onclick="setToday()">
-      <i class="fas fa-clock"></i> Today's Date
-    </button>
-  </div>
-  <div class="row2">
-    <div class="calc-card">
-      <div class="calc-card-title"><i class="fas fa-exchange-alt"></i> AD → BS</div>
-      <div class="fg">
-        <label>AD Date</label>
-        <input type="date" id="ad-in" onchange="doADtoBS()">
+      <div class="ph">
+        <div class="ph-eye">Utility</div>
+        <h2>BS / AD Date Converter</h2>
       </div>
-      <button class="btn btn-gold btn-sm" onclick="doADtoBS()">Convert → BS</button>
-      <div class="result-box show" style="margin-top:14px;">
-        <div class="result-box-title">BS Date</div>
-        <div id="ad-bs-out" style="padding:8px;font-size:1.1rem;color:var(--gold);font-weight:700;">—</div>
+      <div style="text-align:center;margin-bottom:20px;">
+        <button class="btn btn-gold btn-sm" onclick="setToday()">
+          <i class="fas fa-clock"></i> Today's Date
+        </button>
       </div>
-    </div>
+      <div class="row2">
+        <div class="calc-card">
+          <div class="calc-card-title"><i class="fas fa-exchange-alt"></i> AD → BS</div>
+          <div class="fg">
+            <label>AD Date</label>
+            <input type="date" id="ad-in" onchange="doADtoBS()">
+          </div>
+          <button class="btn btn-gold btn-sm" onclick="doADtoBS()">Convert → BS</button>
+          <div class="result-box show" style="margin-top:14px;">
+            <div class="result-box-title">BS Date</div>
+            <div id="ad-bs-out" style="padding:8px;font-size:1.1rem;color:var(--gold);font-weight:700;">—</div>
+          </div>
+        </div>
 
-    <div class="calc-card">
-      <div class="calc-card-title"><i class="fas fa-exchange-alt"></i> BS → AD</div>
-      <div class="row3">
-        <div class="fg"><label>Year</label><input type="number" id="bs-yr" placeholder="2082" min="1970" max="2100"></div>
-        <div class="fg"><label>Month</label><input type="number" id="bs-mo" placeholder="1" min="1" max="12"></div>
-        <div class="fg"><label>Day</label><input type="number" id="bs-dy" placeholder="1" min="1" max="32"></div>
-      </div>
-      <button class="btn btn-gold btn-sm" onclick="doBStoAD()">Convert → AD</button>
-      <div class="result-box show" style="margin-top:14px;">
-        <div class="result-box-title">AD Date</div>
-        <div id="bs-ad-out" style="padding:8px;font-size:1.1rem;color:var(--gold);font-weight:700;">—</div>
+        <div class="calc-card">
+          <div class="calc-card-title"><i class="fas fa-exchange-alt"></i> BS → AD</div>
+          <div class="row3">
+            <div class="fg"><label>Year</label><input type="number" id="bs-yr" placeholder="2082" min="1970" max="2100"></div>
+            <div class="fg"><label>Month</label><input type="number" id="bs-mo" placeholder="1" min="1" max="12"></div>
+            <div class="fg"><label>Day</label><input type="number" id="bs-dy" placeholder="1" min="1" max="32"></div>
+          </div>
+          <button class="btn btn-gold btn-sm" onclick="doBStoAD()">Convert → AD</button>
+          <div class="result-box show" style="margin-top:14px;">
+            <div class="result-box-title">AD Date</div>
+            <div id="bs-ad-out" style="padding:8px;font-size:1.1rem;color:var(--gold);font-weight:700;">—</div>
+          </div>
+        </div>
       </div>
     </div>
-  </div>
-</div>
 
     <!-- PAN VALIDATOR -->
     <div class="panel" id="panel-pan">
@@ -855,7 +841,14 @@
 </div>
 
 <!-- NepaliDate: Primary jsdelivr, Backup unpkg -->
-
+<script src="https://cdn.jsdelivr.net/npm/nepali-date-converter@latest/dist/nepali-date-converter.umd.min.js"></script>
+<script>
+  if (typeof NepaliDate === 'undefined') {
+    var script = document.createElement('script');
+    script.src = 'nepali-date-converter.min.js'; // यदि root मा छ भने
+    document.head.appendChild(script);
+  }
+</script>
 
 <script src="script.js"></script>
 
@@ -1062,7 +1055,7 @@ function generateChallan() {
 }
 
 /* ══ INCOME TAX ══ */
-  let SLABS = { u: [[500000, .01], [200000, .10], [300000, .20], [1000000, .30], [3000000, .36], [Infinity, .39]], m: [[600000, .01], [200000, .10], [300000, .20], [900000, .30], [3000000, .36], [Infinity, .39]] };
+let SLABS = { u: [[500000, .01], [200000, .10], [300000, .20], [1000000, .30], [3000000, .36], [Infinity, .39]], m: [[600000, .01], [200000, .10], [300000, .20], [900000, .30], [3000000, .36], [Infinity, .39]] };
 function calcTax(income, status) {
   let tax = 0, rem = income, bd = [];
   SLABS[status].forEach(([b, rate]) => {
@@ -1405,7 +1398,7 @@ function setToday() {
 }
 
 
-  function doADtoBS() {
+function doADtoBS() {
   if (typeof NepaliDate === 'undefined') {
     ndErr('ad-bs-out');
     return;
@@ -1429,10 +1422,6 @@ function setToday() {
     document.getElementById('ad-bs-out').textContent = 'Invalid AD date';
   }
 }
-
-
-
-
 
 function doBStoAD() {
   if (typeof NepaliDate === 'undefined') {
@@ -1542,6 +1531,7 @@ function buildDashboard() {
     ['Advance Tax Q2', '70% — Chaitra end'],
   ].map(([l, r]) => `<div class="ref-row"><span class="ref-label">${l}</span><span class="ref-val">${r}</span></div>`).join('');
 }
+
 /* ══ LOAD CONFIG FROM CLOUD ══ */
 async function loadAdminConfig() {
   try {
@@ -1606,15 +1596,12 @@ loadAdminConfig();
   Checking...
 </div>
 
-
 <script>
   setTimeout(() => {
     document.getElementById('debug-info').innerHTML = 
       typeof NepaliDate !== 'undefined' ? '✓ Local loaded' : '✗ Local FAILED';
   }, 2000);
 </script>
-
-
 
 </body>
 </html>
