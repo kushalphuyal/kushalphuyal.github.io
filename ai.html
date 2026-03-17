@@ -1466,7 +1466,7 @@ async function aiSend() {
   aiMsgs.scrollTop = aiMsgs.scrollHeight;
   try {
     const ctrl = new AbortController(), to = setTimeout(() => ctrl.abort(), 15000);
-    const res = await fetch('https://morning-bush-8bd5.kushalphuyal.workers.dev/', {
+    const res = await fetch('https://morning-bush-8bd5.kushalphuyal.workers.dev/api/chat', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ message: 'Nepal accounting FY2082/83: ' + text }),
