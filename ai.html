@@ -1063,6 +1063,7 @@ function generateChallan() {
 
 /* ══ INCOME TAX ══ */
   let SLABS = { u: [[500000, .01], [200000, .10], [300000, .20], [1000000, .30], [3000000, .36], [Infinity, .39]], m: [[600000, .01], [200000, .10], [300000, .20], [900000, .30], [3000000, .36], [Infinity, .39]] };
+function calcTax(income, status) {
   let tax = 0, rem = income, bd = [];
   SLABS[status].forEach(([b, rate]) => {
     if (rem <= 0) return;
