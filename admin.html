@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
@@ -27,169 +26,166 @@
     * { box-sizing: border-box; margin: 0; padding: 0; }
     body { background: var(--bg); color: var(--white); font-family: var(--ff-body); min-height: 100vh; }
 
-```
-/* ── LOGIN SCREEN ── */
-#login-screen {
-  position: fixed; inset: 0; background: var(--bg);
-  display: flex; align-items: center; justify-content: center;
-  z-index: 9999; flex-direction: column; gap: 0;
-}
-.login-box {
-  background: var(--card); border: 1px solid var(--border2);
-  border-radius: 20px; padding: 48px 40px; width: 100%; max-width: 400px;
-  box-shadow: 0 32px 80px rgba(0,0,0,.6);
-}
-.login-logo {
-  text-align: center; margin-bottom: 32px;
-}
-.login-logo .ll-icon {
-  width: 64px; height: 64px; border-radius: 16px;
-  background: linear-gradient(135deg, rgba(201,168,76,.2), rgba(201,168,76,.05));
-  border: 1px solid rgba(201,168,76,.3);
-  display: flex; align-items: center; justify-content: center;
-  font-size: 1.8rem; margin: 0 auto 14px; color: var(--gold);
-}
-.login-logo h2 { font-family: var(--ff-head); font-size: 1.3rem; color: var(--white); }
-.login-logo p { font-size: .8rem; color: var(--muted); margin-top: 4px; }
-.login-fg { margin-bottom: 18px; }
-.login-fg label { display: block; font-size: .75rem; color: var(--muted); text-transform: uppercase; letter-spacing: .08em; margin-bottom: 8px; }
-.login-fg input {
-  width: 100%; background: var(--card2); border: 1px solid var(--border2);
-  border-radius: 10px; padding: 12px 16px; color: var(--white);
-  font-size: .95rem; outline: none; transition: border-color .2s;
-}
-.login-fg input:focus { border-color: var(--gold); }
-.login-btn {
-  width: 100%; padding: 14px; border-radius: 12px;
-  background: linear-gradient(135deg, var(--gold), #a8862e);
-  border: none; color: #000; font-weight: 700; font-size: 1rem;
-  cursor: pointer; transition: all .2s; margin-top: 8px;
-}
-.login-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(201,168,76,.3); }
-.login-err { color: var(--red); font-size: .82rem; text-align: center; margin-top: 12px; display: none; }
+    /* ── LOGIN SCREEN ── */
+    #login-screen {
+      position: fixed; inset: 0; background: var(--bg);
+      display: flex; align-items: center; justify-content: center;
+      z-index: 9999; flex-direction: column; gap: 0;
+    }
+    .login-box {
+      background: var(--card); border: 1px solid var(--border2);
+      border-radius: 20px; padding: 48px 40px; width: 100%; max-width: 400px;
+      box-shadow: 0 32px 80px rgba(0,0,0,.6);
+    }
+    .login-logo {
+      text-align: center; margin-bottom: 32px;
+    }
+    .login-logo .ll-icon {
+      width: 64px; height: 64px; border-radius: 16px;
+      background: linear-gradient(135deg, rgba(201,168,76,.2), rgba(201,168,76,.05));
+      border: 1px solid rgba(201,168,76,.3);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.8rem; margin: 0 auto 14px; color: var(--gold);
+    }
+    .login-logo h2 { font-family: var(--ff-head); font-size: 1.3rem; color: var(--white); }
+    .login-logo p { font-size: .8rem; color: var(--muted); margin-top: 4px; }
+    .login-fg { margin-bottom: 18px; }
+    .login-fg label { display: block; font-size: .75rem; color: var(--muted); text-transform: uppercase; letter-spacing: .08em; margin-bottom: 8px; }
+    .login-fg input {
+      width: 100%; background: var(--card2); border: 1px solid var(--border2);
+      border-radius: 10px; padding: 12px 16px; color: var(--white);
+      font-size: .95rem; outline: none; transition: border-color .2s;
+    }
+    .login-fg input:focus { border-color: var(--gold); }
+    .login-btn {
+      width: 100%; padding: 14px; border-radius: 12px;
+      background: linear-gradient(135deg, var(--gold), #a8862e);
+      border: none; color: #000; font-weight: 700; font-size: 1rem;
+      cursor: pointer; transition: all .2s; margin-top: 8px;
+    }
+    .login-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(201,168,76,.3); }
+    .login-err { color: var(--red); font-size: .82rem; text-align: center; margin-top: 12px; display: none; }
 
-/* ── ADMIN LAYOUT ── */
-#admin-panel { display: none; }
-.admin-nav {
-  background: var(--card); border-bottom: 1px solid var(--border);
-  padding: 14px 28px; display: flex; align-items: center;
-  justify-content: space-between; position: sticky; top: 0; z-index: 100;
-}
-.admin-nav .an-logo { font-family: var(--ff-head); font-size: 1.1rem; color: var(--gold); display: flex; align-items: center; gap: 10px; }
-.admin-nav .an-logo i { font-size: .9rem; }
-.admin-nav .an-right { display: flex; align-items: center; gap: 12px; }
-.an-fy-badge { background: rgba(201,168,76,.12); border: 1px solid rgba(201,168,76,.25); border-radius: 20px; padding: 4px 14px; font-size: .75rem; color: var(--gold); font-weight: 600; }
-.btn-logout { background: rgba(224,90,90,.1); border: 1px solid rgba(224,90,90,.2); color: var(--red); border-radius: 8px; padding: 7px 14px; font-size: .78rem; cursor: pointer; transition: all .2s; }
-.btn-logout:hover { background: rgba(224,90,90,.2); }
-.btn-save-all { background: linear-gradient(135deg, var(--gold), #a8862e); border: none; color: #000; border-radius: 8px; padding: 8px 20px; font-size: .82rem; font-weight: 700; cursor: pointer; transition: all .2s; display: flex; align-items: center; gap: 6px; }
-.btn-save-all:hover { transform: translateY(-1px); box-shadow: 0 4px 16px rgba(201,168,76,.3); }
+    /* ── ADMIN LAYOUT ── */
+    #admin-panel { display: none; }
+    .admin-nav {
+      background: var(--card); border-bottom: 1px solid var(--border);
+      padding: 14px 28px; display: flex; align-items: center;
+      justify-content: space-between; position: sticky; top: 0; z-index: 100;
+    }
+    .admin-nav .an-logo { font-family: var(--ff-head); font-size: 1.1rem; color: var(--gold); display: flex; align-items: center; gap: 10px; }
+    .admin-nav .an-logo i { font-size: .9rem; }
+    .admin-nav .an-right { display: flex; align-items: center; gap: 12px; }
+    .an-fy-badge { background: rgba(201,168,76,.12); border: 1px solid rgba(201,168,76,.25); border-radius: 20px; padding: 4px 14px; font-size: .75rem; color: var(--gold); font-weight: 600; }
+    .btn-logout { background: rgba(224,90,90,.1); border: 1px solid rgba(224,90,90,.2); color: var(--red); border-radius: 8px; padding: 7px 14px; font-size: .78rem; cursor: pointer; transition: all .2s; }
+    .btn-logout:hover { background: rgba(224,90,90,.2); }
+    .btn-save-all { background: linear-gradient(135deg, var(--gold), #a8862e); border: none; color: #000; border-radius: 8px; padding: 8px 20px; font-size: .82rem; font-weight: 700; cursor: pointer; transition: all .2s; display: flex; align-items: center; gap: 6px; }
+    .btn-save-all:hover { transform: translateY(-1px); box-shadow: 0 4px 16px rgba(201,168,76,.3); }
 
-.admin-body { max-width: 1100px; margin: 0 auto; padding: 32px 24px; }
+    .admin-body { max-width: 1100px; margin: 0 auto; padding: 32px 24px; }
 
-/* Alert banner */
-.alert-banner {
-  background: rgba(76,175,125,.08); border: 1px solid rgba(76,175,125,.2);
-  border-radius: 12px; padding: 14px 20px; display: flex; align-items: center;
-  gap: 12px; margin-bottom: 28px; font-size: .85rem; color: var(--green);
-  display: none;
-}
-.alert-banner.show { display: flex; }
+    /* Alert banner */
+    .alert-banner {
+      background: rgba(76,175,125,.08); border: 1px solid rgba(76,175,125,.2);
+      border-radius: 12px; padding: 14px 20px; display: flex; align-items: center;
+      gap: 12px; margin-bottom: 28px; font-size: .85rem; color: var(--green);
+      display: none;
+    }
+    .alert-banner.show { display: flex; }
 
-/* Section cards */
-.admin-section { margin-bottom: 28px; }
-.as-header {
-  display: flex; align-items: center; justify-content: space-between;
-  margin-bottom: 16px;
-}
-.as-title {
-  display: flex; align-items: center; gap: 10px;
-  font-family: var(--ff-head); font-size: 1.05rem; color: var(--white);
-}
-.as-title i { color: var(--gold); font-size: .9rem; }
-.as-badge { font-size: .68rem; color: var(--muted); background: var(--card2); border: 1px solid var(--border); border-radius: 20px; padding: 3px 10px; }
+    /* Section cards */
+    .admin-section { margin-bottom: 28px; }
+    .as-header {
+      display: flex; align-items: center; justify-content: space-between;
+      margin-bottom: 16px;
+    }
+    .as-title {
+      display: flex; align-items: center; gap: 10px;
+      font-family: var(--ff-head); font-size: 1.05rem; color: var(--white);
+    }
+    .as-title i { color: var(--gold); font-size: .9rem; }
+    .as-badge { font-size: .68rem; color: var(--muted); background: var(--card2); border: 1px solid var(--border); border-radius: 20px; padding: 3px 10px; }
 
-.admin-card {
-  background: var(--card); border: 1px solid var(--border);
-  border-radius: 16px; padding: 24px; transition: border-color .2s;
-}
-.admin-card:hover { border-color: rgba(201,168,76,.2); }
+    .admin-card {
+      background: var(--card); border: 1px solid var(--border);
+      border-radius: 16px; padding: 24px; transition: border-color .2s;
+    }
+    .admin-card:hover { border-color: rgba(201,168,76,.2); }
 
-/* Form fields */
-.ag { display: grid; gap: 16px; }
-.ag-2 { grid-template-columns: 1fr 1fr; }
-.ag-3 { grid-template-columns: 1fr 1fr 1fr; }
-.ag-4 { grid-template-columns: 1fr 1fr 1fr 1fr; }
-.fg { }
-.fg label {
-  display: block; font-size: .72rem; color: var(--muted);
-  text-transform: uppercase; letter-spacing: .08em; margin-bottom: 8px;
-}
-.fg input, .fg select {
-  width: 100%; background: var(--card2); border: 1px solid var(--border2);
-  border-radius: 10px; padding: 10px 14px; color: var(--white);
-  font-size: .92rem; outline: none; transition: border-color .2s;
-}
-.fg input:focus, .fg select:focus { border-color: var(--gold); }
-.fg .hint { font-size: .7rem; color: var(--muted); margin-top: 5px; }
+    /* Form fields */
+    .ag { display: grid; gap: 16px; }
+    .ag-2 { grid-template-columns: 1fr 1fr; }
+    .ag-3 { grid-template-columns: 1fr 1fr 1fr; }
+    .ag-4 { grid-template-columns: 1fr 1fr 1fr 1fr; }
+    .fg { }
+    .fg label {
+      display: block; font-size: .72rem; color: var(--muted);
+      text-transform: uppercase; letter-spacing: .08em; margin-bottom: 8px;
+    }
+    .fg input, .fg select {
+      width: 100%; background: var(--card2); border: 1px solid var(--border2);
+      border-radius: 10px; padding: 10px 14px; color: var(--white);
+      font-size: .92rem; outline: none; transition: border-color .2s;
+    }
+    .fg input:focus, .fg select:focus { border-color: var(--gold); }
+    .fg .hint { font-size: .7rem; color: var(--muted); margin-top: 5px; }
 
-/* Slab table */
-.slab-table { width: 100%; border-collapse: collapse; margin-top: 8px; }
-.slab-table th { font-size: .68rem; color: var(--muted); text-transform: uppercase; letter-spacing: .06em; padding: 8px 12px; text-align: left; border-bottom: 1px solid var(--border); }
-.slab-table td { padding: 8px 12px; border-bottom: 1px solid rgba(255,255,255,.03); }
-.slab-table input {
-  background: var(--card2); border: 1px solid var(--border2); border-radius: 8px;
-  padding: 7px 10px; color: var(--white); font-size: .85rem; width: 100%;
-  outline: none; transition: border-color .2s;
-}
-.slab-table input:focus { border-color: var(--gold); }
-.slab-row-label { font-size: .82rem; color: var(--muted); }
+    /* Slab table */
+    .slab-table { width: 100%; border-collapse: collapse; margin-top: 8px; }
+    .slab-table th { font-size: .68rem; color: var(--muted); text-transform: uppercase; letter-spacing: .06em; padding: 8px 12px; text-align: left; border-bottom: 1px solid var(--border); }
+    .slab-table td { padding: 8px 12px; border-bottom: 1px solid rgba(255,255,255,.03); }
+    .slab-table input {
+      background: var(--card2); border: 1px solid var(--border2); border-radius: 8px;
+      padding: 7px 10px; color: var(--white); font-size: .85rem; width: 100%;
+      outline: none; transition: border-color .2s;
+    }
+    .slab-table input:focus { border-color: var(--gold); }
+    .slab-row-label { font-size: .82rem; color: var(--muted); }
 
-/* TDS rows */
-.tds-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
-.tds-item { background: var(--card2); border: 1px solid var(--border); border-radius: 10px; padding: 14px; }
-.tds-item label { font-size: .7rem; color: var(--muted); text-transform: uppercase; letter-spacing: .06em; margin-bottom: 8px; display: block; }
-.tds-item input {
-  width: 100%; background: var(--bg); border: 1px solid var(--border2);
-  border-radius: 8px; padding: 8px 12px; color: var(--gold);
-  font-size: 1rem; font-weight: 700; font-family: var(--ff-mono);
-  outline: none; transition: border-color .2s;
-}
-.tds-item input:focus { border-color: var(--gold); }
+    /* TDS rows */
+    .tds-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+    .tds-item { background: var(--card2); border: 1px solid var(--border); border-radius: 10px; padding: 14px; }
+    .tds-item label { font-size: .7rem; color: var(--muted); text-transform: uppercase; letter-spacing: .06em; margin-bottom: 8px; display: block; }
+    .tds-item input {
+      width: 100%; background: var(--bg); border: 1px solid var(--border2);
+      border-radius: 8px; padding: 8px 12px; color: var(--gold);
+      font-size: 1rem; font-weight: 700; font-family: var(--ff-mono);
+      outline: none; transition: border-color .2s;
+    }
+    .tds-item input:focus { border-color: var(--gold); }
 
-/* Divider */
-.divider { height: 1px; background: var(--border); margin: 20px 0; }
+    /* Divider */
+    .divider { height: 1px; background: var(--border); margin: 20px 0; }
 
-/* Toast */
-.toast {
-  position: fixed; bottom: 30px; left: 50%;
-  transform: translateX(-50%) translateY(20px);
-  background: var(--card2); border: 1px solid rgba(76,175,125,.3);
-  border-radius: 12px; padding: 12px 24px; font-size: .85rem;
-  color: var(--green); z-index: 9999; opacity: 0;
-  transition: all .3s; pointer-events: none;
-  display: flex; align-items: center; gap: 8px;
-  box-shadow: 0 8px 32px rgba(0,0,0,.5);
-}
-.toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+    /* Toast */
+    .toast {
+      position: fixed; bottom: 30px; left: 50%;
+      transform: translateX(-50%) translateY(20px);
+      background: var(--card2); border: 1px solid rgba(76,175,125,.3);
+      border-radius: 12px; padding: 12px 24px; font-size: .85rem;
+      color: var(--green); z-index: 9999; opacity: 0;
+      transition: all .3s; pointer-events: none;
+      display: flex; align-items: center; gap: 8px;
+      box-shadow: 0 8px 32px rgba(0,0,0,.5);
+    }
+    .toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
 
-/* Change log */
-.changelog { background: var(--card2); border: 1px solid var(--border); border-radius: 12px; padding: 16px; margin-top: 16px; max-height: 200px; overflow-y: auto; }
-.changelog-item { font-size: .78rem; color: var(--muted); padding: 4px 0; border-bottom: 1px solid rgba(255,255,255,.03); display: flex; justify-content: space-between; }
-.changelog-item span { color: var(--gold); }
-.changelog-empty { font-size: .78rem; color: var(--muted); text-align: center; padding: 20px; }
+    /* Change log */
+    .changelog { background: var(--card2); border: 1px solid var(--border); border-radius: 12px; padding: 16px; margin-top: 16px; max-height: 200px; overflow-y: auto; }
+    .changelog-item { font-size: .78rem; color: var(--muted); padding: 4px 0; border-bottom: 1px solid rgba(255,255,255,.03); display: flex; justify-content: space-between; }
+    .changelog-item span { color: var(--gold); }
+    .changelog-empty { font-size: .78rem; color: var(--muted); text-align: center; padding: 20px; }
 
-/* Reset button */
-.btn-reset { background: rgba(224,90,90,.08); border: 1px solid rgba(224,90,90,.15); color: var(--red); border-radius: 8px; padding: 7px 14px; font-size: .75rem; cursor: pointer; transition: all .2s; }
-.btn-reset:hover { background: rgba(224,90,90,.15); }
+    /* Reset button */
+    .btn-reset { background: rgba(224,90,90,.08); border: 1px solid rgba(224,90,90,.15); color: var(--red); border-radius: 8px; padding: 7px 14px; font-size: .75rem; cursor: pointer; transition: all .2s; }
+    .btn-reset:hover { background: rgba(224,90,90,.15); }
 
-@media(max-width: 640px) {
-  .ag-2, .ag-3, .ag-4 { grid-template-columns: 1fr; }
-  .tds-grid { grid-template-columns: 1fr; }
-  .admin-body { padding: 16px; }
-  .login-box { padding: 32px 24px; margin: 16px; }
-}
-```
-
+    @media(max-width: 640px) {
+      .ag-2, .ag-3, .ag-4 { grid-template-columns: 1fr; }
+      .tds-grid { grid-template-columns: 1fr; }
+      .admin-body { padding: 16px; }
+      .login-box { padding: 32px 24px; margin: 16px; }
+    }
   </style>
 </head>
 <body>
@@ -197,7 +193,6 @@
 <div id="toast" class="toast"><i class="fas fa-check-circle"></i><span id="toast-msg">Saved!</span></div>
 
 <!-- ══ LOGIN SCREEN ══ -->
-
 <div id="login-screen">
   <div class="login-box">
     <div class="login-logo">
@@ -219,11 +214,9 @@
 </div>
 
 <!-- ══ ADMIN PANEL ══ -->
-
 <div id="admin-panel">
 
   <!-- NAV -->
-
   <div class="admin-nav">
     <div class="an-logo">
       <i class="fas fa-cog"></i>
@@ -242,332 +235,330 @@
 
   <div class="admin-body">
 
-```
-<!-- Success alert -->
-<div class="alert-banner" id="save-alert">
-  <i class="fas fa-check-circle" style="font-size:1.2rem"></i>
-  <div>
-    <strong>Changes saved successfully!</strong>
-    <div style="font-size:.78rem;opacity:.8;margin-top:2px;">ai.html ले अब नयाँ rates use गर्नेछ। Page reload गर्नुस्।</div>
-  </div>
-</div>
-
-<!-- ══ FISCAL YEAR ══ -->
-<div class="admin-section">
-  <div class="as-header">
-    <div class="as-title"><i class="fas fa-calendar-alt"></i> Fiscal Year Settings</div>
-    <span class="as-badge">General</span>
-  </div>
-  <div class="admin-card">
-    <div class="ag ag-3">
-      <div class="fg">
-        <label>Current Fiscal Year (BS)</label>
-        <input type="text" id="cfg-fy" placeholder="2082/83" />
-        <div class="hint">e.g. 2082/83</div>
-      </div>
-      <div class="fg">
-        <label>FY Start Date (BS)</label>
-        <input type="text" id="cfg-fy-start" placeholder="Shrawan 1, 2082" />
-      </div>
-      <div class="fg">
-        <label>FY End Date (BS)</label>
-        <input type="text" id="cfg-fy-end" placeholder="Ashadh 31, 2083" />
+    <!-- Success alert -->
+    <div class="alert-banner" id="save-alert">
+      <i class="fas fa-check-circle" style="font-size:1.2rem"></i>
+      <div>
+        <strong>Changes saved successfully!</strong>
+        <div style="font-size:.78rem;opacity:.8;margin-top:2px;">ai.html ले अब नयाँ rates use गर्नेछ। Page reload गर्नुस्।</div>
       </div>
     </div>
-  </div>
-</div>
 
-<!-- ══ VAT ══ -->
-<div class="admin-section">
-  <div class="as-header">
-    <div class="as-title"><i class="fas fa-receipt"></i> VAT Settings</div>
-    <span class="as-badge">VAT Act</span>
-  </div>
-  <div class="admin-card">
-    <div class="ag ag-3">
-      <div class="fg">
-        <label>VAT Rate %</label>
-        <input type="number" id="cfg-vat" placeholder="13" step="0.01" min="0" max="100" />
-        <div class="hint">Standard VAT rate</div>
+    <!-- ══ FISCAL YEAR ══ -->
+    <div class="admin-section">
+      <div class="as-header">
+        <div class="as-title"><i class="fas fa-calendar-alt"></i> Fiscal Year Settings</div>
+        <span class="as-badge">General</span>
       </div>
-      <div class="fg">
-        <label>VAT Filing Deadline (गते)</label>
-        <input type="number" id="cfg-vat-deadline" placeholder="25" min="1" max="32" />
-        <div class="hint">Monthly filing date</div>
-      </div>
-      <div class="fg">
-        <label>Late Interest Rate % (p.a.)</label>
-        <input type="number" id="cfg-vat-interest" placeholder="15" step="0.1" min="0" />
-        <div class="hint">Annual interest on late payment</div>
+      <div class="admin-card">
+        <div class="ag ag-3">
+          <div class="fg">
+            <label>Current Fiscal Year (BS)</label>
+            <input type="text" id="cfg-fy" placeholder="2082/83" />
+            <div class="hint">e.g. 2082/83</div>
+          </div>
+          <div class="fg">
+            <label>FY Start Date (BS)</label>
+            <input type="text" id="cfg-fy-start" placeholder="Shrawan 1, 2082" />
+          </div>
+          <div class="fg">
+            <label>FY End Date (BS)</label>
+            <input type="text" id="cfg-fy-end" placeholder="Ashadh 31, 2083" />
+          </div>
+        </div>
       </div>
     </div>
-    <div class="divider"></div>
-    <div class="ag ag-2">
-      <div class="fg">
-        <label>Late Penalty Rate % (per month)</label>
-        <input type="number" id="cfg-vat-penalty" placeholder="1" step="0.1" min="0" />
+
+    <!-- ══ VAT ══ -->
+    <div class="admin-section">
+      <div class="as-header">
+        <div class="as-title"><i class="fas fa-receipt"></i> VAT Settings</div>
+        <span class="as-badge">VAT Act</span>
       </div>
-      <div class="fg">
-        <label>VAT Registration Threshold Rs</label>
-        <input type="number" id="cfg-vat-threshold" placeholder="5000000" />
-        <div class="hint">Annual turnover threshold</div>
+      <div class="admin-card">
+        <div class="ag ag-3">
+          <div class="fg">
+            <label>VAT Rate %</label>
+            <input type="number" id="cfg-vat" placeholder="13" step="0.01" min="0" max="100" />
+            <div class="hint">Standard VAT rate</div>
+          </div>
+          <div class="fg">
+            <label>VAT Filing Deadline (गते)</label>
+            <input type="number" id="cfg-vat-deadline" placeholder="25" min="1" max="32" />
+            <div class="hint">Monthly filing date</div>
+          </div>
+          <div class="fg">
+            <label>Late Interest Rate % (p.a.)</label>
+            <input type="number" id="cfg-vat-interest" placeholder="15" step="0.1" min="0" />
+            <div class="hint">Annual interest on late payment</div>
+          </div>
+        </div>
+        <div class="divider"></div>
+        <div class="ag ag-2">
+          <div class="fg">
+            <label>Late Penalty Rate % (per month)</label>
+            <input type="number" id="cfg-vat-penalty" placeholder="1" step="0.1" min="0" />
+          </div>
+          <div class="fg">
+            <label>VAT Registration Threshold Rs</label>
+            <input type="number" id="cfg-vat-threshold" placeholder="5000000" />
+            <div class="hint">Annual turnover threshold</div>
+          </div>
+        </div>
       </div>
     </div>
-  </div>
-</div>
 
-<!-- ══ TDS RATES ══ -->
-<div class="admin-section">
-  <div class="as-header">
-    <div class="as-title"><i class="fas fa-percentage"></i> TDS Rates</div>
-    <span class="as-badge">Income Tax Act 2058</span>
-  </div>
-  <div class="admin-card">
-    <div class="tds-grid">
-      <div class="tds-item">
-        <label>Service — With VAT Bill %</label>
-        <input type="number" id="cfg-tds-service-vat" step="0.1" min="0" />
+    <!-- ══ TDS RATES ══ -->
+    <div class="admin-section">
+      <div class="as-header">
+        <div class="as-title"><i class="fas fa-percentage"></i> TDS Rates</div>
+        <span class="as-badge">Income Tax Act 2058</span>
       </div>
-      <div class="tds-item">
-        <label>Service — Without VAT Bill %</label>
-        <input type="number" id="cfg-tds-service-novat" step="0.1" min="0" />
-      </div>
-      <div class="tds-item">
-        <label>Rent %</label>
-        <input type="number" id="cfg-tds-rent" step="0.1" min="0" />
-      </div>
-      <div class="tds-item">
-        <label>Interest / Royalty %</label>
-        <input type="number" id="cfg-tds-interest" step="0.1" min="0" />
-      </div>
-      <div class="tds-item">
-        <label>Dividend %</label>
-        <input type="number" id="cfg-tds-dividend" step="0.1" min="0" />
-      </div>
-      <div class="tds-item">
-        <label>Natural Person Contract %</label>
-        <input type="number" id="cfg-tds-person" step="0.1" min="0" />
-      </div>
-      <div class="tds-item">
-        <label>Land/Building Rent %</label>
-        <input type="number" id="cfg-tds-land" step="0.1" min="0" />
-      </div>
-      <div class="tds-item">
-        <label>TDS Deposit Deadline (गते)</label>
-        <input type="number" id="cfg-tds-deadline" min="1" max="32" />
+      <div class="admin-card">
+        <div class="tds-grid">
+          <div class="tds-item">
+            <label>Service — With VAT Bill %</label>
+            <input type="number" id="cfg-tds-service-vat" step="0.1" min="0" />
+          </div>
+          <div class="tds-item">
+            <label>Service — Without VAT Bill %</label>
+            <input type="number" id="cfg-tds-service-novat" step="0.1" min="0" />
+          </div>
+          <div class="tds-item">
+            <label>Rent %</label>
+            <input type="number" id="cfg-tds-rent" step="0.1" min="0" />
+          </div>
+          <div class="tds-item">
+            <label>Interest / Royalty %</label>
+            <input type="number" id="cfg-tds-interest" step="0.1" min="0" />
+          </div>
+          <div class="tds-item">
+            <label>Dividend %</label>
+            <input type="number" id="cfg-tds-dividend" step="0.1" min="0" />
+          </div>
+          <div class="tds-item">
+            <label>Natural Person Contract %</label>
+            <input type="number" id="cfg-tds-person" step="0.1" min="0" />
+          </div>
+          <div class="tds-item">
+            <label>Land/Building Rent %</label>
+            <input type="number" id="cfg-tds-land" step="0.1" min="0" />
+          </div>
+          <div class="tds-item">
+            <label>TDS Deposit Deadline (गते)</label>
+            <input type="number" id="cfg-tds-deadline" min="1" max="32" />
+          </div>
+        </div>
       </div>
     </div>
-  </div>
-</div>
 
-<!-- ══ INCOME TAX SLABS ══ -->
-<div class="admin-section">
-  <div class="as-header">
-    <div class="as-title"><i class="fas fa-file-invoice-dollar"></i> Income Tax Slabs</div>
-    <span class="as-badge">Income Tax Act 2058</span>
-  </div>
-  <div class="admin-card">
+    <!-- ══ INCOME TAX SLABS ══ -->
+    <div class="admin-section">
+      <div class="as-header">
+        <div class="as-title"><i class="fas fa-file-invoice-dollar"></i> Income Tax Slabs</div>
+        <span class="as-badge">Income Tax Act 2058</span>
+      </div>
+      <div class="admin-card">
 
-    <!-- Unmarried -->
-    <div style="margin-bottom:20px;">
-      <div style="font-size:.82rem;color:var(--gold);font-weight:600;margin-bottom:12px;"><i class="fas fa-user"></i> Unmarried / Single</div>
-      <table class="slab-table">
-        <thead>
-          <tr>
-            <th>Slab</th>
-            <th>Up to Amount (Rs)</th>
-            <th>Tax Rate %</th>
-          </tr>
-        </thead>
-        <tbody id="slab-unmarried">
-          <!-- Dynamically filled -->
-        </tbody>
-      </table>
+        <!-- Unmarried -->
+        <div style="margin-bottom:20px;">
+          <div style="font-size:.82rem;color:var(--gold);font-weight:600;margin-bottom:12px;"><i class="fas fa-user"></i> Unmarried / Single</div>
+          <table class="slab-table">
+            <thead>
+              <tr>
+                <th>Slab</th>
+                <th>Up to Amount (Rs)</th>
+                <th>Tax Rate %</th>
+              </tr>
+            </thead>
+            <tbody id="slab-unmarried">
+              <!-- Dynamically filled -->
+            </tbody>
+          </table>
+        </div>
+
+        <div class="divider"></div>
+
+        <!-- Married -->
+        <div>
+          <div style="font-size:.82rem;color:var(--blue);font-weight:600;margin-bottom:12px;"><i class="fas fa-users"></i> Married / Couple</div>
+          <table class="slab-table">
+            <thead>
+              <tr>
+                <th>Slab</th>
+                <th>Up to Amount (Rs)</th>
+                <th>Tax Rate %</th>
+              </tr>
+            </thead>
+            <tbody id="slab-married">
+              <!-- Dynamically filled -->
+            </tbody>
+          </table>
+        </div>
+
+      </div>
     </div>
 
-    <div class="divider"></div>
-
-    <!-- Married -->
-    <div>
-      <div style="font-size:.82rem;color:var(--blue);font-weight:600;margin-bottom:12px;"><i class="fas fa-users"></i> Married / Couple</div>
-      <table class="slab-table">
-        <thead>
-          <tr>
-            <th>Slab</th>
-            <th>Up to Amount (Rs)</th>
-            <th>Tax Rate %</th>
-          </tr>
-        </thead>
-        <tbody id="slab-married">
-          <!-- Dynamically filled -->
-        </tbody>
-      </table>
-    </div>
-
-  </div>
-</div>
-
-<!-- ══ PF / SSF ══ -->
-<div class="admin-section">
-  <div class="as-header">
-    <div class="as-title"><i class="fas fa-piggy-bank"></i> PF / SSF Rates</div>
-    <span class="as-badge">Labor Act</span>
-  </div>
-  <div class="admin-card">
-    <div class="ag ag-4">
-      <div class="fg">
-        <label>PF Employee %</label>
-        <input type="number" id="cfg-pf-emp" step="0.1" min="0" />
-        <div class="hint">Employee contribution</div>
+    <!-- ══ PF / SSF ══ -->
+    <div class="admin-section">
+      <div class="as-header">
+        <div class="as-title"><i class="fas fa-piggy-bank"></i> PF / SSF Rates</div>
+        <span class="as-badge">Labor Act</span>
       </div>
-      <div class="fg">
-        <label>PF Employer %</label>
-        <input type="number" id="cfg-pf-empl" step="0.1" min="0" />
-        <div class="hint">Employer contribution</div>
-      </div>
-      <div class="fg">
-        <label>SSF Employee %</label>
-        <input type="number" id="cfg-ssf-emp" step="0.1" min="0" />
-      </div>
-      <div class="fg">
-        <label>SSF Employer %</label>
-        <input type="number" id="cfg-ssf-empl" step="0.1" min="0" />
+      <div class="admin-card">
+        <div class="ag ag-4">
+          <div class="fg">
+            <label>PF Employee %</label>
+            <input type="number" id="cfg-pf-emp" step="0.1" min="0" />
+            <div class="hint">Employee contribution</div>
+          </div>
+          <div class="fg">
+            <label>PF Employer %</label>
+            <input type="number" id="cfg-pf-empl" step="0.1" min="0" />
+            <div class="hint">Employer contribution</div>
+          </div>
+          <div class="fg">
+            <label>SSF Employee %</label>
+            <input type="number" id="cfg-ssf-emp" step="0.1" min="0" />
+          </div>
+          <div class="fg">
+            <label>SSF Employer %</label>
+            <input type="number" id="cfg-ssf-empl" step="0.1" min="0" />
+          </div>
+        </div>
       </div>
     </div>
-  </div>
-</div>
 
-<!-- ══ CORPORATE TAX ══ -->
-<div class="admin-section">
-  <div class="as-header">
-    <div class="as-title"><i class="fas fa-building"></i> Corporate Tax Rates</div>
-    <span class="as-badge">Income Tax Act</span>
-  </div>
-  <div class="admin-card">
-    <div class="ag ag-3">
-      <div class="fg">
-        <label>Normal Company %</label>
-        <input type="number" id="cfg-corp-normal" step="0.1" min="0" />
+    <!-- ══ CORPORATE TAX ══ -->
+    <div class="admin-section">
+      <div class="as-header">
+        <div class="as-title"><i class="fas fa-building"></i> Corporate Tax Rates</div>
+        <span class="as-badge">Income Tax Act</span>
       </div>
-      <div class="fg">
-        <label>Special Industry %</label>
-        <input type="number" id="cfg-corp-special" step="0.1" min="0" />
-        <div class="hint">Manufacturing, IT, etc.</div>
-      </div>
-      <div class="fg">
-        <label>Bank / Financial %</label>
-        <input type="number" id="cfg-corp-bank" step="0.1" min="0" />
+      <div class="admin-card">
+        <div class="ag ag-3">
+          <div class="fg">
+            <label>Normal Company %</label>
+            <input type="number" id="cfg-corp-normal" step="0.1" min="0" />
+          </div>
+          <div class="fg">
+            <label>Special Industry %</label>
+            <input type="number" id="cfg-corp-special" step="0.1" min="0" />
+            <div class="hint">Manufacturing, IT, etc.</div>
+          </div>
+          <div class="fg">
+            <label>Bank / Financial %</label>
+            <input type="number" id="cfg-corp-bank" step="0.1" min="0" />
+          </div>
+        </div>
       </div>
     </div>
-  </div>
-</div>
 
-<!-- ══ ADVANCE TAX ══ -->
-<div class="admin-section">
-  <div class="as-header">
-    <div class="as-title"><i class="fas fa-calendar-check"></i> Advance Tax Schedule</div>
-    <span class="as-badge">Quarterly</span>
-  </div>
-  <div class="admin-card">
-    <div class="ag ag-3">
-      <div class="fg">
-        <label>Q1 Cumulative % (Poush end)</label>
-        <input type="number" id="cfg-at-q1" step="1" min="0" max="100" />
+    <!-- ══ ADVANCE TAX ══ -->
+    <div class="admin-section">
+      <div class="as-header">
+        <div class="as-title"><i class="fas fa-calendar-check"></i> Advance Tax Schedule</div>
+        <span class="as-badge">Quarterly</span>
       </div>
-      <div class="fg">
-        <label>Q2 Cumulative % (Chaitra end)</label>
-        <input type="number" id="cfg-at-q2" step="1" min="0" max="100" />
-      </div>
-      <div class="fg">
-        <label>Q3 Cumulative % (Ashadh end)</label>
-        <input type="number" id="cfg-at-q3" step="1" min="0" max="100" />
+      <div class="admin-card">
+        <div class="ag ag-3">
+          <div class="fg">
+            <label>Q1 Cumulative % (Poush end)</label>
+            <input type="number" id="cfg-at-q1" step="1" min="0" max="100" />
+          </div>
+          <div class="fg">
+            <label>Q2 Cumulative % (Chaitra end)</label>
+            <input type="number" id="cfg-at-q2" step="1" min="0" max="100" />
+          </div>
+          <div class="fg">
+            <label>Q3 Cumulative % (Ashadh end)</label>
+            <input type="number" id="cfg-at-q3" step="1" min="0" max="100" />
+          </div>
+        </div>
       </div>
     </div>
-  </div>
-</div>
 
-<!-- ══ DEPRECIATION RATES ══ -->
-<div class="admin-section">
-  <div class="as-header">
-    <div class="as-title"><i class="fas fa-chart-line"></i> Depreciation Rates (WDV)</div>
-    <span class="as-badge">Income Tax Act Schedule</span>
-  </div>
-  <div class="admin-card">
-    <div class="ag ag-3">
-      <div class="fg">
-        <label>Building %</label>
-        <input type="number" id="cfg-dep-building" step="0.1" min="0" />
+    <!-- ══ DEPRECIATION RATES ══ -->
+    <div class="admin-section">
+      <div class="as-header">
+        <div class="as-title"><i class="fas fa-chart-line"></i> Depreciation Rates (WDV)</div>
+        <span class="as-badge">Income Tax Act Schedule</span>
       </div>
-      <div class="fg">
-        <label>Vehicle %</label>
-        <input type="number" id="cfg-dep-vehicle" step="0.1" min="0" />
-      </div>
-      <div class="fg">
-        <label>Machinery %</label>
-        <input type="number" id="cfg-dep-machinery" step="0.1" min="0" />
-      </div>
-      <div class="fg">
-        <label>Furniture / Computer %</label>
-        <input type="number" id="cfg-dep-furniture" step="0.1" min="0" />
-      </div>
-      <div class="fg">
-        <label>Intangibles %</label>
-        <input type="number" id="cfg-dep-intangible" step="0.1" min="0" />
+      <div class="admin-card">
+        <div class="ag ag-3">
+          <div class="fg">
+            <label>Building %</label>
+            <input type="number" id="cfg-dep-building" step="0.1" min="0" />
+          </div>
+          <div class="fg">
+            <label>Vehicle %</label>
+            <input type="number" id="cfg-dep-vehicle" step="0.1" min="0" />
+          </div>
+          <div class="fg">
+            <label>Machinery %</label>
+            <input type="number" id="cfg-dep-machinery" step="0.1" min="0" />
+          </div>
+          <div class="fg">
+            <label>Furniture / Computer %</label>
+            <input type="number" id="cfg-dep-furniture" step="0.1" min="0" />
+          </div>
+          <div class="fg">
+            <label>Intangibles %</label>
+            <input type="number" id="cfg-dep-intangible" step="0.1" min="0" />
+          </div>
+        </div>
       </div>
     </div>
-  </div>
-</div>
 
-<!-- ══ NPA RATES ══ -->
-<div class="admin-section">
-  <div class="as-header">
-    <div class="as-title"><i class="fas fa-exclamation-triangle"></i> NPA Provision Rates</div>
-    <span class="as-badge">NRB Guidelines</span>
-  </div>
-  <div class="admin-card">
-    <div class="ag ag-3">
-      <div class="fg">
-        <label>Pass (< 30 days) %</label>
-        <input type="number" id="cfg-npa-pass" step="0.1" min="0" />
+    <!-- ══ NPA RATES ══ -->
+    <div class="admin-section">
+      <div class="as-header">
+        <div class="as-title"><i class="fas fa-exclamation-triangle"></i> NPA Provision Rates</div>
+        <span class="as-badge">NRB Guidelines</span>
       </div>
-      <div class="fg">
-        <label>Watchlist (30-90 days) %</label>
-        <input type="number" id="cfg-npa-watch" step="0.1" min="0" />
-      </div>
-      <div class="fg">
-        <label>Substandard (90-180 days) %</label>
-        <input type="number" id="cfg-npa-sub" step="0.1" min="0" />
-      </div>
-      <div class="fg">
-        <label>Doubtful (180-365 days) %</label>
-        <input type="number" id="cfg-npa-doubt" step="0.1" min="0" />
-      </div>
-      <div class="fg">
-        <label>Bad/Loss (> 365 days) %</label>
-        <input type="number" id="cfg-npa-bad" step="0.1" min="0" />
+      <div class="admin-card">
+        <div class="ag ag-3">
+          <div class="fg">
+            <label>Pass (< 30 days) %</label>
+            <input type="number" id="cfg-npa-pass" step="0.1" min="0" />
+          </div>
+          <div class="fg">
+            <label>Watchlist (30-90 days) %</label>
+            <input type="number" id="cfg-npa-watch" step="0.1" min="0" />
+          </div>
+          <div class="fg">
+            <label>Substandard (90-180 days) %</label>
+            <input type="number" id="cfg-npa-sub" step="0.1" min="0" />
+          </div>
+          <div class="fg">
+            <label>Doubtful (180-365 days) %</label>
+            <input type="number" id="cfg-npa-doubt" step="0.1" min="0" />
+          </div>
+          <div class="fg">
+            <label>Bad/Loss (> 365 days) %</label>
+            <input type="number" id="cfg-npa-bad" step="0.1" min="0" />
+          </div>
+        </div>
       </div>
     </div>
-  </div>
-</div>
 
-<!-- ══ CHANGE LOG ══ -->
-<div class="admin-section">
-  <div class="as-header">
-    <div class="as-title"><i class="fas fa-history"></i> Change Log</div>
-    <button class="btn-reset" onclick="clearLog()"><i class="fas fa-trash"></i> Clear Log</button>
-  </div>
-  <div class="changelog" id="changelog">
-    <div class="changelog-empty">No changes yet.</div>
-  </div>
-</div>
+    <!-- ══ CHANGE LOG ══ -->
+    <div class="admin-section">
+      <div class="as-header">
+        <div class="as-title"><i class="fas fa-history"></i> Change Log</div>
+        <button class="btn-reset" onclick="clearLog()"><i class="fas fa-trash"></i> Clear Log</button>
+      </div>
+      <div class="changelog" id="changelog">
+        <div class="changelog-empty">No changes yet.</div>
+      </div>
+    </div>
 
-<!-- Reset to defaults -->
-<div style="text-align:center;margin-top:8px;margin-bottom:40px;">
-  <button class="btn-reset" onclick="resetDefaults()" style="padding:10px 24px;">
-    <i class="fas fa-undo"></i> Reset All to Default Values
-  </button>
-</div>
-```
+    <!-- Reset to defaults -->
+    <div style="text-align:center;margin-top:8px;margin-bottom:40px;">
+      <button class="btn-reset" onclick="resetDefaults()" style="padding:10px 24px;">
+        <i class="fas fa-undo"></i> Reset All to Default Values
+      </button>
+    </div>
 
   </div>
 </div>
@@ -637,6 +628,10 @@ const DEFAULTS = {
   npaBad: 100,
 };
 
+/* ══ WORKER URL ══ */
+const WORKER_URL = 'https://morning-bush-8bd5.kushalphuyal.workers.dev';
+const ADMIN_KEY = 'kushal_admin_2082';
+
 /* ══ AUTH ══ */
 const ADMIN_USER = 'kushal';
 const ADMIN_PASS = 'kushal';
@@ -665,9 +660,23 @@ function doLogout() {
   document.getElementById('login-pass').value = '';
 }
 
-/* ══ LOAD VALUES ══ */
-function loadValues() {
-  const cfg = JSON.parse(localStorage.getItem('naps_config') || 'null') || DEFAULTS;
+/* ══ LOAD VALUES — Cloud बाट load ══ */
+async function loadValues() {
+  // Loading indicator
+  document.querySelector('.btn-save-all').innerHTML = '<i class="fas fa-spinner fa-spin"></i> Loading...';
+
+  // Cloud बाट load गर्ने
+  let cfg = await getConfig();
+
+  // Cloud मा छैन भने localStorage check गर्ने
+  if (!cfg) {
+    cfg = JSON.parse(localStorage.getItem('naps_config') || 'null');
+  }
+
+  // दुवैमा छैन भने defaults use गर्ने
+  if (!cfg) cfg = DEFAULTS;
+
+  document.querySelector('.btn-save-all').innerHTML = '<i class="fas fa-save"></i> Save All Changes';
 
   document.getElementById('cfg-fy').value = cfg.fy || DEFAULTS.fy;
   document.getElementById('cfg-fy-start').value = cfg.fyStart || DEFAULTS.fyStart;
@@ -744,8 +753,23 @@ function getSlabValues(tbodyId, count) {
   }));
 }
 
-/* ══ SAVE ALL ══ */
-function saveAll() {
+/* ══ GET CONFIG FROM CLOUD ══ */
+async function getConfig() {
+  try {
+    const res = await fetch(`${WORKER_URL}/get-config`);
+    const data = await res.json();
+    return Object.keys(data).length > 0 ? data : null;
+  } catch (e) {
+    return null;
+  }
+}
+
+/* ══ SAVE ALL — Cloud मा save ══ */
+async function saveAll() {
+  const saveBtn = document.querySelector('.btn-save-all');
+  saveBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Saving...';
+  saveBtn.disabled = true;
+
   const cfg = {
     fy: document.getElementById('cfg-fy').value || DEFAULTS.fy,
     fyStart: document.getElementById('cfg-fy-start').value,
@@ -797,20 +821,33 @@ function saveAll() {
     savedAt: new Date().toLocaleString('en-GB'),
   };
 
-  localStorage.setItem('naps_config', JSON.stringify(cfg));
+  try {
+    // Cloud मा save गर्ने
+    const res = await fetch(`${WORKER_URL}/save-config`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ adminKey: ADMIN_KEY, config: cfg }),
+    });
 
-  // Update nav
-  document.getElementById('nav-fy').textContent = 'FY ' + cfg.fy;
+    if (res.ok) {
+      // Local backup पनि
+      localStorage.setItem('naps_config', JSON.stringify(cfg));
+      document.getElementById('nav-fy').textContent = 'FY ' + cfg.fy;
+      addLog(`☁️ Cloud saved — FY ${cfg.fy} | VAT ${cfg.vat}% | TDS ${cfg.tdsServiceVat}%`);
 
-  // Add to changelog
-  addLog(`All rates saved — FY ${cfg.fy} | VAT ${cfg.vat}% | TDS ${cfg.tdsServiceVat}%`);
+      const alert = document.getElementById('save-alert');
+      alert.classList.add('show');
+      setTimeout(() => alert.classList.remove('show'), 4000);
+      showToast('☁️ Cloud मा save भयो!');
+    } else {
+      showToast('❌ Save failed — retry!');
+    }
+  } catch (e) {
+    showToast('❌ Network error — retry!');
+  }
 
-  // Show alert
-  const alert = document.getElementById('save-alert');
-  alert.classList.add('show');
-  setTimeout(() => alert.classList.remove('show'), 4000);
-
-  showToast('✓ All changes saved!');
+  saveBtn.innerHTML = '<i class="fas fa-save"></i> Save All Changes';
+  saveBtn.disabled = false;
 }
 
 /* ══ CHANGELOG ══ */
@@ -859,6 +896,5 @@ function showToast(msg) {
   setTimeout(() => t.classList.remove('show'), 2500);
 }
 </script>
-
 </body>
 </html>
