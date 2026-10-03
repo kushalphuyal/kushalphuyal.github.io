@@ -1,232 +1,71 @@
 <!DOCTYPE html>
 <html lang="ne">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Admin Panel - Nepal Accounting Suite</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
-  <style>
-    :root {
-      --bg: #0d0d0d;
-      --card: #161616;
-      --card2: #1e1e1e;
-      --border: rgba(255,255,255,.08);
-      --border2: rgba(255,255,255,.14);
-      --gold: #c9a84c;
-      --gold2: #e8c96a;
-      --green: #4caf7d;
-      --red: #e05a5a;
-      --blue: #5a9ee0;
-      --white: #f0f0f0;
-      --muted: rgba(255,255,255,.4);
-    }
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    body { background: var(--bg); color: var(--white); font-family: 'Segoe UI', sans-serif; }
-    
-    /* Login Screen */
-    #login-screen {
-      position: fixed; inset: 0; background: var(--bg);
-      display: flex; align-items: center; justify-content: center;
-      z-index: 9999;
-    }
-    .login-box {
-      background: var(--card); border: 1px solid var(--border2);
-      border-radius: 20px; padding: 48px 40px; width: 100%; max-width: 400px;
-      box-shadow: 0 32px 80px rgba(0,0,0,.6);
-    }
-    .login-logo { text-align: center; margin-bottom: 32px; }
-    .login-logo i { 
-      font-size: 2.5rem; color: var(--gold); 
-      background: rgba(201,168,76,.1); width: 80px; height: 80px;
-      border-radius: 20px; display: flex; align-items: center;
-      justify-content: center; margin: 0 auto 16px;
-    }
-    .login-logo h2 { font-size: 1.3rem; color: var(--white); }
-    .login-logo p { font-size: .8rem; color: var(--muted); margin-top: 4px; }
-    
-    .login-fg { margin-bottom: 18px; }
-    .login-fg label { 
-      display: block; font-size: .75rem; color: var(--muted); 
-      text-transform: uppercase; letter-spacing: .08em; margin-bottom: 8px; 
-    }
-    .login-fg input {
-      width: 100%; background: var(--card2); border: 1px solid var(--border2);
-      border-radius: 10px; padding: 12px 16px; color: var(--white);
-      font-size: .95rem; outline: none;
-    }
-    .login-fg input:focus { border-color: var(--gold); }
-    
-    .login-btn {
-      width: 100%; padding: 14px; border-radius: 12px;
-      background: linear-gradient(135deg, var(--gold), #a8862e);
-      border: none; color: #000; font-weight: 700; font-size: 1rem;
-      cursor: pointer; transition: all .2s; margin-top: 8px;
-    }
-    .login-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(201,168,76,.3); }
-    .login-err { 
-      color: var(--red); font-size: .82rem; text-align: center; 
-      margin-top: 12px; display: none; 
-    }
-
-    /* Admin Panel */
-    #admin-panel { display: none; }
-    
-    .admin-nav {
-      background: var(--card); border-bottom: 1px solid var(--border);
-      padding: 14px 28px; display: flex; align-items: center;
-      justify-content: space-between; position: sticky; top: 0; z-index: 100;
-    }
-    .an-logo { 
-      font-family: 'Georgia', serif; font-size: 1.1rem; 
-      color: var(--gold); display: flex; align-items: center; gap: 10px; 
-    }
-    .an-right { display: flex; align-items: center; gap: 12px; }
-    .fy-badge { 
-      background: rgba(201,168,76,.12); border: 1px solid rgba(201,168,76,.25);
-      border-radius: 20px; padding: 4px 14px; font-size: .75rem; 
-      color: var(--gold); font-weight: 600; 
-    }
-    .btn-logout {
-      background: rgba(224,90,90,.1); border: 1px solid rgba(224,90,90,.2);
-      color: var(--red); border-radius: 8px; padding: 7px 14px;
-      font-size: .78rem; cursor: pointer; transition: all .2s;
-    }
-    .btn-logout:hover { background: rgba(224,90,90,.2); }
-    .btn-save-all {
-      background: linear-gradient(135deg, var(--gold), #a8862e);
-      border: none; color: #000; border-radius: 8px; padding: 8px 20px;
-      font-size: .82rem; font-weight: 700; cursor: pointer;
-      display: flex; align-items: center; gap: 6px;
-    }
-
-    .admin-body { max-width: 1200px; margin: 0 auto; padding: 32px 24px; }
-
-    /* Alert Banner */
-    .alert-banner {
-      background: rgba(76,175,125,.08); border: 1px solid rgba(76,175,125,.2);
-      border-radius: 12px; padding: 14px 20px; display: flex;
-      align-items: center; gap: 12px; margin-bottom: 28px;
-      font-size: .85rem; color: var(--green); display: none;
-    }
-    .alert-banner.show { display: flex; }
-
-    /* Sections */
-    .admin-section { margin-bottom: 28px; }
-    .as-header {
-      display: flex; align-items: center; justify-content: space-between;
-      margin-bottom: 16px;
-    }
-    .as-title {
-      display: flex; align-items: center; gap: 10px;
-      font-family: 'Georgia', serif; font-size: 1.05rem; color: var(--white);
-    }
-    .as-title i { color: var(--gold); font-size: .9rem; }
-    .as-badge { 
-      font-size: .68rem; color: var(--muted); background: var(--card2);
-      border: 1px solid var(--border); border-radius: 20px; padding: 3px 10px; 
-    }
-
-    .admin-card {
-      background: var(--card); border: 1px solid var(--border);
-      border-radius: 16px; padding: 24px;
-    }
-
-    /* Form Grid */
-    .grid { display: grid; gap: 16px; }
-    .grid-2 { grid-template-columns: 1fr 1fr; }
-    .grid-3 { grid-template-columns: 1fr 1fr 1fr; }
-    .grid-4 { grid-template-columns: repeat(4, 1fr); }
-    
-    .fg { }
-    .fg label {
-      display: block; font-size: .72rem; color: var(--muted);
-      text-transform: uppercase; letter-spacing: .08em; margin-bottom: 6px;
-    }
-    .fg input, .fg select {
-      width: 100%; background: var(--card2); border: 1px solid var(--border2);
-      border-radius: 10px; padding: 10px 14px; color: var(--white);
-      font-size: .92rem; outline: none;
-    }
-    .fg input:focus { border-color: var(--gold); }
-    .hint { font-size: .7rem; color: var(--muted); margin-top: 5px; }
-
-    /* TDS Grid */
-    .tds-grid { 
-      display: grid; 
-      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); 
-      gap: 12px; 
-    }
-    .tds-item {
-      background: var(--card2); border: 1px solid var(--border);
-      border-radius: 10px; padding: 14px;
-    }
-    .tds-item label {
-      font-size: .7rem; color: var(--muted); text-transform: uppercase;
-      letter-spacing: .06em; margin-bottom: 8px; display: block;
-    }
-    .tds-item input {
-      width: 100%; background: var(--bg); border: 1px solid var(--border2);
-      border-radius: 8px; padding: 8px 12px; color: var(--gold);
-      font-size: 1rem; font-weight: 700; outline: none;
-    }
-
-    /* Slab Table */
-    .slab-table { width: 100%; border-collapse: collapse; }
-    .slab-table th {
-      font-size: .68rem; color: var(--muted); text-transform: uppercase;
-      padding: 8px 12px; text-align: left; border-bottom: 1px solid var(--border);
-    }
-    .slab-table td { padding: 8px 12px; border-bottom: 1px solid rgba(255,255,255,.03); }
-    .slab-table input {
-      background: var(--card2); border: 1px solid var(--border2);
-      border-radius: 6px; padding: 6px 10px; color: var(--white);
-      width: 100%; outline: none;
-    }
-    .slab-table input:focus { border-color: var(--gold); }
-
-    /* Changelog */
-    .changelog {
-      background: var(--card2); border: 1px solid var(--border);
-      border-radius: 12px; padding: 16px; max-height: 200px;
-      overflow-y: auto; margin-top: 16px;
-    }
-    .changelog-item {
-      font-size: .78rem; color: var(--muted); padding: 6px 0;
-      border-bottom: 1px solid rgba(255,255,255,.03);
-      display: flex; justify-content: space-between;
-    }
-    .changelog-item span { color: var(--gold); }
-    .changelog-empty { 
-      text-align: center; padding: 20px; color: var(--muted); 
-    }
-
-    .btn-reset {
-      background: rgba(224,90,90,.08); border: 1px solid rgba(224,90,90,.15);
-      color: var(--red); border-radius: 6px; padding: 6px 12px;
-      font-size: .75rem; cursor: pointer;
-    }
-
-    .toast {
-      position: fixed; bottom: 30px; left: 50%;
-      transform: translateX(-50%) translateY(20px);
-      background: var(--card2); border: 1px solid rgba(76,175,125,.3);
-      border-radius: 12px; padding: 12px 24px; font-size: .85rem;
-      color: var(--green); z-index: 9999; opacity: 0;
-      transition: all .3s; display: flex; align-items: center; gap: 8px;
-    }
-    .toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
-
-    @media (max-width: 768px) {
-      .grid-2, .grid-3, .grid-4 { grid-template-columns: 1fr; }
-      .tds-grid { grid-template-columns: 1fr; }
-    }
-  </style>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="robots" content="noindex, nofollow" />
+<title>Admin Panel - Nepal Accounting Suite</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
+<style>
+:root{--bg:#0d0d0d;--card:#161616;--card2:#1e1e1e;--border:rgba(255,255,255,.08);--border2:rgba(255,255,255,.14);--gold:#c9a84c;--gold2:#e8c96a;--green:#4caf7d;--red:#e05a5a;--blue:#5a9ee0;--white:#f0f0f0;--muted:rgba(255,255,255,.55)}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--white);font-family:'Segoe UI',sans-serif}
+#login-screen{position:fixed;inset:0;background:var(--bg);display:flex;align-items:center;justify-content:center;z-index:9999;padding:16px}
+.login-box{background:var(--card);border:1px solid var(--border2);border-radius:20px;padding:48px 40px;width:100%;max-width:400px;box-shadow:0 32px 80px rgba(0,0,0,.6)}
+.login-logo{text-align:center;margin-bottom:32px}
+.login-logo i{font-size:2.5rem;color:var(--gold);background:rgba(201,168,76,.1);width:80px;height:80px;border-radius:20px;display:flex;align-items:center;justify-content:center;margin:0 auto 16px}
+.login-logo h2{font-size:1.3rem}
+.login-logo p{font-size:.8rem;color:var(--muted);margin-top:4px}
+.login-fg{margin-bottom:18px}
+.login-fg label{display:block;font-size:.75rem;color:var(--muted);text-transform:uppercase;letter-spacing:.08em;margin-bottom:8px}
+.login-fg input{width:100%;background:var(--card2);border:1px solid var(--border2);border-radius:10px;padding:12px 16px;color:var(--white);font-size:.95rem;outline:none}
+.login-fg input:focus{border-color:var(--gold)}
+.login-btn{width:100%;padding:14px;border-radius:12px;background:linear-gradient(135deg,var(--gold),#a8862e);border:none;color:#000;font-weight:700;font-size:1rem;cursor:pointer;margin-top:8px}
+.login-err{color:var(--red);font-size:.82rem;text-align:center;margin-top:12px;display:none}
+#admin-panel{display:none}
+.admin-nav{background:var(--card);border-bottom:1px solid var(--border);padding:14px 28px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100;flex-wrap:wrap;gap:10px}
+.an-logo{font-family:Georgia,serif;font-size:1.1rem;color:var(--gold);display:flex;align-items:center;gap:10px}
+.an-right{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.fy-badge{background:rgba(201,168,76,.12);border:1px solid rgba(201,168,76,.25);border-radius:20px;padding:4px 14px;font-size:.75rem;color:var(--gold);font-weight:600}
+.btn-logout{background:rgba(224,90,90,.1);border:1px solid rgba(224,90,90,.2);color:var(--red);border-radius:8px;padding:7px 14px;font-size:.78rem;cursor:pointer}
+.btn-save-all{background:linear-gradient(135deg,var(--gold),#a8862e);border:none;color:#000;border-radius:8px;padding:8px 20px;font-size:.82rem;font-weight:700;cursor:pointer;display:flex;align-items:center;gap:6px}
+.admin-body{max-width:1200px;margin:0 auto;padding:32px 24px}
+.alert-banner{background:rgba(76,175,125,.08);border:1px solid rgba(76,175,125,.2);border-radius:12px;padding:14px 20px;align-items:center;gap:12px;margin-bottom:28px;font-size:.85rem;color:var(--green);display:none}
+.alert-banner.show{display:flex}
+.admin-section{margin-bottom:28px}
+.as-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:16px}
+.as-title{display:flex;align-items:center;gap:10px;font-family:Georgia,serif;font-size:1.05rem}
+.as-title i{color:var(--gold);font-size:.9rem}
+.admin-card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:24px}
+.grid{display:grid;gap:16px}
+.grid-2{grid-template-columns:1fr 1fr}.grid-3{grid-template-columns:1fr 1fr 1fr}.grid-4{grid-template-columns:repeat(4,1fr)}
+.fg label{display:block;font-size:.72rem;color:var(--muted);text-transform:uppercase;letter-spacing:.08em;margin-bottom:6px}
+.fg input{width:100%;background:var(--card2);border:1px solid var(--border2);border-radius:10px;padding:10px 14px;color:var(--white);font-size:.92rem;outline:none}
+.fg input:focus{border-color:var(--gold)}
+.hint{font-size:.7rem;color:var(--muted);margin-top:5px}
+.tds-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:12px}
+.tds-item{background:var(--card2);border:1px solid var(--border);border-radius:10px;padding:14px}
+.tds-item label{font-size:.7rem;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;margin-bottom:8px;display:block}
+.tds-item input{width:100%;background:var(--bg);border:1px solid var(--border2);border-radius:8px;padding:8px 12px;color:var(--gold);font-size:1rem;font-weight:700;outline:none}
+.slab-table{width:100%;border-collapse:collapse}
+.slab-table th{font-size:.68rem;color:var(--muted);text-transform:uppercase;padding:8px 12px;text-align:left;border-bottom:1px solid var(--border)}
+.slab-table td{padding:8px 12px;border-bottom:1px solid rgba(255,255,255,.03);font-size:.85rem}
+.slab-table input{background:var(--card2);border:1px solid var(--border2);border-radius:6px;padding:6px 10px;color:var(--white);width:100%;outline:none}
+.slab-table input:focus{border-color:var(--gold)}
+.changelog{background:var(--card2);border:1px solid var(--border);border-radius:12px;padding:16px;max-height:200px;overflow-y:auto}
+.changelog-item{font-size:.78rem;color:var(--muted);padding:6px 0;border-bottom:1px solid rgba(255,255,255,.03);display:flex;justify-content:space-between;gap:10px}
+.changelog-item span:first-child{color:var(--gold)}
+.changelog-empty{text-align:center;padding:20px;color:var(--muted)}
+.btn-reset{background:rgba(224,90,90,.08);border:1px solid rgba(224,90,90,.15);color:var(--red);border-radius:6px;padding:6px 12px;font-size:.75rem;cursor:pointer}
+.toast{position:fixed;bottom:30px;left:50%;transform:translateX(-50%) translateY(20px);background:var(--card2);border:1px solid rgba(76,175,125,.3);border-radius:12px;padding:12px 24px;font-size:.85rem;color:var(--green);z-index:99999;opacity:0;transition:all .3s;display:flex;align-items:center;gap:8px;pointer-events:none}
+.toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+@media(max-width:768px){.grid-2,.grid-3,.grid-4{grid-template-columns:1fr}.tds-grid{grid-template-columns:1fr}.admin-nav{padding:12px 16px}.admin-body{padding:20px 14px}.login-box{padding:36px 24px}}
+</style>
 </head>
 <body>
 
 <div id="toast" class="toast"><i class="fas fa-check-circle"></i><span id="toast-msg">सफल!</span></div>
 
-<!-- Login Screen -->
 <div id="login-screen">
   <div class="login-box">
     <div class="login-logo">
@@ -238,519 +77,312 @@
       <label>पासवर्ड</label>
       <input type="password" id="login-pass" placeholder="एडमिन पासवर्ड" autofocus />
     </div>
-    <button class="login-btn" onclick="doLogin()">
-      <i class="fas fa-sign-in-alt"></i> लगइन
-    </button>
+    <button class="login-btn" onclick="doLogin()"><i class="fas fa-sign-in-alt"></i> लगइन</button>
     <div class="login-err" id="login-err">❌ गलत पासवर्ड!</div>
   </div>
 </div>
 
-<!-- Admin Panel -->
 <div id="admin-panel">
   <div class="admin-nav">
-    <div class="an-logo">
-      <i class="fas fa-cog"></i>
-      <span>Nepal Accounting Suite — Admin</span>
-    </div>
+    <div class="an-logo"><i class="fas fa-cog"></i><span>Nepal Accounting Suite — Admin</span></div>
     <div class="an-right">
       <span class="fy-badge" id="nav-fy">FY 2082/83</span>
-      <button class="btn-save-all" onclick="saveAll()">
-        <i class="fas fa-save"></i> सेभ गर्नुहोस्
-      </button>
-      <button class="btn-logout" onclick="doLogout()">
-        <i class="fas fa-sign-out-alt"></i> लगआउट
-      </button>
+      <button class="btn-save-all" onclick="saveAll()"><i class="fas fa-save"></i> सेभ गर्नुहोस्</button>
+      <button class="btn-logout" onclick="doLogout()"><i class="fas fa-sign-out-alt"></i> लगआउट</button>
     </div>
   </div>
 
   <div class="admin-body">
     <div class="alert-banner" id="save-alert">
       <i class="fas fa-check-circle"></i>
-      <div>
-        <strong>सेभ भयो!</strong>
-        <div style="font-size:.78rem;">नयाँ सेटिङ्हरू तुरुन्त प्रभावमा आउनेछ।</div>
-      </div>
+      <div><strong>सेभ भयो!</strong><div style="font-size:.78rem;">नयाँ सेटिङ्हरू तुरुन्त प्रभावमा आउनेछ।</div></div>
     </div>
 
-    <!-- Fiscal Year -->
     <div class="admin-section">
-      <div class="as-header">
-        <div class="as-title"><i class="fas fa-calendar-alt"></i> Fiscal Year</div>
-      </div>
-      <div class="admin-card">
-        <div class="grid grid-3">
-          <div class="fg">
-            <label>चालु आर्थिक वर्ष</label>
-            <input type="text" id="cfg-fy" placeholder="2082/83" />
-            <div class="hint">जस्तै: 2082/83</div>
-          </div>
-          <div class="fg">
-            <label>सुरु मिति</label>
-            <input type="text" id="cfg-fy-start" placeholder="Shrawan 1, 2082" />
-          </div>
-          <div class="fg">
-            <label>अन्त्य मिति</label>
-            <input type="text" id="cfg-fy-end" placeholder="Ashadh 31, 2083" />
-          </div>
-        </div>
-      </div>
+      <div class="as-header"><div class="as-title"><i class="fas fa-calendar-alt"></i> Fiscal Year</div></div>
+      <div class="admin-card"><div class="grid grid-3">
+        <div class="fg"><label>चालु आर्थिक वर्ष</label><input type="text" id="cfg-fy" placeholder="2083/84" /><div class="hint">जस्तै: 2083/84</div></div>
+        <div class="fg"><label>सुरु मिति</label><input type="text" id="cfg-fy-start" placeholder="Shrawan 1, 2083" /></div>
+        <div class="fg"><label>अन्त्य मिति</label><input type="text" id="cfg-fy-end" placeholder="Ashadh 31, 2084" /></div>
+      </div></div>
     </div>
 
-    <!-- VAT Settings -->
     <div class="admin-section">
-      <div class="as-header">
-        <div class="as-title"><i class="fas fa-receipt"></i> VAT (मूल्य अभिवृद्धि कर)</div>
-      </div>
-      <div class="admin-card">
-        <div class="grid grid-4">
-          <div class="fg">
-            <label>VAT दर %</label>
-            <input type="number" id="cfg-vat" step="0.01" min="0" max="100" />
-          </div>
-          <div class="fg">
-            <label>दाखिला मिति (गते)</label>
-            <input type="number" id="cfg-vat-deadline" min="1" max="32" />
-          </div>
-          <div class="fg">
-            <label>ब्याज दर % (वार्षिक)</label>
-            <input type="number" id="cfg-vat-interest" step="0.1" min="0" />
-          </div>
-          <div class="fg">
-            <label>जरिवाना % (मासिक)</label>
-            <input type="number" id="cfg-vat-penalty" step="0.1" min="0" />
-          </div>
-        </div>
-      </div>
+      <div class="as-header"><div class="as-title"><i class="fas fa-receipt"></i> VAT (मूल्य अभिवृद्धि कर)</div></div>
+      <div class="admin-card"><div class="grid grid-4">
+        <div class="fg"><label>VAT दर %</label><input type="number" id="cfg-vat" step="0.01" min="0" max="100" /></div>
+        <div class="fg"><label>दाखिला मिति (गते)</label><input type="number" id="cfg-vat-deadline" min="1" max="32" /></div>
+        <div class="fg"><label>ब्याज दर % (वार्षिक)</label><input type="number" id="cfg-vat-interest" step="0.1" min="0" /></div>
+        <div class="fg"><label>जरिवाना % (मासिक)</label><input type="number" id="cfg-vat-penalty" step="0.1" min="0" /></div>
+      </div></div>
     </div>
 
-    <!-- TDS Rates -->
     <div class="admin-section">
-      <div class="as-header">
-        <div class="as-title"><i class="fas fa-percentage"></i> TDS (कर कट्टी) दरहरू</div>
-      </div>
-      <div class="admin-card">
-        <div class="tds-grid">
-          <div class="tds-item">
-            <label>सेवा (भ्याट बिल सहित)</label>
-            <input type="number" id="cfg-tds-service-vat" step="0.1" min="0" />
-          </div>
-          <div class="tds-item">
-            <label>सेवा (भ्याट बिल बिना)</label>
-            <input type="number" id="cfg-tds-service-novat" step="0.1" min="0" />
-          </div>
-          <div class="tds-item">
-            <label>भाडा (Rent)</label>
-            <input type="number" id="cfg-tds-rent" step="0.1" min="0" />
-          </div>
-          <div class="tds-item">
-            <label>ब्याज / रोयल्टी</label>
-            <input type="number" id="cfg-tds-interest" step="0.1" min="0" />
-          </div>
-          <div class="tds-item">
-            <label>लाभांश (Dividend)</label>
-            <input type="number" id="cfg-tds-dividend" step="0.1" min="0" />
-          </div>
-          <div class="tds-item">
-            <label>प्राकृतिक व्यक्ति ठेक्का</label>
-            <input type="number" id="cfg-tds-person" step="0.1" min="0" />
-          </div>
-          <div class="tds-item">
-            <label>जग्गा/घर भाडा</label>
-            <input type="number" id="cfg-tds-land" step="0.1" min="0" />
-          </div>
-          <div class="tds-item">
-            <label>दाखिला मिति (गते)</label>
-            <input type="number" id="cfg-tds-deadline" min="1" max="32" />
-          </div>
-        </div>
-      </div>
+      <div class="as-header"><div class="as-title"><i class="fas fa-percentage"></i> TDS (कर कट्टी) दरहरू</div></div>
+      <div class="admin-card"><div class="tds-grid">
+        <div class="tds-item"><label>सेवा (भ्याट बिल सहित)</label><input type="number" id="cfg-tds-service-vat" step="0.1" min="0" /></div>
+        <div class="tds-item"><label>सेवा (भ्याट बिल बिना)</label><input type="number" id="cfg-tds-service-no-vat" step="0.1" min="0" /></div>
+        <div class="tds-item"><label>भाडा (Rent)</label><input type="number" id="cfg-tds-rent" step="0.1" min="0" /></div>
+        <div class="tds-item"><label>ब्याज / रोयल्टी</label><input type="number" id="cfg-tds-interest" step="0.1" min="0" /></div>
+        <div class="tds-item"><label>लाभांश (Dividend)</label><input type="number" id="cfg-tds-dividend" step="0.1" min="0" /></div>
+        <div class="tds-item"><label>प्राकृतिक व्यक्ति ठेक्का</label><input type="number" id="cfg-tds-person" step="0.1" min="0" /></div>
+        <div class="tds-item"><label>जग्गा/घर भाडा</label><input type="number" id="cfg-tds-land" step="0.1" min="0" /></div>
+        <div class="tds-item"><label>दाखिला मिति (गते)</label><input type="number" id="cfg-tds-deadline" min="1" max="32" /></div>
+      </div></div>
     </div>
 
-    <!-- Income Tax Slabs -->
     <div class="admin-section">
-      <div class="as-header">
-        <div class="as-title"><i class="fas fa-file-invoice-dollar"></i> आयकर स्ल्याब</div>
-      </div>
+      <div class="as-header"><div class="as-title"><i class="fas fa-file-invoice-dollar"></i> आयकर स्ल्याब</div></div>
       <div class="admin-card">
         <div style="margin-bottom:20px;">
-          <h4 style="color: var(--gold); margin-bottom:12px;"><i class="fas fa-user"></i> अविवाहित</h4>
-          <table class="slab-table" id="slab-unmarried-table">
-            <thead>
-              <tr><th>स्ल्याब</th><th>सम्म (रु.)</th><th>दर %</th></tr>
-            </thead>
-            <tbody id="slab-unmarried"></tbody>
-          </table>
+          <h4 style="color:var(--gold);margin-bottom:12px;"><i class="fas fa-user"></i> अविवाहित</h4>
+          <div style="overflow-x:auto"><table class="slab-table"><thead><tr><th>स्ल्याब</th><th>सम्म (रु.)</th><th>दर %</th></tr></thead><tbody id="slab-unmarried"></tbody></table></div>
         </div>
         <div>
-          <h4 style="color: var(--blue); margin-bottom:12px;"><i class="fas fa-users"></i> विवाहित</h4>
-          <table class="slab-table" id="slab-married-table">
-            <thead>
-              <tr><th>स्ल्याब</th><th>सम्म (रु.)</th><th>दर %</th></tr>
-            </thead>
-            <tbody id="slab-married"></tbody>
-          </table>
+          <h4 style="color:var(--blue);margin-bottom:12px;"><i class="fas fa-users"></i> विवाहित</h4>
+          <div style="overflow-x:auto"><table class="slab-table"><thead><tr><th>स्ल्याब</th><th>सम्म (रु.)</th><th>दर %</th></tr></thead><tbody id="slab-married"></tbody></table></div>
         </div>
       </div>
     </div>
 
-    <!-- PF / SSF -->
     <div class="admin-section">
-      <div class="as-header">
-        <div class="as-title"><i class="fas fa-piggy-bank"></i> PF / SSF</div>
-      </div>
-      <div class="admin-card">
-        <div class="grid grid-4">
-          <div class="fg"><label>PF कर्मचारी %</label><input type="number" id="cfg-pf-emp" step="0.1" /></div>
-          <div class="fg"><label>PF नियोक्ता %</label><input type="number" id="cfg-pf-empl" step="0.1" /></div>
-          <div class="fg"><label>SSF कर्मचारी %</label><input type="number" id="cfg-ssf-emp" step="0.1" /></div>
-          <div class="fg"><label>SSF नियोक्ता %</label><input type="number" id="cfg-ssf-empl" step="0.1" /></div>
-        </div>
-      </div>
+      <div class="as-header"><div class="as-title"><i class="fas fa-piggy-bank"></i> PF / SSF</div></div>
+      <div class="admin-card"><div class="grid grid-4">
+        <div class="fg"><label>PF कर्मचारी %</label><input type="number" id="cfg-pf-emp" step="0.1" /></div>
+        <div class="fg"><label>PF नियोक्ता %</label><input type="number" id="cfg-pf-empl" step="0.1" /></div>
+        <div class="fg"><label>SSF कर्मचारी %</label><input type="number" id="cfg-ssf-emp" step="0.1" /></div>
+        <div class="fg"><label>SSF नियोक्ता %</label><input type="number" id="cfg-ssf-empl" step="0.1" /></div>
+      </div></div>
     </div>
 
-    <!-- Corporate Tax -->
     <div class="admin-section">
-      <div class="as-header">
-        <div class="as-title"><i class="fas fa-building"></i> कर्पोरेट कर</div>
-      </div>
-      <div class="admin-card">
-        <div class="grid grid-3">
-          <div class="fg"><label>साधारण कम्पनी %</label><input type="number" id="cfg-corp-normal" step="0.1" /></div>
-          <div class="fg"><label>विशेष उद्योग %</label><input type="number" id="cfg-corp-special" step="0.1" /></div>
-          <div class="fg"><label>बैंक/वित्त %</label><input type="number" id="cfg-corp-bank" step="0.1" /></div>
-        </div>
-      </div>
+      <div class="as-header"><div class="as-title"><i class="fas fa-building"></i> कर्पोरेट कर</div></div>
+      <div class="admin-card"><div class="grid grid-3">
+        <div class="fg"><label>साधारण कम्पनी %</label><input type="number" id="cfg-corp-normal" step="0.1" /></div>
+        <div class="fg"><label>विशेष उद्योग %</label><input type="number" id="cfg-corp-special" step="0.1" /></div>
+        <div class="fg"><label>बैंक/वित्त %</label><input type="number" id="cfg-corp-bank" step="0.1" /></div>
+      </div></div>
     </div>
 
-    <!-- Depreciation -->
     <div class="admin-section">
-      <div class="as-header">
-        <div class="as-title"><i class="fas fa-chart-line"></i> ह्रासकट्टी दर (WDV)</div>
-      </div>
-      <div class="admin-card">
-        <div class="grid grid-3">
-          <div class="fg"><label>भवन %</label><input type="number" id="cfg-dep-building" step="0.1" /></div>
-          <div class="fg"><label>सवारी साधन %</label><input type="number" id="cfg-dep-vehicle" step="0.1" /></div>
-          <div class="fg"><label>मेसिनरी %</label><input type="number" id="cfg-dep-machinery" step="0.1" /></div>
-          <div class="fg"><label>फर्निचर/कम्प्युटर %</label><input type="number" id="cfg-dep-furniture" step="0.1" /></div>
-          <div class="fg"><label>अमूर्त सम्पत्ति %</label><input type="number" id="cfg-dep-intangible" step="0.1" /></div>
-        </div>
-      </div>
+      <div class="as-header"><div class="as-title"><i class="fas fa-chart-line"></i> ह्रासकट्टी दर (WDV)</div></div>
+      <div class="admin-card"><div class="grid grid-3">
+        <div class="fg"><label>भवन %</label><input type="number" id="cfg-dep-building" step="0.1" /></div>
+        <div class="fg"><label>सवारी साधन %</label><input type="number" id="cfg-dep-vehicle" step="0.1" /></div>
+        <div class="fg"><label>मेसिनरी %</label><input type="number" id="cfg-dep-machinery" step="0.1" /></div>
+        <div class="fg"><label>फर्निचर/कम्प्युटर %</label><input type="number" id="cfg-dep-furniture" step="0.1" /></div>
+        <div class="fg"><label>अमूर्त सम्पत्ति %</label><input type="number" id="cfg-dep-intangible" step="0.1" /></div>
+      </div></div>
     </div>
 
-    <!-- NPA -->
     <div class="admin-section">
-      <div class="as-header">
-        <div class="as-title"><i class="fas fa-exclamation-triangle"></i> NPA प्रावधान</div>
-      </div>
-      <div class="admin-card">
-        <div class="grid grid-3">
-          <div class="fg"><label>Pass (<30 days) %</label><input type="number" id="cfg-npa-pass" step="0.1" /></div>
-          <div class="fg"><label>Watchlist %</label><input type="number" id="cfg-npa-watch" step="0.1" /></div>
-          <div class="fg"><label>Substandard %</label><input type="number" id="cfg-npa-sub" step="0.1" /></div>
-          <div class="fg"><label>Doubtful %</label><input type="number" id="cfg-npa-doubt" step="0.1" /></div>
-          <div class="fg"><label>Bad/Loss %</label><input type="number" id="cfg-npa-bad" step="0.1" /></div>
-        </div>
-      </div>
+      <div class="as-header"><div class="as-title"><i class="fas fa-exclamation-triangle"></i> NPA प्रावधान</div></div>
+      <div class="admin-card"><div class="grid grid-3">
+        <div class="fg"><label>Pass (&lt;30 days) %</label><input type="number" id="cfg-npa-pass" step="0.1" /></div>
+        <div class="fg"><label>Watchlist %</label><input type="number" id="cfg-npa-watch" step="0.1" /></div>
+        <div class="fg"><label>Substandard %</label><input type="number" id="cfg-npa-sub" step="0.1" /></div>
+        <div class="fg"><label>Doubtful %</label><input type="number" id="cfg-npa-doubt" step="0.1" /></div>
+        <div class="fg"><label>Bad/Loss %</label><input type="number" id="cfg-npa-bad" step="0.1" /></div>
+      </div></div>
     </div>
 
-    <!-- Changelog -->
     <div class="admin-section">
       <div class="as-header">
         <div class="as-title"><i class="fas fa-history"></i> परिवर्तन लग</div>
-        <button class="btn-reset" onclick="clearLogs()"><i class="fas fa-trash"></i> लग मेट्नुहोस्</button>
+        <button class="btn-reset" onclick="clearLogs()"><i class="fas fa-eraser"></i> स्क्रिनबाट हटाउनुहोस्</button>
       </div>
-      <div class="changelog" id="changelog">
-        <div class="changelog-empty">कुनै परिवर्तन भएको छैन।</div>
-      </div>
+      <div class="changelog" id="changelog"><div class="changelog-empty">कुनै परिवर्तन भएको छैन।</div></div>
     </div>
   </div>
 </div>
 
 <script>
-// कन्फिगरेसन
 const WORKER_URL = 'https://morning-bush-8bd5.kushalphuyal.workers.dev';
 let jwtToken = sessionStorage.getItem('adminToken') || null;
 let autoLogoutTimer = null;
 
-// डिफल्ट मानहरू
-const DEFAULTS = {
-  fy: '2082/83',
-  fyStart: 'Shrawan 1, 2082',
-  fyEnd: 'Ashadh 31, 2083',
-  vat: 13,
-  vatDeadline: 25,
-  vatInterest: 15,
-  vatPenalty: 1,
-  tdsServiceVat: 1.5,
-  tdsServiceNoVat: 15,
-  tdsRent: 10,
-  tdsInterest: 15,
-  tdsDividend: 5,
-  tdsPerson: 25,
-  tdsLand: 1,
-  tdsDeadline: 25,
-  pfEmp: 11,
-  pfEmpl: 20,
-  ssfEmp: 11,
-  ssfEmpl: 20,
-  corpNormal: 25,
-  corpSpecial: 20,
-  corpBank: 30,
-  depBuilding: 5,
-  depVehicle: 20,
-  depMachinery: 15,
-  depFurniture: 25,
-  depIntangible: 7,
-  npaPass: 1,
-  npaWatch: 5,
-  npaSub: 25,
-  npaDoubt: 50,
-  npaBad: 100,
-  slabsU: [
-    { upto: 500000, rate: 1 },
-    { upto: 200000, rate: 10 },
-    { upto: 300000, rate: 20 },
-    { upto: 1000000, rate: 30 },
-    { upto: 3000000, rate: 36 },
-    { upto: 0, rate: 39 }
-  ],
-  slabsM: [
-    { upto: 600000, rate: 1 },
-    { upto: 200000, rate: 10 },
-    { upto: 300000, rate: 20 },
-    { upto: 900000, rate: 30 },
-    { upto: 3000000, rate: 36 },
-    { upto: 0, rate: 39 }
-  ]
-};
+/* camelCase key -> HTML id  (fyStart -> cfg-fy-start) */
+const idFor = k => 'cfg-' + k.replace(/([A-Z])/g, '-$1').toLowerCase();
+const $ = id => document.getElementById(id);
+const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 
-// टोस्ट देखाउने
+const DEFAULTS = {
+  fy: '2082/83', fyStart: 'Shrawan 1, 2082', fyEnd: 'Ashadh 31, 2083',
+  vat: 13, vatDeadline: 25, vatInterest: 15, vatPenalty: 1,
+  tdsServiceVat: 1.5, tdsServiceNoVat: 15, tdsRent: 10, tdsInterest: 15,
+  tdsDividend: 5, tdsPerson: 25, tdsLand: 1, tdsDeadline: 25,
+  pfEmp: 11, pfEmpl: 20, ssfEmp: 11, ssfEmpl: 20,
+  corpNormal: 25, corpSpecial: 20, corpBank: 30,
+  depBuilding: 5, depVehicle: 20, depMachinery: 15, depFurniture: 25, depIntangible: 7,
+  npaPass: 1, npaWatch: 5, npaSub: 25, npaDoubt: 50, npaBad: 100,
+  slabsU: [{upto:500000,rate:1},{upto:200000,rate:10},{upto:300000,rate:20},{upto:1000000,rate:30},{upto:3000000,rate:36},{upto:0,rate:39}],
+  slabsM: [{upto:600000,rate:1},{upto:200000,rate:10},{upto:300000,rate:20},{upto:900000,rate:30},{upto:3000000,rate:36},{upto:0,rate:39}]
+};
+const FIELD_KEYS = Object.keys(DEFAULTS).filter(k => !k.startsWith('slabs'));
+
 function showToast(msg, type = 'success') {
-  const toast = document.getElementById('toast');
-  const msgEl = document.getElementById('toast-msg');
-  msgEl.textContent = msg;
-  toast.style.color = type === 'success' ? 'var(--green)' : 'var(--red)';
-  toast.classList.add('show');
-  setTimeout(() => toast.classList.remove('show'), 2500);
+  $('toast-msg').textContent = msg;
+  $('toast').style.color = type === 'success' ? 'var(--green)' : 'var(--red)';
+  $('toast').classList.add('show');
+  setTimeout(() => $('toast').classList.remove('show'), 2500);
 }
 
-// लगिन
-async function doLogin() {
-  const password = document.getElementById('login-pass').value.trim();
-  if (!password) return;
+function showPanel() {
+  $('login-screen').style.display = 'none';
+  $('admin-panel').style.display = 'block';
+}
 
+function startAutoLogout() {
+  if (autoLogoutTimer) clearTimeout(autoLogoutTimer);
+  autoLogoutTimer = setTimeout(() => {
+    alert('सत्र समाप्त भयो। कृपया पुन: लगइन गर्नुहोस्।');
+    doLogout();
+  }, 23 * 60 * 60 * 1000);
+}
+
+async function doLogin() {
+  const password = $('login-pass').value.trim();
+  if (!password) return;
   try {
     const res = await fetch(`${WORKER_URL}/api/admin/login`, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
+      method: 'POST', headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ password })
     });
-    
     const data = await res.json();
-    
     if (data.success && data.token) {
       jwtToken = data.token;
       sessionStorage.setItem('adminToken', jwtToken);
-      
-      // अटो लगआउट सेट गर्ने (२४ घन्टा)
-      if (autoLogoutTimer) clearTimeout(autoLogoutTimer);
-      autoLogoutTimer = setTimeout(() => {
-        alert('सत्र समाप्त भयो। कृपया पुन: लगइन गर्नुहोस्।');
-        doLogout();
-      }, 23 * 60 * 60 * 1000); // २३ घन्टा
-      
-      document.getElementById('login-screen').style.display = 'none';
-      document.getElementById('admin-panel').style.display = 'block';
-      
-      // कन्फिग लोड गर्ने
+      $('login-pass').value = '';
+      startAutoLogout();
+      showPanel();
       await loadConfig();
       await loadLogs();
     } else {
-      document.getElementById('login-err').style.display = 'block';
-      setTimeout(() => document.getElementById('login-err').style.display = 'none', 3000);
+      $('login-err').style.display = 'block';
+      setTimeout(() => $('login-err').style.display = 'none', 3000);
     }
-  } catch (err) {
-    showToast('नेटवर्क समस्या', 'error');
-  }
+  } catch (err) { showToast('नेटवर्क समस्या', 'error'); }
 }
 
-// लगआउट
 function doLogout() {
   jwtToken = null;
   sessionStorage.removeItem('adminToken');
   if (autoLogoutTimer) clearTimeout(autoLogoutTimer);
-  document.getElementById('login-screen').style.display = 'flex';
-  document.getElementById('admin-panel').style.display = 'none';
+  $('login-screen').style.display = 'flex';
+  $('admin-panel').style.display = 'none';
 }
 
-// कन्फिग लोड गर्ने
-async function loadConfig() {
-  try {
-    const res = await fetch(`${WORKER_URL}/api/config`);
-    const cfg = await res.json();
-    
-    if (Object.keys(cfg).length === 0) {
-      applyDefaults();
-      return;
-    }
-    
-    // फर्म भर्ने
-    Object.keys(DEFAULTS).forEach(key => {
-      const el = document.getElementById(`cfg-${key}`);
-      if (el) el.value = cfg[key] ?? DEFAULTS[key];
-    });
-    
-    // स्ल्याबहरू भर्ने
-    buildSlabTable('slab-unmarried', cfg.slabsU || DEFAULTS.slabsU);
-    buildSlabTable('slab-married', cfg.slabsM || DEFAULTS.slabsM);
-    
-    document.getElementById('nav-fy').textContent = `FY ${cfg.fy || DEFAULTS.fy}`;
-    
-  } catch (err) {
-    console.error('Load config error:', err);
-    applyDefaults();
-  }
-}
-
-function applyDefaults() {
-  Object.keys(DEFAULTS).forEach(key => {
-    const el = document.getElementById(`cfg-${key}`);
-    if (el) el.value = DEFAULTS[key];
+function fillForm(cfg) {
+  FIELD_KEYS.forEach(key => {
+    const el = $(idFor(key));
+    if (el) el.value = cfg[key] ?? DEFAULTS[key];
   });
-  buildSlabTable('slab-unmarried', DEFAULTS.slabsU);
-  buildSlabTable('slab-married', DEFAULTS.slabsM);
-  document.getElementById('nav-fy').textContent = `FY ${DEFAULTS.fy}`;
+  buildSlabTable('slab-unmarried', cfg.slabsU || DEFAULTS.slabsU);
+  buildSlabTable('slab-married', cfg.slabsM || DEFAULTS.slabsM);
+  $('nav-fy').textContent = `FY ${cfg.fy || DEFAULTS.fy}`;
+}
+
+async function loadConfig() {
+  for (const path of ['/api/config', '/get-config']) {
+    try {
+      const res = await fetch(WORKER_URL + path);
+      if (!res.ok) continue;
+      const cfg = await res.json();
+      if (cfg && Object.keys(cfg).length) { fillForm(cfg); return; }
+    } catch (e) { console.error('Load config error:', e); }
+  }
+  fillForm({});
 }
 
 function buildSlabTable(id, slabs) {
-  const tbody = document.getElementById(id);
+  const tbody = $(id);
   if (!tbody) return;
-  
-  tbody.innerHTML = slabs.map((slab, i) => {
-    const isLast = i === slabs.length - 1;
-    return `
-      <tr>
-        <td>स्ल्याब ${i+1}</td>
-        <td><input type="number" id="${id}-upto-${i}" value="${slab.upto}" ${isLast ? 'disabled style="opacity:0.5"' : ''} /></td>
-        <td><input type="number" id="${id}-rate-${i}" value="${slab.rate}" step="0.1" min="0" max="100" /></td>
-      </tr>
-    `;
+  tbody.innerHTML = slabs.map((s, i) => {
+    const last = i === slabs.length - 1;
+    return `<tr>
+      <td>स्ल्याब ${i + 1}</td>
+      <td><input type="number" id="${id}-upto-${i}" value="${Number(s.upto) || 0}" ${last ? 'disabled style="opacity:.5"' : ''} /></td>
+      <td><input type="number" id="${id}-rate-${i}" value="${Number(s.rate) || 0}" step="0.1" min="0" max="100" /></td>
+    </tr>`;
   }).join('');
 }
 
 function getSlabValues(id) {
-  const slabs = [];
-  for (let i = 0; i < 6; i++) {
-    const uptoEl = document.getElementById(`${id}-upto-${i}`);
-    const rateEl = document.getElementById(`${id}-rate-${i}`);
-    slabs.push({
-      upto: uptoEl ? parseFloat(uptoEl.value) || 0 : 0,
-      rate: rateEl ? parseFloat(rateEl.value) || 0 : 0
+  const rows = $(id).querySelectorAll('tr').length;
+  const out = [];
+  for (let i = 0; i < rows; i++) {
+    out.push({
+      upto: parseFloat($(`${id}-upto-${i}`).value) || 0,
+      rate: parseFloat($(`${id}-rate-${i}`).value) || 0
     });
   }
-  return slabs;
+  return out;
 }
 
-// लग लोड गर्ने
 async function loadLogs() {
   if (!jwtToken) return;
-  
+  const logEl = $('changelog');
   try {
-    const res = await fetch(`${WORKER_URL}/api/admin/logs`, {
-      headers: { 'Authorization': `Bearer ${jwtToken}` }
-    });
+    const res = await fetch(`${WORKER_URL}/api/admin/logs`, { headers: { Authorization: `Bearer ${jwtToken}` } });
+    if (res.status === 401 || res.status === 403) { showToast('सत्र समाप्त भयो', 'error'); doLogout(); return; }
     const logs = await res.json();
-    
-    const logEl = document.getElementById('changelog');
-    if (!logs || logs.length === 0) {
+    if (!Array.isArray(logs) || !logs.length) {
       logEl.innerHTML = '<div class="changelog-empty">कुनै परिवर्तन भएको छैन।</div>';
       return;
     }
-    
-    logEl.innerHTML = logs.map(log => `
+    logEl.innerHTML = logs.map(l => `
       <div class="changelog-item">
-        <span>${log.config?.fy} - VAT ${log.config?.vat}%</span>
-        <span style="color:var(--muted)">${new Date(log.timestamp).toLocaleString('ne-NP')}</span>
-      </div>
-    `).join('');
-  } catch (err) {
-    console.error('Load logs error:', err);
-  }
+        <span>${esc(l.config?.fy)} - VAT ${esc(l.config?.vat)}%</span>
+        <span style="color:var(--muted)">${esc(new Date(l.timestamp).toLocaleString())}</span>
+      </div>`).join('');
+  } catch (err) { console.error('Load logs error:', err); }
 }
 
-// सेभ गर्ने
 async function saveAll() {
-  if (!jwtToken) {
-    showToast('सत्र समाप्त भयो। पुन: लगइन गर्नुहोस्।', 'error');
-    doLogout();
-    return;
-  }
+  if (!jwtToken) { showToast('सत्र समाप्त भयो। पुन: लगइन गर्नुहोस्।', 'error'); doLogout(); return; }
 
   const config = {};
-  
-  // फर्मबाट डाटा लिने
-  Object.keys(DEFAULTS).forEach(key => {
-    const el = document.getElementById(`cfg-${key}`);
-    if (el) config[key] = parseFloat(el.value) || el.value;
+  FIELD_KEYS.forEach(key => {
+    const el = $(idFor(key));
+    if (!el) return;
+    config[key] = el.type === 'number' ? (parseFloat(el.value) || 0) : el.value.trim();
   });
-  
-  // स्ल्याबहरू
   config.slabsU = getSlabValues('slab-unmarried');
   config.slabsM = getSlabValues('slab-married');
-  
+
   try {
     const res = await fetch(`${WORKER_URL}/api/admin/config`, {
       method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'Authorization': `Bearer ${jwtToken}`
-      },
+      headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${jwtToken}` },
       body: JSON.stringify({ config })
     });
-    
+    if (res.status === 401 || res.status === 403) { showToast('सत्र समाप्त भयो', 'error'); doLogout(); return; }
     const data = await res.json();
-    
     if (data.success) {
-      // लोकल स्टोरेजमा ब्याकअप
-      localStorage.setItem('naps_config_backup', JSON.stringify(config));
-      
-      document.getElementById('save-alert').classList.add('show');
-      setTimeout(() => document.getElementById('save-alert').classList.remove('show'), 3000);
+      try { localStorage.setItem('naps_cfg_cache', JSON.stringify(config)); } catch (e) {}
+      $('nav-fy').textContent = `FY ${config.fy}`;
+      $('save-alert').classList.add('show');
+      setTimeout(() => $('save-alert').classList.remove('show'), 3000);
       showToast('✅ सेभ भयो!');
-      
-      // लग पुन: लोड गर्ने
       await loadLogs();
-    } else {
-      showToast('❌ सेभ हुन सकेन', 'error');
-    }
-  } catch (err) {
-    showToast('❌ नेटवर्क समस्या', 'error');
-  }
+    } else showToast('❌ सेभ हुन सकेन', 'error');
+  } catch (err) { showToast('❌ नेटवर्क समस्या', 'error'); }
 }
 
-// लग मेट्ने (क्लाइन्ट साइडमा मात्र)
 function clearLogs() {
-  if (!jwtToken) return;
-  localStorage.removeItem('naps_log');
-  document.getElementById('changelog').innerHTML = '<div class="changelog-empty">कुनै परिवर्तन भएको छैन।</div>';
-  showToast('लग मेटियो');
+  $('changelog').innerHTML = '<div class="changelog-empty">कुनै परिवर्तन भएको छैन।</div>';
+  showToast('स्क्रिनबाट हटाइयो (सर्भरमा रहन्छ)');
 }
 
-// पेज लोड हुँदा
 window.addEventListener('load', async () => {
   if (jwtToken) {
-    document.getElementById('login-screen').style.display = 'none';
-    document.getElementById('admin-panel').style.display = 'block';
+    showPanel();
+    startAutoLogout();
     await loadConfig();
     await loadLogs();
   }
 });
-
-// इन्टरप्रेस लगइन
-document.getElementById('login-pass').addEventListener('keypress', (e) => {
-  if (e.key === 'Enter') doLogin();
-});
+$('login-pass').addEventListener('keydown', e => { if (e.key === 'Enter') doLogin(); });
 </script>
 </body>
 </html>
